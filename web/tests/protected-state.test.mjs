@@ -55,5 +55,5 @@ test('destroy detaches persistence listeners', () => {
 });
 test('native Preview passes the protection flag into the isolated renderer', () => {
   const native = readFileSync(new URL('../../app/src/main/java/dev/pocket/notebook/web/NotebookPreviewWebView.kt', import.meta.url), 'utf8');
-  assert.match(native, /window\.PreviewApi\.render\(\$payload\.source, \$payload\.id, \$encrypted(?:,|\))/);
+  assert.match(native, /window\.PreviewApi\.render\(p\.source, p\.id, \$encrypted(?:,|\))/);
 });
