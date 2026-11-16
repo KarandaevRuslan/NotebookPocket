@@ -1,4 +1,4 @@
-name: Draft signed release
+name: APK on tag / signed release draft
 on:
   push:
     tags: ['v*']
@@ -6,12 +6,58 @@ on:
 permissions:
   contents: read
 jobs:
+  # A tag builds an installable debug-signed APK without requiring signing secrets.
+  # This is a test artifact (not an official upgradeable release).
+  tag-apk:
+    if: github.event_name == 'push' && github.ref_type == 'tag'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version-file: .node-version
+          package-manager-cache: false
+      - uses: actions/setup-java@77dd5b2ce225ea11469928ac317850245a74ae78 # v6.2.0
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@be39fa834029ff78f1a44aa3bb0819b8fc2bd8fd # v4.0.4
+      - run: sdkmanager 'platforms;android-35' 'build-tools;35.0.0'
+      - uses: gradle/actions/setup-gradle@ed408507eac070d1f99cc633dbcf757c94c7933a # v4
+        with:
+          cache-disabled: true
+      - name: Validate tag against source version
+        run: python3 scripts/check_release.py "$GITHUB_REF_NAME"
+      - name: Build bundled web runtime
+        run: npm ci && npm run build
+        working-directory: web
+      - name: Build debug APK
+        run: bash gradlew :app:assembleDebug --no-daemon
+      - name: Package APK and checksum
+        run: |
+          mkdir -p release
+          cp app/build/outputs/apk/debug/app-debug.apk "release/NotebookPocket-${GITHUB_REF_NAME}-debug.apk"
+          (cd release && sha256sum *.apk > SHA256SUMS)
+      - name: Upload tagged APK
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: NotebookPocket-${{ github.ref_name }}-debug
+          path: release/
+          if-no-files-found: error
+          retention-days: 30
+
+  # Signed release remains an explicit, protected manual action on a tag.
   verify:
+    if: github.event_name == 'workflow_dispatch' && github.ref_type == 'tag'
     uses: ./.github/workflows/ci.yml
   device-tests:
+    if: github.event_name == 'workflow_dispatch' && github.ref_type == 'tag'
     uses: ./.github/workflows/instrumentation.yml
   draft:
-    if: github.ref_type == 'tag'
+    if: github.event_name == 'workflow_dispatch' && github.ref_type == 'tag'
     needs: [verify, device-tests]
     runs-on: ubuntu-24.04
     timeout-minutes: 30

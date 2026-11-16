@@ -37,8 +37,45 @@ Keep a separate, secure backup of the keystore. Existing installed apps need the
 
 The checklist is intentionally not pre-checked by generated reports. Local Robolectric tests are not proof of physical-device behavior.
 
-## Draft release workflow
+## What happens when you push a tag
 
-After validation, create and push the matching annotated version tag. The `Draft signed release` workflow runs CI and device regressions, waits for the `release` environment, builds the signed APK and creates a **draft** GitHub release with SHA-256 checksums. It does not publish the draft.
+For a tag of the form `vX.Y.Z`, the `APK on tag / signed release draft` GitHub Actions
+workflow **automatically** validates the version, builds the embedded web assets,
+compiles an installable **debug-signed** Android APK and uploads the APK + `SHA256SUMS`
+as a GitHub Actions artifact (`NotebookPocket-vX.Y.Z-debug`, retained for 30 days).
+No keystore secrets or manual approvals are required for this **test build**.
 
-You may rerun a tag workflow with `gh workflow run release.yml --ref v0.9.3`. A branch dispatch does not create a release. Review notes, signature, checksums and installation before manually publishing the draft in GitHub.
+To create a tag after merging workflow changes and confirming that CI passes:
+
+```powershell
+python scripts/check_release.py v0.9.3
+# Only if the tag does not already exist and the current source version is 0.9.3:
+git tag -a v0.9.3 -m "NotebookPocket 0.9.3"
+git push origin v0.9.3
+```
+
+Open **Actions → APK on tag / signed release draft → the tag run → Artifacts**
+to download the ZIP containing `NotebookPocket-vX.Y.Z-debug.apk` and checksum file.
+**This does not create a public GitHub Release.** The APK uses the runner's debug key,
+which may change between runs: it is unsuitable for official distributions or reliable
+in-place updates of an installed production app. Do not reassign an existing tag;
+for the next release, update `package.json`, `package-lock.json`, `versionCode` and
+`CHANGELOG.md`, then push a new tag.
+
+## Signed draft release (manual, gated)
+
+After CI and device testing succeed and the protected `release` environment has
+all signing secrets, start the workflow **manually on the matching tag**:
+
+```powershell
+gh workflow run release.yml --ref v0.9.3
+```
+
+The manual run executes CI and emulator tests, waits for `release` environment
+approval, builds and verifies the **release-signed APK**, then creates a **draft**
+GitHub Release with SHA-256 checksums. This run requires the signing secrets above;
+without them, only the automatic debug APK is available.
+
+Review the draft, verify the signing certificate against previous releases, test
+in-place upgrades and publish the draft yourself. Never distribute the debug APK
+as the official upgrade path.

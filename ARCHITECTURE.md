@@ -68,7 +68,7 @@ CodeMirror change
 ## 5. Notebook runtime integration
 
 - `web/src/preview/notebookRuntime.js` initializes the Observable Notebook Kit compiler/runtime and binds notebook cells to the document-specific view.
-- `web/src/preview/nexusRuntime.js` exposes **`Nexus`** (the bundled core API) and **`nexus`** (a preview lifecycle-aware host) to cells. Scope lifetime is associated with preview/cell invalidation; `nexus.observe` bridges Nexus stores into Observable reactivity.
+- `web/src/preview/nexusRuntime.js` integrates [Nexus Core](https://github.com/KarandaevRuslan/Nexus) and exposes **`Nexus`** (the bundled core API) and **`nexus`** (a preview lifecycle-aware host) to cells. Scope lifetime is associated with preview/cell invalidation; `nexus.observe` bridges Nexus stores into Observable reactivity.
 - `web/src/preview/inputs-theme.css` provides preview-wide styles for Observable Inputs; it is not tied to the built-in sample.
 - `web/src/attachment-resolver.js` validates scoped attachment paths/domains before a notebook resolves its resources.
 - `web/vendor/nexus-0.1.20.tgz` is a **local npm dependency** (`file:vendor/...`), installed by `npm ci`, then bundled by Vite. Its source/package provenance is documented in `third_party/nexus`.

@@ -62,16 +62,28 @@ If you already have a local `.git` history, do **not** run `git init` or force-p
 
 Push the initial branch and check GitHub Actions. Web assets are built on the runner, not committed. If a test fails, investigate it before tagging a release. Do not bypass CI and device gates to produce a public installer.
 
-## 5. Tag and draft a signed APK release
+## 5. Tag for an automatic APK build
 
-Only after passing the [release checklist](RELEASE.md) and configuring the signing environment:
+After merging the workflow update and confirming a green CI run, validate the
+version and push a **new** tag:
 
 ```powershell
 python scripts/check_release.py v0.9.3
+# Only when this tag does not already exist:
 git tag -a v0.9.3 -m "NotebookPocket 0.9.3"
 git push origin v0.9.3
 ```
 
-The tag workflow runs CI + emulator checks, builds with the protected signing environment, verifies the signature and creates a **draft**, not a public release. Review the binary, notes, checksums and upgrade test, then publish the draft explicitly in GitHub Releases.
+GitHub Actions automatically compiles a **debug-signed** APK and uploads it to the
+tag run's **Artifacts** (APK + SHA256SUMS). This does **not** publish a GitHub
+Release. Use it for testing only; debug signing is not an upgradeable distribution
+identity. No signing secrets are required for this build.
 
-**Never** add signing certificates, passwords or personal files to Git or GitHub Actions logs. If signing credentials are not yet set, keep source public but omit a binary release.
+## 6. Prepare an official signed release
+
+For a real installer intended for ongoing upgrades, configure the protected `release`
+environment and its signing secrets as described in [RELEASE.md](RELEASE.md).
+Run `gh workflow run release.yml --ref v0.9.3` manually on the **existing tag**.
+The workflow runs CI and emulator checks, verifies the signed APK and creates a
+**draft** release for manual review/publishing. Never commit signing certificates
+or credentials; do not push or overwrite an existing version tag.

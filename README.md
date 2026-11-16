@@ -46,9 +46,9 @@ No account, hosted backend or Android `INTERNET` permission is required. Built-i
 | Observable Notebook Kit live preview | Document and shared collection resources | Portrait and landscape layouts |
 | HTML / JavaScript / Markdown notebooks | Import/export of notebook and library archives | Russian and English interface |
 | File attachments and Observable Inputs | Optional password protection | Light/dark appearance |
-| Bundled Nexus 0.1.20 reactive stores | Encrypted device-local recovery drafts | Clear save states and retry |
+| Bundled [Nexus Core 0.1.20](https://github.com/KarandaevRuslan/Nexus) reactive stores | Encrypted device-local recovery drafts | Clear save states and retry |
 
-**Try the “Pancakes / Блины” sample.** It is an executable recipe, and the bundled Nexus-enhanced edition demonstrates stores, transactions, handlers and Observable interoperation. See [Nexus integration](docs/NEXUS.md) and [`examples/nexus-counter.html`](examples/nexus-counter.html).
+**Try the “Pancakes / Блины” sample.** It is an executable recipe, and the bundled Nexus-enhanced edition demonstrates stores, transactions, handlers and Observable interoperation. See the [Nexus framework](https://github.com/KarandaevRuslan/Nexus), [NotebookPocket integration](docs/NEXUS.md) and [`examples/nexus-counter.html`](examples/nexus-counter.html).
 
 <!-- Real screenshots will be added after device verification; avoid placeholder/broken images. -->
 
@@ -109,14 +109,14 @@ third_party/             Third-party source provenance, copyright and license no
 examples/                Importable notebooks
 app/src/main/assets/demo/ Built-in sample and migrations
 docs/                    Architecture, security, build and release documentation
-.github/workflows/       CI, emulator tests and guarded signed draft releases
+.github/workflows/       CI, tag-triggered debug APK builds and guarded signed release drafts
 ```
 
 See [ARCHITECTURE.md](ARCHITECTURE.md) for data flows, trust boundaries and saving semantics.
 
 ## Release & contributing
 
-The source currently reports **NotebookPocket 0.9.3** (`versionCode` 41). **Nexus 0.1.20 is the bundled library version**, not the Android app version. Releases are prepared as **drafts** after tests and signing; no downloadable public APK is implied by this README. Follow [docs/RELEASE.md](docs/RELEASE.md) and [docs/PUBLISHING.md](docs/PUBLISHING.md).
+The source currently reports **NotebookPocket 0.9.3** (`versionCode` 41). **Nexus 0.1.20 is the bundled library version**, not the Android app version. Pushing a matching `vX.Y.Z` tag automatically builds a **debug-signed APK** (downloadable from the GitHub Actions run artifacts; it is not a production release). Official, keystore-signed **draft releases** are built manually after CI and device checks. See [docs/RELEASE.md](docs/RELEASE.md) and [docs/PUBLISHING.md](docs/PUBLISHING.md).
 
 Contributions and reproducible bug reports are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md). Never upload private notebooks or signing keys.
 
@@ -127,7 +127,7 @@ NotebookPocket builds on and adapts the work of these projects:
 - **[Observable Notebook Kit](https://github.com/observablehq/notebook-kit)** — notebook parser/compiler/runtime and Notebooks 2.0 HTML model (upstream ISC license).
 - **[Acode](https://github.com/Acode-Foundation/Acode)** — source editor foundation; adapted Acode editor components, with upstream MIT license and provenance preserved in [`third_party/acode`](third_party/acode).
 - **[CodeMirror 6](https://codemirror.net/)** — underlying code editor engine.
-- **[Nexus Core 0.1.20](docs/NEXUS.md)** — packaged local npm dependency, transactional state/event integration; see local package provenance and license in `third_party/nexus/`.
+- **[Nexus Core 0.1.20](https://github.com/KarandaevRuslan/Nexus)** — the author’s framework, bundled as a local npm dependency for transactional state/event integration; see [integration guide](docs/NEXUS.md), local package provenance and license in `third_party/nexus/`.
 - **AndroidX, Kotlin, Vite, Observable Inputs** and their upstream contributors.
 
 **NotebookPocket's own code** is published under [MIT](LICENSE.md); bundled third-party components remain under their **respective** licenses. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). The app icon is original artwork prepared for NotebookPocket.
