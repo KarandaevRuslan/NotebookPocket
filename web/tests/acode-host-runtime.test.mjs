@@ -311,13 +311,24 @@ test('colour mount failure is visible and logged, with no lost text or orphan di
 });
 test('original scrollbar drag changes scroll without changing a long selection',async()=>{
  load(Array.from({length:1500},(_,i)=>`row${i}`).join('\n'));view.focus();view.dispatch({selection:{anchor:17,head:view.state.doc.length-10}});const selection=view.state.selection.toJSON();
- const scroll=view.scrollDOM,oldHeight=Object.getOwnPropertyDescriptor(scroll,'scrollHeight'),oldClient=Object.getOwnPropertyDescriptor(scroll,'clientHeight');
- Object.defineProperty(scroll,'scrollHeight',{configurable:true,value:5000});Object.defineProperty(scroll,'clientHeight',{configurable:true,value:300});api.refresh();await tick(80);
- const bar=document.querySelector('.scrollbar-container.right');assert.ok(bar);bar.getBoundingClientRect=()=>({left:365,right:412,top:10,bottom:310,width:47,height:300});bar.resize();
- bar.querySelector('.thumb').dispatchEvent(new MouseEvent('mousedown',{bubbles:true,cancelable:true,clientY:20}));
- document.dispatchEvent(new MouseEvent('mousemove',{bubbles:true,cancelable:true,clientY:120}));assert.ok(scroll.scrollTop>1000);document.dispatchEvent(new MouseEvent('mouseup',{bubbles:true,cancelable:true}));
- assert.deepEqual(view.state.selection.toJSON(),selection);
- for(const [key,desc] of [['scrollHeight',oldHeight],['clientHeight',oldClient]]){if(desc)Object.defineProperty(scroll,key,desc);else delete scroll[key];}
+ const scroll=view.scrollDOM;
+ // jsdom reports 0 for both viewport axes. Since the parked-WebView fix,
+ // 0x0 is intentionally treated as unknown layout, not as overflow. Simulate
+ // a *visible* 400x300 editor so the integration test exercises real drag logic.
+ const geometry=[['scrollHeight',5000],['clientHeight',300],['scrollWidth',400],['clientWidth',400]];
+ const original=geometry.map(([key])=>[key,Object.getOwnPropertyDescriptor(scroll,key)]);
+ try{
+  for(const [key,value] of geometry)Object.defineProperty(scroll,key,{configurable:true,value});
+  api.refresh();await tick(80);
+  const bar=document.querySelector('.scrollbar-container.right');assert.ok(bar,'visible editor with vertical overflow must show scrollbar');
+  bar.getBoundingClientRect=()=>({left:365,right:412,top:10,bottom:310,width:47,height:300});bar.resize();
+  bar.querySelector('.thumb').dispatchEvent(new MouseEvent('mousedown',{bubbles:true,cancelable:true,clientY:20}));
+  document.dispatchEvent(new MouseEvent('mousemove',{bubbles:true,cancelable:true,clientY:120}));
+  assert.ok(scroll.scrollTop>1000);assert.deepEqual(view.state.selection.toJSON(),selection);
+ }finally{
+  document.dispatchEvent(new MouseEvent('mouseup',{bubbles:true,cancelable:true}));
+  for(const [key,desc] of original){if(desc)Object.defineProperty(scroll,key,desc);else delete scroll[key];}
+ }
 });
 test('compiled host styles preserve scrollbar width, theme the picker and distinguish active search',()=>{
  const css=['../src/acode/host/skin.scss','../src/acode/vendor/components/scrollbar/style.scss'].map(path=>compile(fileURLToPath(new URL(path,import.meta.url)),{logger:{warn(){},debug(){}}}).css).join('\n');
