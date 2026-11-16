@@ -37,7 +37,7 @@
     "vanilla-picker": "2.12.3"
   },
   "devDependencies": {
-    "@babel/core": "7.29.13",
+    "@babel/core": "8.1.2",
     "@babel/parser": "^7.28.5",
     "esbuild": "^0.25.12",
     "happy-dom": "21.0.4",
