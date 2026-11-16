@@ -1,0 +1,96 @@
+
+    /* Notebook 2.0: text and surfaces follow the notebook's actual theme variables,
+       including an explicitly switched dark theme (not just system dark mode). */
+    .blini-hero,.blini-heading,.blini-control-wrap,.blini-panel,.blini-step,.blini-help,.blini-footnote {box-sizing:border-box;max-width:1080px;margin-inline:auto}
+    .blini-hero *,.blini-control-wrap *,.blini-panel *,.blini-step *,.blini-help * {box-sizing:border-box}
+    .blini-hero {position:relative;isolation:isolate;overflow:hidden;border-radius:22px;padding:clamp(26px,5vw,48px);background:linear-gradient(118deg,#183c31,#38664d);color:#fffaf1;box-shadow:0 14px 30px #171d1b27}
+    .blini-hero::before {content:"";position:absolute;width:360px;height:360px;top:-150px;right:-110px;border:2px solid #f7d9a555;border-radius:50%;box-shadow:0 0 0 36px #f9ddab14,0 0 0 76px #f9ddab12;z-index:-1}
+    .blini-hero::after {content:"";position:absolute;right:8%;bottom:0;width:92px;height:92px;border-radius:50%;background:radial-gradient(circle at 48% 48%,#f5cc8a 5%,#e2a660 65%,#b8793c 95%);opacity:.7;z-index:-1}
+    .blini-kicker {font-size:.77rem;letter-spacing:.14em;text-transform:uppercase;color:#ffdda3;font-weight:750;margin:0 0 14px}
+    .blini-hero h1 {font:600 clamp(2.15rem,5vw,4.15rem)/1.07 Georgia,serif;letter-spacing:-.045em;color:#fffaf1;max-width:720px;margin:0 0 14px}
+    .blini-lede {font-size:clamp(.98rem,1.65vw,1.13rem);line-height:1.65;color:#f5eee1;max-width:730px;margin:0 0 22px}
+    .blini-chiprow {display:flex;flex-wrap:wrap;gap:9px}
+    .blini-chip {border:1px solid #f5ddae66;background:#fffef316;border-radius:40px;padding:7px 12px;color:#fff4df;font-size:.82rem;font-weight:650}
+    .blini-heading {display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:10px;margin-top:35px;margin-bottom:14px}
+    .blini-heading h2 {font:650 clamp(1.45rem,2vw,1.94rem)/1.2 Georgia,serif;color:var(--theme-foreground,#20392d);margin:0}
+    .blini-heading p {font-size:.9rem;line-height:1.55;color:var(--theme-foreground-muted,#54635b);max-width:610px;margin:0}
+    /* All content cards inherit theme colors directly, no prefers-color-scheme palette. */
+    .blini-control-wrap,.blini-panel,.blini-step,.blini-help {
+      --b-bg:var(--theme-background,#fffcf7);
+      --b-ink:var(--theme-foreground,#20392d);
+      --b-muted:var(--theme-foreground-muted,#54635b);
+      --b-focus:var(--theme-foreground-focus,#b36b2e);
+      --b-line:color-mix(in srgb,var(--b-ink) 22%,transparent);
+      --b-card:color-mix(in srgb,var(--b-bg) 92%,var(--b-ink));
+      --b-warm:color-mix(in srgb,var(--b-bg) 83%,#eab35e);
+      --b-blue:color-mix(in srgb,var(--b-bg) 83%,#67b8d0);
+      --b-green:color-mix(in srgb,var(--b-bg) 86%,#8bbd8b);
+      color:var(--b-ink);
+    }
+    .blini-control-wrap {padding:20px 23px;border-radius:19px;background:var(--b-card);border:1px solid var(--b-line)}
+    .blini-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px 17px}
+    .blini-field {min-width:0;padding:14px 16px;border-radius:12px;background:var(--b-bg);border:1px solid var(--b-line);color:var(--b-ink)}
+    .blini-field > form {margin:0;max-width:100%;width:100%}
+    .blini-field > form > label {display:block;margin-bottom:.45em;font-weight:700}
+    .blini-field form,.blini-field form *, .blini-field > form > label {color:var(--b-ink)}
+    .blini-field :is(input,select,option,output,button) {max-width:100%;accent-color:var(--b-focus)}
+    .blini-field :is(input[type=number],input[type=text],select) {background:var(--b-bg);color:var(--b-ink);border:1px solid var(--b-line);border-radius:6px}
+    .blini-field :is(input,select,button):focus-visible {outline:2px solid var(--b-focus);outline-offset:2px}
+    .blini-controls-hint {margin:14px 0 0;font-size:.86rem;line-height:1.62;color:var(--b-muted)}
+    .blini-panel {background:var(--b-bg);border:1px solid var(--b-line);border-radius:19px;padding:clamp(19px,3vw,30px)}
+    .blini-stats {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:19px}
+    .blini-stat {padding:16px;min-width:0;border-radius:14px;background:var(--b-green);color:var(--b-ink)}
+    .blini-stat:nth-child(2) {background:var(--b-warm)}
+    .blini-stat:nth-child(3) {background:var(--b-blue)}
+    .blini-stat-label {font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;font-weight:750;color:var(--b-muted);margin:0 0 7px}
+    .blini-stat-value {font-weight:780;font-size:clamp(1.14rem,2.7vw,1.75rem);line-height:1.16;color:var(--b-ink);overflow-wrap:anywhere}
+    .blini-stat-note {color:var(--b-muted);font-size:.79rem;margin:7px 0 0;line-height:1.47}
+    .blini-guard {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:0 0 19px}
+    .blini-guard-card {background:var(--b-card);border:1px solid var(--b-line);border-radius:13px;padding:15px 16px}
+    .blini-guard-card:nth-child(2){background:var(--b-warm)}
+    .blini-guard-title {font-weight:800;font-size:.94rem;color:var(--b-ink);margin:0 0 7px}
+    .blini-guard-text {font-size:.88rem;line-height:1.62;color:var(--b-ink);margin:0}
+    .blini-heat {background:var(--b-blue);border:1px solid var(--b-line);border-radius:13px;padding:16px 18px;margin:0 0 22px;color:var(--b-ink)}
+    .blini-heat strong {font-size:1rem;color:var(--b-ink)}
+    .blini-heat p {font-size:.9rem;line-height:1.62;color:var(--b-ink);margin:5px 0 0}
+    .blini-section-caption {font-size:1.08rem;font-weight:800;margin:0 0 12px;color:var(--b-ink)}
+    .blini-ingredients {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px 25px;margin-bottom:19px}
+    .blini-item {display:flex;align-items:baseline;justify-content:space-between;gap:10px;border-bottom:1px dashed var(--b-line);padding:11px 0;color:var(--b-ink)}
+    .blini-item span {font-size:.92rem}
+    .blini-item strong {font-size:1rem;font-weight:800;font-variant-numeric:tabular-nums;white-space:normal;text-align:right;overflow-wrap:anywhere;color:var(--b-ink)}
+    .blini-mix {background:var(--b-card);border:1px solid var(--b-line);padding:16px;border-radius:13px}
+    .blini-mix-top {display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between;font-size:.84rem;font-weight:750;margin:0 0 11px;color:var(--b-ink)}
+    .blini-bar {display:flex;width:100%;height:13px;background:var(--b-line);border-radius:20px;overflow:hidden}
+    .blini-bar-milk {background:#cf9e4d;transition:width .2s ease}
+    .blini-bar-water {background:#63a9c0;transition:width .2s ease}
+    .blini-legend {display:flex;gap:15px;flex-wrap:wrap;font-size:.82rem;color:var(--b-ink);margin-top:10px}
+    .blini-legend i {display:inline-block;vertical-align:middle;width:10px;height:10px;border-radius:2px;margin-right:6px}
+    .blini-message {background:var(--b-blue);border-left:4px solid #5a9aa9;border-radius:10px;padding:12px 14px;color:var(--b-ink);line-height:1.6;font-size:.88rem;margin-top:13px}
+    .blini-message.warn {background:var(--b-warm);border-color:#c38937}
+    .blini-fine {font-size:.84rem;line-height:1.66;color:var(--b-muted);margin:16px 0 0}
+    .blini-step {border:1px solid var(--b-line);border-radius:19px;background:var(--b-bg);padding:clamp(19px,4vw,33px)}
+    .blini-step-top {color:var(--b-focus);font-weight:850;font-size:.79rem;letter-spacing:.075em;text-transform:uppercase;margin:0 0 11px}
+    .blini-progress {height:8px;border-radius:30px;background:var(--b-line);overflow:hidden;margin:0 0 18px}
+    .blini-progress span {display:block;height:100%;border-radius:30px;background:var(--b-focus);transition:width .2s ease}
+    .blini-step h3 {font:650 clamp(1.38rem,3vw,1.92rem)/1.25 Georgia,serif;color:var(--b-ink);margin:0 0 12px}
+    .blini-step p {font-size:1.02rem;line-height:1.76;color:var(--b-ink);margin:0 0 12px;max-width:800px}
+    .blini-step-aside {background:var(--b-warm);border-radius:0 10px 10px 0;border-left:4px solid #c28b45;padding:12px 14px;font-size:.91rem;line-height:1.68;color:var(--b-ink);margin:16px 0 0}
+    .blini-help {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+    .blini-help article {background:var(--b-bg);border:1px solid var(--b-line);border-radius:14px;padding:17px 19px}
+    .blini-help h3 {font-size:1rem;margin:0 0 8px;color:var(--b-ink)}
+    .blini-help p {font-size:.88rem;margin:0;line-height:1.64;color:var(--b-ink)}
+    .blini-footnote {font-size:.82rem;line-height:1.67;color:var(--theme-foreground-muted,#54635b);margin-top:18px;margin-bottom:22px}
+    .blini-footnote a {color:var(--theme-foreground-focus,#a56533);text-underline-offset:3px}
+    @media(max-width:670px){.blini-grid,.blini-stats,.blini-guard,.blini-ingredients,.blini-help{grid-template-columns:1fr}.blini-hero{padding:26px 21px;border-radius:17px}.blini-hero::after{opacity:.22;right:-25px}.blini-control-wrap{padding:14px}.blini-heading{margin-top:28px}}
+    @media(prefers-reduced-motion:reduce){.blini-progress span,.blini-bar-milk,.blini-bar-water{transition:none}}
+    
+/* Local media and timer layout */
+.blini-hero{padding:0;overflow:hidden}.blini-hero::before,.blini-hero::after{display:none}
+.blini-hero-photo{display:block;width:100%;height:clamp(210px,34vw,380px);object-fit:cover}.blini-hero-body{padding:clamp(22px,4vw,38px)}
+.blini-clock{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;max-width:1080px;margin:14px auto 0;color:var(--theme-foreground-muted,#54635b);font-size:.82rem}
+.blini-preparation{max-width:1080px;margin:0 auto 20px}.blini-preparation img{display:block;width:100%;max-height:380px;object-fit:cover;border-radius:16px}.blini-preparation figcaption{font-size:.84rem;color:var(--theme-foreground-muted,#54635b);margin-top:7px}
+.blini-legend-milk{background:#cf9e4d}.blini-legend-water{background:#63a9c0}
+.blini-timer{box-sizing:border-box;max-width:1080px;margin:0 auto 18px;border:1px solid color-mix(in srgb,var(--theme-foreground,#20392d) 22%,transparent);border-radius:18px;padding:22px;background:var(--theme-background,#fffcf7);color:var(--theme-foreground,#20392d)}
+.blini-timer h3{margin:0 0 16px;font:650 1.4rem Georgia,serif}.blini-timer-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.blini-timer label{display:flex;flex-direction:column;gap:7px;font-weight:650;font-size:.88rem}.blini-timer input,.blini-timer select{box-sizing:border-box;min-width:0;width:100%;padding:10px;border:1px solid color-mix(in srgb,currentColor 30%,transparent);border-radius:8px;background:var(--theme-background,#fffcf7);color:inherit;font:inherit}
+.blini-timer output{display:block;margin:16px 0 8px;font:700 clamp(2.6rem,8vw,4.5rem)/1.1 ui-monospace,monospace;font-variant-numeric:tabular-nums}.blini-timer-actions{display:flex;flex-wrap:wrap;gap:8px}.blini-timer button{border:1px solid color-mix(in srgb,currentColor 25%,transparent);border-radius:30px;padding:10px 18px;min-height:44px;background:var(--theme-background-alt,#eceee7);color:inherit;font:650 .9rem system-ui;cursor:pointer}.blini-timer button:disabled{opacity:.45;cursor:default}.blini-timer button:first-child{background:#38664d;color:#fff}.blini-timer [data-status]{font-weight:700}.blini-timer.finished output{color:var(--theme-foreground-focus,#b36b2e)}.blini-timer small{display:block;font-size:.8rem;line-height:1.55;color:var(--theme-foreground-muted,#54635b)}
+@media(max-width:540px){.blini-timer-fields{grid-template-columns:1fr}.blini-timer{padding:16px}}

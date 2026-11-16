@@ -1,0 +1,110 @@
+/* Global Notebook Kit 2.x / @observablehq/inputs theme.
+ * Loaded once by preview.js for every imported, created and demo notebook.
+ * Restrict the selectors to Notebook Kit widgets; author CSS in individual
+ * notebooks still owns unrelated/custom controls. */
+body.preview-page #notebook :is(
+  form[class*="inputs-"],
+  form.np-input-button-group,
+  form[data-np-persist-step]
+) {
+  color: var(--fg);
+  font: inherit;
+  max-width: 100%;
+}
+body.preview-page #notebook :is(
+  form.np-input-button-group,
+  form[data-np-persist-step]
+) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  gap: 8px;
+}
+body.preview-page #notebook :is(
+  form[class*="inputs-"],
+  form[data-np-persist-step]
+) :is(button, input, select, textarea) {
+  color: var(--fg);
+  font-family: inherit;
+  max-width: 100%;
+}
+body.preview-page #notebook :is(
+  form[class*="inputs-"],
+  form[data-np-persist-step]
+) :is(input:not([type="range"]):not([type="checkbox"]):not([type="radio"]), select, textarea) {
+  background: var(--card);
+  color: var(--fg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 10px;
+  min-height: 40px;
+}
+body.preview-page #notebook :is(
+  form[class*="inputs-"],
+  form[data-np-persist-step]
+) :is(input[type="range"], input[type="checkbox"], input[type="radio"]) {
+  accent-color: #5589e3;
+}
+body.preview-page #notebook :is(
+  form[class*="inputs-"],
+  form[data-np-persist-step]
+) :is(button, input, select, textarea):focus-visible {
+  outline: 2px solid #7295fa;
+  outline-offset: 2px;
+}
+/* Standard Inputs.button and explicit persist-step button groups only. */
+body.preview-page #notebook :is(
+  form[class*="inputs-"],
+  form.np-input-button-group,
+  form[data-np-persist-step]
+) > button {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  min-height: 44px;
+  padding: 10px 18px;
+  margin: 0;
+  background: var(--card);
+  color: var(--fg);
+  font: 600 .9rem/1.25 system-ui, Roboto, sans-serif;
+  box-shadow: 0 1px 2px #00000012;
+  cursor: pointer;
+  transition: background-color .15s, border-color .15s, box-shadow .15s;
+}
+body.preview-page #notebook :is(
+  form[class*="inputs-"],
+  form.np-input-button-group,
+  form[data-np-persist-step]
+) > button:active { background: var(--line); }
+body.preview-page #notebook :is(
+  form[class*="inputs-"],
+  form.np-input-button-group,
+  form[data-np-persist-step]
+) > button:disabled { opacity: .45; cursor: default; box-shadow: none; }
+body.preview-page #notebook :is(
+  form[class*="inputs-"],
+  form.np-input-button-group,
+  form[data-np-persist-step]
+) > button:hover { background: color-mix(in srgb, var(--card) 88%, var(--fg)); }
+/* Notebook Kit Inputs.table and Inspector are generic outputs, not demo CSS. */
+body.preview-page #notebook table[class*="inputs-"] {
+  border-collapse: collapse;
+  color: var(--fg);
+  background: var(--card);
+  max-width: 100%;
+}
+body.preview-page #notebook table[class*="inputs-"] :is(th, td) {
+  border-bottom: 1px solid var(--line);
+}
+body.preview-page #notebook .observablehq--inspect {
+  color: var(--fg);
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+@media (prefers-reduced-motion: reduce) {
+  body.preview-page #notebook form[class*="inputs-"] > button,
+  body.preview-page #notebook form.np-input-button-group > button,
+  body.preview-page #notebook form[data-np-persist-step] > button { transition: none; }
+}

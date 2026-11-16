@@ -1,0 +1,15 @@
+import {readFileSync} from 'node:fs';
+import assert from 'node:assert/strict';
+const base = new URL('../app/src/main/res/', import.meta.url);
+const xml = path => readFileSync(new URL(path, base),'utf8');
+const resourceKeys = doc => new Set(Array.from(doc.matchAll(/<string name="([^"]+)">/g), match => match[1]));
+const en = resourceKeys(xml('values/strings.xml'));
+const ru = resourceKeys(xml('values-ru/strings.xml'));
+assert.deepEqual([...en].sort(), [...ru].sort(), 'Locales must define identical resource keys');
+const code = readFileSync(new URL('../app/src/main/java/dev/pocket/notebook/i18n/AppStrings.kt',import.meta.url),'utf8');
+const refs = new Set(Array.from(code.matchAll(/R\.string\.([a-z0-9_]+)/g), m => m[1]));
+for (const ref of refs) assert.ok(en.has(ref), `missing Android resource: ${ref}`);
+assert.ok(!code.includes('library = "Мои инструкции"'));
+const repo = readFileSync(new URL('../app/src/main/java/dev/pocket/notebook/data/demo/PancakeDemo.kt',import.meta.url),'utf8');
+assert.ok(repo.includes('context.assets.open(ROOT + "notebook.html")'));
+console.log(`Android locales: ${en.size} matching keys; ${refs.size} accessed by AppStrings`);

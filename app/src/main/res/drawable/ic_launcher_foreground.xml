@@ -1,0 +1,33 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+    <!-- NotebookPocket: compact scalable companion to the detailed brand artwork. -->
+    <path android:fillColor="#09164B" android:fillAlpha="0.38"
+        android:pathData="M29,23 Q29,18 35,18 H78 Q85,18 85,25 V82 Q85,90 77,90 H34 Q27,90 27,84 Z" />
+    <path android:fillColor="#11B9CC"
+        android:pathData="M28,20 Q28,17 33,17 H74 Q81,17 81,24 V82 Q81,87 75,87 H33 Q28,87 28,81 Z" />
+    <path android:fillColor="#8F76EC"
+        android:pathData="M34,23 H79 Q85,23 85,29 V79 Q85,86 79,86 H34 Z" />
+    <path android:fillColor="#FFFDF7"
+        android:pathData="M33,23 Q33,20 37,20 H70 Q75,20 80,25 V72 L67,84 H37 Q33,84 33,80 Z" />
+    <path android:fillColor="#C5B8FF"
+        android:pathData="M67,84 L67,76 Q67,72 71,72 H80 Z" />
+    <path android:fillColor="#DFE6FB"
+        android:pathData="M42,33 Q42,30 45,30 H73 Q76,30 76,33 V47 Q76,50 73,50 H45 Q42,50 42,47 Z" />
+    <!-- Acode/CodeMirror code cell brackets. -->
+    <path android:strokeColor="#04AFC4" android:strokeWidth="3.3" android:strokeLineCap="round"
+        android:fillColor="@android:color/transparent" android:pathData="M53,36 L48,40 L53,44 M64,36 L69,40 L64,44" />
+    <path android:strokeColor="#7563E7" android:strokeWidth="3.2" android:strokeLineCap="round"
+        android:fillColor="@android:color/transparent" android:pathData="M61,34 L56,46" />
+    <!-- Data line and an interactive control. -->
+    <path android:strokeColor="#00BACA" android:strokeWidth="3" android:strokeLineCap="round"
+        android:fillColor="@android:color/transparent"
+        android:pathData="M44,64 C49,56 51,69 56,60 C61,52 63,67 68,60 L73,55" />
+    <path android:strokeColor="#9B95C8" android:strokeWidth="2.6" android:strokeLineCap="round"
+        android:fillColor="@android:color/transparent" android:pathData="M44,74 L65,74" />
+    <path android:fillColor="#06BFC8" android:pathData="M58,74 m-4,0 a4,4 0,1 0,8 0 a4,4 0,1 0,-8 0" />
+    <!-- Binder rings. -->
+    <path android:strokeColor="#CFDCF8" android:strokeWidth="4" android:strokeLineCap="round"
+        android:fillColor="@android:color/transparent"
+        android:pathData="M30,35 H36 M30,52 H36 M30,69 H36" />
+</vector>

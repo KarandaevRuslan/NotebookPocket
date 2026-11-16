@@ -1,0 +1,75 @@
+name: Draft signed release
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    uses: ./.github/workflows/ci.yml
+  device-tests:
+    uses: ./.github/workflows/instrumentation.yml
+  draft:
+    if: github.ref_type == 'tag'
+    needs: [verify, device-tests]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    environment: release
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version-file: .node-version
+          package-manager-cache: false
+      - uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@9fc6c4e9069bf8d3d10b2204b1fb8f6ef7065407 # v3
+      - run: sdkmanager 'platforms;android-35' 'build-tools;35.0.0'
+      - uses: gradle/actions/setup-gradle@0b6dd653ba04f4f93bf581ec31e66cbd7dcb644d # v4
+        with:
+          cache-disabled: true
+      - run: python3 scripts/check_release.py "$GITHUB_REF_NAME"
+      - name: Prepare signing key
+        env:
+          KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        run: |
+          python3 - <<'PYCODE'
+          import os, base64, pathlib
+          value = os.environ.get('KEYSTORE_BASE64', '')
+          if not value:
+              raise SystemExit('Configure the release environment signing secrets first.')
+          target = pathlib.Path(os.environ['RUNNER_TEMP']) / 'notebook-pocket-upload.jks'
+          target.write_bytes(base64.b64decode(value, validate=True))
+          target.chmod(0o600)
+          PYCODE
+      - run: npm ci && npm run build
+        working-directory: web
+      - name: Build signed APK
+        env:
+          NP_RELEASE_STORE_FILE: ${{ runner.temp }}/notebook-pocket-upload.jks
+          NP_RELEASE_STORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          NP_RELEASE_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          NP_RELEASE_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: bash gradlew :app:assembleRelease --no-daemon
+      - name: Verify APK signature
+        run: '"$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose app/build/outputs/apk/release/app-release.apk'
+      - name: Prepare checksums
+        run: |
+          mkdir -p release
+          cp app/build/outputs/apk/release/app-release.apk "release/NotebookPocket-${GITHUB_REF_NAME}.apk"
+          cd release
+          sha256sum *.apk > SHA256SUMS
+      - name: Create draft only
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" release/*.apk release/SHA256SUMS --draft --verify-tag --title "NotebookPocket $GITHUB_REF_NAME" --notes-file CHANGELOG.md
+      - name: Remove signing key
+        if: always()
+        run: rm -f "$RUNNER_TEMP/notebook-pocket-upload.jks"

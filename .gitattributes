@@ -1,0 +1,17 @@
+* text=auto eol=lf
+*.bat text eol=crlf
+*.jar binary
+*.ttf binary
+*.png binary
+*.jpg binary
+*.webp binary
+
+# Verbatim third-party snapshots, patches, license texts and byte-identical
+# migratable fixtures must not be normalized to satisfy git diff --check.
+third_party/** -whitespace
+web/src/acode/vendor/** -whitespace
+web/public/acode-notices.txt -whitespace
+web/src/acode/host/observableCompletions.js -whitespace
+web/tests/editor-boot.test.mjs -whitespace
+app/src/main/assets/demo/pancakes/styles/pancakes.css -whitespace
+app/src/test/resources/pancakes-v*.css -whitespace

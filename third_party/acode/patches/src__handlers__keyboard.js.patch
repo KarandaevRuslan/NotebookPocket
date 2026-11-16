@@ -1,0 +1,58 @@
+--- src/handlers/keyboard.js
++++ web/src/acode/vendor/handlers/keyboard.js
+@@ -1,4 +1,4 @@
+-import { setBannerKeyboardVisible } from "lib/startAd";
++
+ import {
+ 	getSystemConfiguration,
+ 	HARDKEYBOARDHIDDEN_NO,
+@@ -101,10 +101,6 @@
+ }
+ 
+ document.addEventListener("deviceready", () => {
+-	document.addEventListener("admob.banner.size", async (event) => {
+-		const { height } = event.size;
+-		MIN_KEYBOARD_HEIGHT = height + 10;
+-	});
+ 
+ 	windowResize.on("resizeStart", async () => {
+ 		const { keyboardHeight, hardKeyboardHidden } =
+@@ -116,13 +112,11 @@
+ 			softKeyboardHeight =
+ 				keyboardHeight > MIN_KEYBOARD_HEIGHT ? keyboardHeight : 0;
+ 			if (!externalKeyboard && softKeyboardHeight) {
+-				toggleBannerAd(false);
+ 				emit("keyboardShowStart");
+ 			}
+ 		} else if (currentWindowHeight < window.innerHeight) {
+ 			// height increasing
+ 			if (!externalKeyboard && softKeyboardHeight) {
+-				toggleBannerAd(true);
+ 				emit("keyboardHideStart");
+ 			}
+ 		}
+@@ -137,12 +131,13 @@
+ 			windowHeight = currentWindowHeight;
+ 		}
+ 
+-		const { hardKeyboardHidden } = await getSystemConfiguration();
++		const { hardKeyboardHidden, keyboardHeight } = await getSystemConfiguration();
+ 		const externalKeyboard = hardKeyboardHidden === HARDKEYBOARDHIDDEN_NO;
+ 
+-		if (externalKeyboard || !softKeyboardHeight) return;
+-
+-		const keyboardHiddenYes = windowHeight <= window.innerHeight;
++		if (externalKeyboard || (!softKeyboardHeight && keyboardHeight <= MIN_KEYBOARD_HEIGHT)) return;
++
++		const keyboardHiddenYes = keyboardHeight <= MIN_KEYBOARD_HEIGHT;
++		softKeyboardHeight = keyboardHiddenYes ? 0 : keyboardHeight;
+ 
+ 		if (keyboardHiddenYes) {
+ 			emit("keyboardHide");
+@@ -211,6 +206,3 @@
+  * Show ad if keyboard is hidden and ad is active, hide ad otherwise.
+  * @param {boolean} keyboardHidden
+  */
+-function toggleBannerAd(keyboardHidden) {
+-	setBannerKeyboardVisible(!keyboardHidden);
+-}

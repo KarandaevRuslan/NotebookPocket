@@ -1,0 +1,346 @@
+<!doctype html>
+<notebook theme="light-dark(parchment, near-midnight)" data-state-version="pancakes-v4" data-description="Интерактивный рецепт для индукции: на 3 яйца, 22 см дно, 480 мл молока, 210 г муки, сладкие блины; переворот двумя лопатками.">
+  <title>Тонкие блины — мой проверенный замес</title>
+  <script id="1" type="module">
+    display(html`<style>
+    /* Notebook 2.0: text and surfaces follow the notebook's actual theme variables,
+       including an explicitly switched dark theme (not just system dark mode). */
+    .blini-hero,.blini-heading,.blini-control-wrap,.blini-panel,.blini-step,.blini-help,.blini-footnote {box-sizing:border-box;max-width:1080px;margin-inline:auto}
+    .blini-hero *,.blini-control-wrap *,.blini-panel *,.blini-step *,.blini-help * {box-sizing:border-box}
+    .blini-hero {position:relative;isolation:isolate;overflow:hidden;border-radius:22px;padding:clamp(26px,5vw,48px);background:linear-gradient(118deg,#183c31,#38664d);color:#fffaf1;box-shadow:0 14px 30px #171d1b27}
+    .blini-hero::before {content:"";position:absolute;width:360px;height:360px;top:-150px;right:-110px;border:2px solid #f7d9a555;border-radius:50%;box-shadow:0 0 0 36px #f9ddab14,0 0 0 76px #f9ddab12;z-index:-1}
+    .blini-hero::after {content:"";position:absolute;right:8%;bottom:0;width:92px;height:92px;border-radius:50%;background:radial-gradient(circle at 48% 48%,#f5cc8a 5%,#e2a660 65%,#b8793c 95%);opacity:.7;z-index:-1}
+    .blini-kicker {font-size:.77rem;letter-spacing:.14em;text-transform:uppercase;color:#ffdda3;font-weight:750;margin:0 0 14px}
+    .blini-hero h1 {font:600 clamp(2.15rem,5vw,4.15rem)/1.07 Georgia,serif;letter-spacing:-.045em;color:#fffaf1;max-width:720px;margin:0 0 14px}
+    .blini-lede {font-size:clamp(.98rem,1.65vw,1.13rem);line-height:1.65;color:#f5eee1;max-width:730px;margin:0 0 22px}
+    .blini-chiprow {display:flex;flex-wrap:wrap;gap:9px}
+    .blini-chip {border:1px solid #f5ddae66;background:#fffef316;border-radius:40px;padding:7px 12px;color:#fff4df;font-size:.82rem;font-weight:650}
+    .blini-heading {display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:10px;margin-top:35px;margin-bottom:14px}
+    .blini-heading h2 {font:650 clamp(1.45rem,2vw,1.94rem)/1.2 Georgia,serif;color:var(--theme-foreground,#20392d);margin:0}
+    .blini-heading p {font-size:.9rem;line-height:1.55;color:var(--theme-foreground-muted,#54635b);max-width:610px;margin:0}
+    /* All content cards inherit theme colors directly, no prefers-color-scheme palette. */
+    .blini-control-wrap,.blini-panel,.blini-step,.blini-help {
+      --b-bg:var(--theme-background,#fffcf7);
+      --b-ink:var(--theme-foreground,#20392d);
+      --b-muted:var(--theme-foreground-muted,#54635b);
+      --b-focus:var(--theme-foreground-focus,#b36b2e);
+      --b-line:color-mix(in srgb,var(--b-ink) 22%,transparent);
+      --b-card:color-mix(in srgb,var(--b-bg) 92%,var(--b-ink));
+      --b-warm:color-mix(in srgb,var(--b-bg) 83%,#eab35e);
+      --b-blue:color-mix(in srgb,var(--b-bg) 83%,#67b8d0);
+      --b-green:color-mix(in srgb,var(--b-bg) 86%,#8bbd8b);
+      color:var(--b-ink);
+    }
+    .blini-control-wrap {padding:20px 23px;border-radius:19px;background:var(--b-card);border:1px solid var(--b-line)}
+    .blini-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px 17px}
+    .blini-field {min-width:0;padding:14px 16px;border-radius:12px;background:var(--b-bg);border:1px solid var(--b-line);color:var(--b-ink)}
+    .blini-field > form {margin:0;max-width:100%;width:100%}
+    .blini-field > form > label {display:block;margin-bottom:.45em;font-weight:700}
+    .blini-field form,.blini-field form *, .blini-field > form > label {color:var(--b-ink)}
+    .blini-field :is(input,select,option,output,button) {max-width:100%;accent-color:var(--b-focus)}
+    .blini-field :is(input[type=number],input[type=text],select) {background:var(--b-bg);color:var(--b-ink);border:1px solid var(--b-line);border-radius:6px}
+    .blini-field :is(input,select,button):focus-visible {outline:2px solid var(--b-focus);outline-offset:2px}
+    .blini-controls-hint {margin:14px 0 0;font-size:.86rem;line-height:1.62;color:var(--b-muted)}
+    .blini-panel {background:var(--b-bg);border:1px solid var(--b-line);border-radius:19px;padding:clamp(19px,3vw,30px)}
+    .blini-stats {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:19px}
+    .blini-stat {padding:16px;min-width:0;border-radius:14px;background:var(--b-green);color:var(--b-ink)}
+    .blini-stat:nth-child(2) {background:var(--b-warm)}
+    .blini-stat:nth-child(3) {background:var(--b-blue)}
+    .blini-stat-label {font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;font-weight:750;color:var(--b-muted);margin:0 0 7px}
+    .blini-stat-value {font-weight:780;font-size:clamp(1.14rem,2.7vw,1.75rem);line-height:1.16;color:var(--b-ink);overflow-wrap:anywhere}
+    .blini-stat-note {color:var(--b-muted);font-size:.79rem;margin:7px 0 0;line-height:1.47}
+    .blini-guard {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:0 0 19px}
+    .blini-guard-card {background:var(--b-card);border:1px solid var(--b-line);border-radius:13px;padding:15px 16px}
+    .blini-guard-card:nth-child(2){background:var(--b-warm)}
+    .blini-guard-title {font-weight:800;font-size:.94rem;color:var(--b-ink);margin:0 0 7px}
+    .blini-guard-text {font-size:.88rem;line-height:1.62;color:var(--b-ink);margin:0}
+    .blini-heat {background:var(--b-blue);border:1px solid var(--b-line);border-radius:13px;padding:16px 18px;margin:0 0 22px;color:var(--b-ink)}
+    .blini-heat strong {font-size:1rem;color:var(--b-ink)}
+    .blini-heat p {font-size:.9rem;line-height:1.62;color:var(--b-ink);margin:5px 0 0}
+    .blini-section-caption {font-size:1.08rem;font-weight:800;margin:0 0 12px;color:var(--b-ink)}
+    .blini-ingredients {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px 25px;margin-bottom:19px}
+    .blini-item {display:flex;align-items:baseline;justify-content:space-between;gap:10px;border-bottom:1px dashed var(--b-line);padding:11px 0;color:var(--b-ink)}
+    .blini-item span {font-size:.92rem}
+    .blini-item strong {font-size:1rem;font-weight:800;font-variant-numeric:tabular-nums;white-space:normal;text-align:right;overflow-wrap:anywhere;color:var(--b-ink)}
+    .blini-mix {background:var(--b-card);border:1px solid var(--b-line);padding:16px;border-radius:13px}
+    .blini-mix-top {display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between;font-size:.84rem;font-weight:750;margin:0 0 11px;color:var(--b-ink)}
+    .blini-bar {display:flex;width:100%;height:13px;background:var(--b-line);border-radius:20px;overflow:hidden}
+    .blini-bar-milk {background:#cf9e4d;transition:width .2s ease}
+    .blini-bar-water {background:#63a9c0;transition:width .2s ease}
+    .blini-legend {display:flex;gap:15px;flex-wrap:wrap;font-size:.82rem;color:var(--b-ink);margin-top:10px}
+    .blini-legend i {display:inline-block;vertical-align:middle;width:10px;height:10px;border-radius:2px;margin-right:6px}
+    .blini-message {background:var(--b-blue);border-left:4px solid #5a9aa9;border-radius:10px;padding:12px 14px;color:var(--b-ink);line-height:1.6;font-size:.88rem;margin-top:13px}
+    .blini-message.warn {background:var(--b-warm);border-color:#c38937}
+    .blini-fine {font-size:.84rem;line-height:1.66;color:var(--b-muted);margin:16px 0 0}
+    .blini-step {border:1px solid var(--b-line);border-radius:19px;background:var(--b-bg);padding:clamp(19px,4vw,33px)}
+    .blini-step-top {color:var(--b-focus);font-weight:850;font-size:.79rem;letter-spacing:.075em;text-transform:uppercase;margin:0 0 11px}
+    .blini-progress {height:8px;border-radius:30px;background:var(--b-line);overflow:hidden;margin:0 0 18px}
+    .blini-progress span {display:block;height:100%;border-radius:30px;background:var(--b-focus);transition:width .2s ease}
+    .blini-step h3 {font:650 clamp(1.38rem,3vw,1.92rem)/1.25 Georgia,serif;color:var(--b-ink);margin:0 0 12px}
+    .blini-step p {font-size:1.02rem;line-height:1.76;color:var(--b-ink);margin:0 0 12px;max-width:800px}
+    .blini-step-aside {background:var(--b-warm);border-radius:0 10px 10px 0;border-left:4px solid #c28b45;padding:12px 14px;font-size:.91rem;line-height:1.68;color:var(--b-ink);margin:16px 0 0}
+    .blini-help {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+    .blini-help article {background:var(--b-bg);border:1px solid var(--b-line);border-radius:14px;padding:17px 19px}
+    .blini-help h3 {font-size:1rem;margin:0 0 8px;color:var(--b-ink)}
+    .blini-help p {font-size:.88rem;margin:0;line-height:1.64;color:var(--b-ink)}
+    .blini-footnote {font-size:.82rem;line-height:1.67;color:var(--theme-foreground-muted,#54635b);margin-top:18px;margin-bottom:22px}
+    .blini-footnote a {color:var(--theme-foreground-focus,#a56533);text-underline-offset:3px}
+    @media(max-width:670px){.blini-grid,.blini-stats,.blini-guard,.blini-ingredients,.blini-help{grid-template-columns:1fr}.blini-hero{padding:26px 21px;border-radius:17px}.blini-hero::after{opacity:.22;right:-25px}.blini-control-wrap{padding:14px}.blini-heading{margin-top:28px}}
+    @media(prefers-reduced-motion:reduce){.blini-progress span,.blini-bar-milk,.blini-bar-water{transition:none}}
+    </style>`);
+  </script>
+  <script id="2" type="text/html">
+    <section class="blini-hero">
+      <p class="blini-kicker">ПО ВАШЕМУ ЗАМЕСУ · ИНДУКЦИЯ 6/9</p>
+      <h1>Блины, которые не рвутся и не пересыхают.</h1>
+      <p class="blini-lede">В основе — реально приготовленная партия: 3 яйца, 480 мл молока, 210 г муки и 22 см плоского дна. Главное — вовремя перевернуть и не передержать вторую сторону.</p>
+      <div class="blini-chiprow"><span class="blini-chip">3 яйца · 22 см дно</span><span class="blini-chip">Индукция 6 из 9</span><span class="blini-chip">70% половника · две лопатки</span></div>
+    </section>
+  </script>
+  <script id="3" type="text/html">
+    <div class="blini-heading"><h2>01 / Настрой замес</h2><p>По умолчанию — твоя последняя партия. Сохрани эти настройки, чтобы повторить результат.</p></div>
+  </script>
+  <script id="4" type="module">
+    const lang = "ru";
+    const L = {
+      "title": "Тонкие блины — мой проверенный замес",
+      "kicker": "ПО ВАШЕМУ ЗАМЕСУ · ИНДУКЦИЯ 6/9",
+      "hero": "Блины, которые не рвутся и не пересыхают.",
+      "lede": "В основе — реально приготовленная партия: 3 яйца, 480 мл молока, 210 г муки и 22 см плоского дна. Главное — вовремя перевернуть и не передержать вторую сторону.",
+      "configTitle": "01 / Настрой замес",
+      "configText": "По умолчанию — твоя последняя партия. Сохрани эти настройки, чтобы повторить результат.",
+      "eggs": "Яйца, шт.",
+      "diameter": "Диаметр плоского дна, см",
+      "stove": "Плита",
+      "milkAvailable": "Молоко в наличии, мл (можно ввести)",
+      "taste": "По сладости",
+      "induction": "Индукция",
+      "electric": "Обычная электрическая",
+      "gas": "Газовая",
+      "neutral": "Несладкие / нейтральные",
+      "sweet": "Сладкие (мой вариант)",
+      "hint": "Диаметр — именно рабочее плоское дно, а не верхний край сковороды. Молока в тесто пойдёт максимум по норме (160 мл на яйцо), остаток не используется. При нехватке молока доливается вода — это уже не точно тот же испытанный состав.",
+      "resultTitle": "02 / Ингредиенты на выбранную порцию",
+      "resultText": "Отправная точка — замес на 3 яйца. Сахар и масло — в столовых ложках, соль — в чайных; дробные количества допустимы.",
+      "yieldLabel": "Ориентир по выходу",
+      "yieldSuffix": "блинов",
+      "yieldNote": "зависит от половника и толщины",
+      "portionLabel": "Порция теста",
+      "portionValue": "≈ 70% половника",
+      "portionNote": "наливать на наклонённую сковороду",
+      "timeLabel": "Время партии",
+      "timeNote": "включая 20–30 минут отдыха",
+      "ingredientsTitle": "Состав теста",
+      "itemEggs": "🥚 Яйца",
+      "itemMilk": "🥛 Молоко",
+      "itemWater": "💧 Вода",
+      "itemFlour": "🌾 Мука",
+      "itemSugar": "Сахар",
+      "itemOil": "Растительное масло в тесто",
+      "itemSalt": "Соль",
+      "itemPanOil": "Масло на сковороду",
+      "pieces": "шт.",
+      "ml": "мл",
+      "g": "г",
+      "tbsp": "ст. л.",
+      "tsp": "ч. л.",
+      "mins": "мин",
+      "panOil": "по капле перед каждым блином",
+      "liquidTitle": "Молоко / вода",
+      "liquidTarget": "Всего жидкости",
+      "liquidMilk": "Молоко",
+      "liquidWater": "Вода",
+      "msgWater": "Часть молока заменена водой. Это допустимая замена по объёму, но вкус и поведение теста могут отличаться от твоего молочного варианта.",
+      "msgHighWater": "Воды больше половины: рецепт будет заметно отличаться по вкусу и структуре. Проверь первый блин; не пытайся исправить всё дополнительной мукой.",
+      "msgAllWater": "Молока нет — получится другой, водный вариант. Отработанная пропорция на 480 мл молока напрямую к нему не относится.",
+      "msgExtraStart": "Неиспользованное молоко:",
+      "msgExtraEnd": "мл. Не вливай его сверх нормы.",
+      "recipeNote": "База из твоей практики: на 3 яйца — 480 мл молока, 0 мл воды, 210 г муки, 2 ст. л. растительного масла, 2⅓ ст. л. сахара (сладкий вариант). Соль ¼ ч. л. — предложенный ориентир: ты не указал её точную дозу. Для других количеств яиц сахар округляется до удобных ⅙ ст. л.; размер яйца, мука и половник тоже влияют на результат.",
+      "balanceTitle": "⚖️ Не досыпай муку заранее",
+      "balanceText": "70 г муки на яйцо — твоя рабочая пропорция. Разрывы чаще стоит сначала лечить выдержкой теста, плёнкой масла и правильным переворотом. Избыток муки сделает блины плотнее и суше.",
+      "releaseTitle": "↪️ Переворот без ожидания коричневой корки",
+      "releaseText": "Когда поверхность слегка подсохла, перестала блестеть и блин уже держится, поддень край. Не жди сильного зарумянивания. Если одной лопаткой трудно, заведи вторую снизу под первую для более широкой опоры.",
+      "inductionTitle": "⚡ Твоя индукция: 6 из 9",
+      "inductionText": "Начинай с мощности 6/9 на сковороде с рабочим дном 22 см или подстрой под другое дно. В твоём опыте на 7/9 блины пережаривались, а на 5/9 оставались бледными. У других плит эти цифры могут отличаться. Boost не нужен.",
+      "electricTitle": "Обычная электрическая плита — альтернативный режим",
+      "electricText": "Используй средний нагрев, дай сковороде прогреться; корректировки мощности срабатывают с задержкой. Ориентируйся на момент подсыхания и цвет, а не на фиксированную цифру.",
+      "gasTitle": "Газовая плита — альтернативный режим",
+      "gasText": "Умеренное пламя не должно выходить за плоское дно. Готовь до лёгкого подсыхания верха и быстро обжаривай вторую сторону.",
+      "stepsTitle": "03 / Готовим по шагам",
+      "stepsText": "8 шагов именно под твой способ: масло перед каждым блином, 70% половника, наклонённая сковорода и переворот двумя лопатками при необходимости.",
+      "back": "← Назад",
+      "next": "Далее →",
+      "restart": "Сначала",
+      "navLabel": "Управление шагами",
+      "step": "Шаг",
+      "of": "из",
+      "complete": "Можно подавать",
+      "helpTitle": "Быстро исправить проблему",
+      "helpText": "Сначала проверь момент переворота и нагрев на индукции, а уже потом меняй пропорции."
+    };
+  </script>
+  <script id="5" type="module">
+    const settings = view(Inputs.form({
+          eggs: Inputs.range([1, 8], {label: L.eggs, step: 1, value: 3}),
+          diameter: Inputs.range([18, 32], {label: L.diameter, step: 1, value: 22}),
+          stove: Inputs.select(["induction", "electric", "gas"], {
+            label: L.stove, value: "induction", format: (v) => L[v]
+          }),
+          milkAvailable: Inputs.number([0, 1600], {label: L.milkAvailable, step: 10, value: 480}),
+          taste: Inputs.radio(["neutral", "sweet"], {
+            label: L.taste, value: "sweet", format: (v) => L[v]
+          })
+        }, {
+          template: ({eggs, diameter, stove, milkAvailable, taste}) => html`
+            <section class="blini-control-wrap">
+              <div class="blini-grid">
+                <div class="blini-field">${eggs}</div>
+                <div class="blini-field">${diameter}</div>
+                <div class="blini-field">${stove}</div>
+                <div class="blini-field">${milkAvailable}</div>
+                <div class="blini-field">${taste}</div>
+              </div>
+              <p class="blini-controls-hint">${L.hint}</p>
+            </section>`
+        }));
+  </script>
+  <script id="6" type="module">
+    const gcd = (a, b) => b ? gcd(b, a % b) : a;
+        const spoonFraction = (value, denominator) => {
+          const units = Math.max(0, Math.round(value * denominator));
+          const whole = Math.floor(units / denominator);
+          const remainder = units % denominator;
+          if (remainder === 0) return String(whole);
+          const k = gcd(remainder, denominator);
+          const num = remainder / k, den = denominator / k;
+          const glyph = {"1/2":"½", "1/3":"⅓", "2/3":"⅔", "1/4":"¼", "3/4":"¾", "1/6":"⅙", "5/6":"⅚", "1/8":"⅛", "3/8":"⅜", "5/8":"⅝", "7/8":"⅞"};
+          const part = glyph[`${num}/${den}`] || `${num}/${den}`;
+          return whole > 0 ? `${whole}${part}` : part;
+        };
+        const fmt = (n) => new Intl.NumberFormat(lang === "ru" ? "ru-RU" : "en-GB", {maximumFractionDigits: 1}).format(n);
+        const r = (() => {
+          const eggs = Math.min(8, Math.max(1, Math.round(Number(settings.eggs) || 3)));
+          const diameter = Math.min(32, Math.max(18, Number(settings.diameter) || 22));
+          const stove = settings.stove || "induction";
+          const taste = settings.taste || "sweet";
+          const totalLiquid = eggs * 160;
+          const availableMilk = Math.max(0, Math.min(1600, Number(settings.milkAvailable) || 0));
+          const milk = Math.min(totalLiquid, availableMilk);
+          const water = totalLiquid - milk;
+          const leftoverMilk = availableMilk - milk;
+          const flour = eggs * 70;
+          const oilTbsp = eggs * 2 / 3;
+          const sugarTbsp = eggs * (taste === "sweet" ? 7 / 9 : 1 / 6);
+          // 1/4 tsp for 3 eggs is a suggested amount; the user did not state their salt dose.
+          const saltTsp = eggs / 12;
+          // Oil, sugar & salt displayed in spoons; no fictional exact ladle size.
+          const oilDisplay = spoonFraction(oilTbsp, 3);
+          const sugarDisplay = spoonFraction(sugarTbsp, 6);
+          const saltDisplay = spoonFraction(saltTsp, 12);
+          // Count is indicative: assume 70% of an 85 ml ladle, scaled by pan area.
+          const estimatedBatterMl = totalLiquid + eggs * 45 + flour * .58 + oilTbsp * 15;
+          const estimatedPortionMl = 60 * (diameter / 22) ** 2;
+          const estimate = estimatedBatterMl / estimatedPortionMl;
+          const yieldLow = Math.max(1, Math.floor(estimate * .83));
+          const yieldHigh = Math.max(yieldLow + 1, Math.ceil(estimate * 1.2));
+          const totalMinutes = Math.round((35 + estimate * 1.2) / 5) * 5;
+          const firstLiquid = Math.round(totalLiquid / 3 / 5) * 5;
+          return {eggs, diameter, stove, taste, totalLiquid, availableMilk, milk, water,
+            leftoverMilk, flour, oilTbsp, sugarTbsp, saltTsp, oilDisplay, sugarDisplay,
+            saltDisplay, yieldLow, yieldHigh, totalMinutes, firstLiquid,
+            milkPct: milk / totalLiquid * 100, waterPct: water / totalLiquid * 100};
+        })();
+  </script>
+  <script id="7" type="text/html">
+    <div class="blini-heading"><h2>02 / Ингредиенты на выбранную порцию</h2><p>Отправная точка — замес на 3 яйца. Сахар и масло — в столовых ложках, соль — в чайных; дробные количества допустимы.</p></div>
+  </script>
+  <script id="8" type="module">
+    const stat = (label, value, note) => html`<div class="blini-stat">
+          <div class="blini-stat-label">${label}</div><div class="blini-stat-value">${value}</div>
+          <div class="blini-stat-note">${note}</div></div>`;
+        const item = (name, amount) => html`<div class="blini-item"><span>${name}</span><strong>${amount}</strong></div>`;
+        const waterMessage = r.water === 0 ? null : r.milk === 0 ? L.msgAllWater : r.water > r.totalLiquid / 2 ? L.msgHighWater : L.msgWater;
+        display(html`<section class="blini-panel">
+          <div class="blini-stats">
+            ${stat(L.yieldLabel, `${r.yieldLow}–${r.yieldHigh} ${L.yieldSuffix}`, L.yieldNote)}
+            ${stat(L.portionLabel, L.portionValue, L.portionNote)}
+            ${stat(L.timeLabel, `≈ ${r.totalMinutes} ${L.mins}`, L.timeNote)}
+          </div>
+          <div class="blini-guard">
+            <div class="blini-guard-card"><div class="blini-guard-title">${L.balanceTitle}</div><p class="blini-guard-text">${L.balanceText}</p></div>
+            <div class="blini-guard-card"><div class="blini-guard-title">${L.releaseTitle}</div><p class="blini-guard-text">${L.releaseText}</p></div>
+          </div>
+          <div class="blini-heat"><strong>${r.stove === "induction" ? L.inductionTitle : r.stove === "electric" ? L.electricTitle : L.gasTitle}</strong>
+            <p>${r.stove === "induction" ? L.inductionText : r.stove === "electric" ? L.electricText : L.gasText}</p>
+          </div>
+          <h3 class="blini-section-caption">${L.ingredientsTitle}</h3>
+          <div class="blini-ingredients">
+            ${item(L.itemEggs, `${r.eggs}${L.pieces ? ` ${L.pieces}` : ""}`)}
+            ${item(L.itemMilk, `${fmt(r.milk)} ${L.ml}`)}
+            ${item(L.itemWater, `${fmt(r.water)} ${L.ml}`)}
+            ${item(L.itemFlour, `${fmt(r.flour)} ${L.g}`)}
+            ${item(L.itemSugar, `${r.sugarDisplay} ${L.tbsp}`)}
+            ${item(L.itemOil, `${r.oilDisplay} ${L.tbsp}`)}
+            ${item(L.itemSalt, `${r.saltDisplay} ${L.tsp}`)}
+            ${item(L.itemPanOil, L.panOil)}
+          </div>
+          <div class="blini-mix">
+            <div class="blini-mix-top"><span>${L.liquidTitle}</span><span>${L.liquidTarget}: ${r.totalLiquid} ${L.ml}</span></div>
+            <div class="blini-bar" role="img" aria-label=${`${L.liquidMilk}: ${r.milk} ${L.ml}; ${L.liquidWater}: ${r.water} ${L.ml}`}>
+              <span class="blini-bar-milk" style=${`width:${r.milkPct}%`}></span>
+              <span class="blini-bar-water" style=${`width:${r.waterPct}%`}></span>
+            </div>
+            <div class="blini-legend"><span><i style="background:#cf9e4d"></i>${L.liquidMilk}: ${fmt(r.milk)} ${L.ml}</span>
+              <span><i style="background:#63a9c0"></i>${L.liquidWater}: ${fmt(r.water)} ${L.ml}</span></div>
+          </div>
+          ${waterMessage ? html`<div class=${r.water > r.totalLiquid / 2 ? "blini-message warn" : "blini-message"}>${waterMessage}</div>` : ""}
+          ${r.leftoverMilk > 0 ? html`<div class="blini-message">${L.msgExtraStart} <strong>${fmt(r.leftoverMilk)} ${L.msgExtraEnd}</strong></div>` : ""}
+          <p class="blini-fine">${L.recipeNote}</p>
+        </section>`);
+  </script>
+  <script id="9" type="text/html">
+    <div class="blini-heading"><h2>03 / Готовим по шагам</h2><p>8 шагов именно под твой способ: масло перед каждым блином, 70% половника, наклонённая сковорода и переворот двумя лопатками при необходимости.</p></div>
+  </script>
+  <script id="10" type="module">
+    const step = view(Inputs.button([
+          [L.back, value => Math.max(0, value - 1)],
+          [L.next, value => Math.min(7, value + 1)],
+          [L.restart, () => 0]
+        ], {value: 0, label: L.navLabel}));
+  </script>
+  <script id="11" type="module">
+    const steps = [
+          {title:"Подготовь всё заранее",body:`На ${r.eggs} яйц(а) отмерь ${r.flour} г муки, ${fmt(r.milk)} мл молока${r.water ? ` и ${fmt(r.water)} мл воды` : " (воду не добавляй)"}, ${r.sugarDisplay} ${L.tbsp} сахара, ${r.oilDisplay} ${L.tbsp} растительного масла и ${r.saltDisplay} ${L.tsp} соли. Налей отдельно чуть-чуть масла для сковороды.`,note:"Не забудь две широкие тонкие лопатки, подходящие для покрытия сковороды. Ложки без горки; количество соли — предложенный ориентир, не точная доза из твоего опыта."},
+          {title:"Замешай основу без комков",body:`Размешай ${r.eggs} яйц(а) с сахаром и солью венчиком. Влей примерно ${r.firstLiquid} мл подготовленной жидкости (молока или смеси с водой). В 2–3 приёма добавь ${r.flour} г муки, вымешивая густую гладкую основу. Долей оставшиеся ${r.totalLiquid-r.firstLiquid} мл жидкости постепенно.`,note:"Так мука лучше распределится и комков будет меньше. Не взбивай тесто до устойчивой пены."},
+          {title:"Масло в тесто и пауза",body:`Вмешай ${r.oilDisplay} ${L.tbsp} растительного масла и оставь тесто на 20–30 минут. После паузы осторожно перемешай. Оно должно свободно литься из половника и покрывать дно тонким ровным слоем, не становясь водянистым.`,note:`Твоя пропорция — ${r.flour} г муки на ${r.totalLiquid} мл жидкости. Не загущай заранее: это прямой путь к сухим блинам.`},
+          {title:"Разогрей сковороду",body:r.stove === "induction" ? `Поставь на индукцию сковороду с рабочим плоским дном ${r.diameter} см. Начни с 6 из 9 без Boost и прогрей умеренно. В твоём опыте 7/9 пережаривало, 5/9 оставляло блины белыми. Перед ПЕРВЫМ блином нанеси на поверхность каплю растительного масла, распределив её очень тонко.` : r.stove === "electric" ? `На обычной электроплите разогрей сковороду с плоским дном ${r.diameter} см на среднем уровне. Дай температуре выровняться. Перед первым блином добавь каплю растительного масла и распределяй её тонко.` : `На газовой плите разогрей сковороду с плоским дном ${r.diameter} см на умеренном огне. Не допускай пламени выше дна. Перед первым блином добавь каплю растительного масла и распредели её по поверхности.`,note:"Даже при мощности 6/9 следи за фактической температурой. Не перегревай пустую антипригарную сковороду и не доводи масло до дыма."},
+          {title:"Налей около 70% половника",body:`Держи сковороду слегка под наклоном. Набери примерно 70% своего половника теста, вылей на сковороду и сразу плавно поворачивай её, чтобы тесто тонко распределилось по всему рабочему дну ${r.diameter} см. Возвращай сковороду на конфорку без задержки.`,note:"70% — доля именно твоего половника, а не фиксированное число миллилитров. Если появились толстые складки или проплешины, скорректируй объём следующей порции."},
+          {title:"Переверни сразу после лёгкого подсыхания",body:"Следи за верхней поверхностью: она должна только слегка подсохнуть и потерять выраженный жидкий блеск, а край — начать отходить. Не жди тёмно-коричневого цвета первой стороны. Аккуратно подведи тонкую лопатку под край и проверь, держится ли блин целиком; если он ещё совсем сырой, подожди несколько секунд, не отрывая силой. Когда держится — переворачивай.",note:"Если одна лопатка не справляется: первой поддень край, вторую заведи СНИЗУ под первую и продвинь глубже к центру. Поддержи блин обеими и переверни без рывка. Это твой способ спасения нежного блина."},
+          {title:"Вторая сторона — совсем коротко",body:"После переворота не отходи от сковороды. Вторая сторона румянится заметно быстрее первой: дай ей лишь слегка схватиться и сразу снимай блин, пока он мягкий. Не оставляй его жариться до тёмного цвета — быстро пересушится или подгорит.",note:"Перед КАЖДЫМ следующим блином снова добавляй каплю растительного масла, распределяй тонко, наливай ~70% половника на наклонённую сковороду и повторяй. Если на 6/9 стало слишком жарко из-за накопленного тепла — убавь мощность."},
+          {title:"Сложи стопкой и подавай",body:`Переложи готовые блины стопкой и прикрой тарелкой или крышкой, чтобы не теряли влагу. На твоих настройках ориентир — ${r.yieldLow}–${r.yieldHigh} шт., но число зависит от реального размера половника. Подавай с любимыми добавками.`,note:"Главные три опоры рецепта: 210 г муки на 3 яйца без лишних добавок, мощность 6/9 на твоей индукции и очень короткая обжарка после переворота. Не оставляй горячую сковороду без присмотра."}
+        ];
+  </script>
+  <script id="12" type="module">
+    const active = steps[step] || steps[0];
+        display(html`<section class="blini-step">
+          <div class="blini-step-top">${L.step} ${step + 1} ${L.of} ${steps.length}${step === 7 ? ` · ${L.complete}` : ""}</div>
+          <div class="blini-progress" role="progressbar" aria-valuemin="0" aria-valuemax="8"
+            aria-valuenow=${step + 1} aria-label=${L.navLabel}><span style=${`width:${(step + 1)/steps.length*100}%`}></span></div>
+          <h3>${active.title}</h3><p>${active.body}</p><aside class="blini-step-aside">${active.note}</aside>
+        </section>`);
+  </script>
+  <script id="13" type="text/html">
+    <div class="blini-heading"><h2>Быстро исправить проблему</h2><p>Сначала проверь момент переворота и нагрев на индукции, а уже потом меняй пропорции.</p></div>
+    <section class="blini-help">
+    <article><h3>Блин рвётся на лопатке</h3><p>Не пытайся резко поднять его за один край. Подсуши верх до лёгкой матовости, пройди по кромке и подведи вторую лопатку снизу под первую, расширяя опору. Если всё ещё рвётся, дай тесту отдохнуть ещё 10 минут. Только после этого пробуй добавлять муку по 1 ч. л. на замес, предварительно размешав с небольшим количеством теста.</p></article>
+    <article><h3>На 6/9 блин быстро темнеет</h3><p>Начни с менее продолжительного прогрева или убавь до 5/9, если твоя сковорода накопила слишком много тепла. Переворачивай при лёгком подсыхании, не дожидаясь тёмной корки. На 7/9 у тебя уже подгорало — не используй его как базовый режим.</p></article>
+    <article><h3>Блин остаётся бледным или прилипает</h3><p>Убедись, что сковорода достаточно прогрета, а перед каждым блином есть тонкая капля масла. Если на 5/9 белеет без румянца, вернись к 6/9. Прилипание может зависеть от покрытия, не только от муки.</p></article>
+    <article><h3>Блин сухой или ломкий</h3><p>Снимай почти сразу после переворота: вторая сторона румянится гораздо быстрее. Не досыпай муку. Готовые блины складывай стопкой и прикрывай, чтобы сохранить мягкость.</p></article>
+    <article><h3>Тесто густое, плохо растекается</h3><p>После 20–30 минут отдыха проверь текучесть. Если половник не распределяется тонко по наклонённой сковороде, добавь 10–15 мл молока или воды, размешай и испеки пробный блин. Добавка меняет исходную пропорцию.</p></article>
+    <article><h3>Одна лопатка не справляется</h3><p>Подведи первую тонкую лопатку под край, затем вторую — ниже, под первую и глубже к центру. Поддерживая блин двумя лопатками, переверни плавно. На антипригарном покрытии используй лопатки, которые его не царапают.</p></article>
+    </section>
+  </script>
+  <script id="14" type="text/html">
+    <div class="blini-footnote">Это персонализированная запись твоего удачного замеса, а не универсальная гарантия: сила индукции и объём половника у разных моделей отличаются. При нагреве не оставляй сковороду без присмотра.</div>
+  </script>
+</notebook>

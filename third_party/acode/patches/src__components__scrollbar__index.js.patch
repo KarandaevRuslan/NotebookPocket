@@ -1,0 +1,58 @@
+--- third_party/acode/upstream/src/components/scrollbar/index.js	2026-11-16 00:00:00.000000000 +0000
++++ web/src/acode/vendor/components/scrollbar/index.js	2026-11-16 01:16:28.682921956 +0000
+@@ -219,6 +219,8 @@
+ 	}
+ 
+ 	function destroy() {
++		clearTimeout(scrollbarTimeoutHide);
++		clearTimeout(scrollbarTimeoutRemove);
+ 		window.removeEventListener("resize", resize);
+ 		$thumb.removeEventListener("touchstart", touchStart);
+ 		observer.disconnect();
+@@ -232,17 +234,15 @@
+ 	}
+ 
+ 	function show() {
+-		if ($scrollbar.dataset.hidden === "false") {
+-			return;
+-		}
+-		$scrollbar.dataset.hidden = false;
++		// The bar can be detached by an earlier fade-out timer while its state
++		// still says visible. Never rely on dataset.hidden alone: a scroll event
++		// must be able to reattach the thumb without leaving the Code tab.
+ 		clearTimeout(scrollbarTimeoutHide);
+ 		clearTimeout(scrollbarTimeoutRemove);
++		$scrollbar.dataset.hidden = "false";
+ 		$scrollbar.classList.remove("hide");
+ 		if (!$scrollbar.isConnected) {
+ 			options.parent.append($scrollbar);
+-			// The value may have been set while detached, against an empty
+-			// rect; measure again so the thumb isn't painted at 0.
+ 			resize();
+ 			if (typeof onshow === "function") onshow();
+ 		}
+@@ -250,14 +250,21 @@
+ 
+ 	function hide() {
+ 		if (touchStarted) return;
+-		$scrollbar.dataset.hidden = true;
++		clearTimeout(scrollbarTimeoutHide);
++		clearTimeout(scrollbarTimeoutRemove);
++		$scrollbar.dataset.hidden = "true";
+ 		$scrollbar.classList.add("hide");
+-		scrollbarTimeoutRemove = setTimeout(() => $scrollbar.remove(), 300);
++		scrollbarTimeoutRemove = setTimeout(() => {
++			// A new render() may have made the bar visible before this runs.
++			if ($scrollbar.dataset.hidden === "true") $scrollbar.remove();
++		}, 300);
+ 		if (typeof onhide === "function") onhide();
+ 	}
+ 
+ 	function hideImmediately() {
+-		$scrollbar.dataset.hidden = true;
++		clearTimeout(scrollbarTimeoutHide);
++		clearTimeout(scrollbarTimeoutRemove);
++		$scrollbar.dataset.hidden = "true";
+ 		$scrollbar.classList.add("hide");
+ 		$scrollbar.remove();
+ 		if (typeof onhide === "function") onhide();

@@ -1,0 +1,37 @@
+<!doctype html>
+<notebook theme="air" data-state-version="nexus-counter-v1">
+  <title>Nexus + Observable</title>
+  <script id="1" type="module">
+display(html`<header><h1>Nexus 0.1.20 + Observable</h1>
+<p>Кнопка изменяет Store транзакцией Nexus. Handler вычисляет удвоенное значение,
+а подписка передаёт результат в зависимую ячейку Observable. Всё работает офлайн.</p></header>`);
+  </script>
+  <script id="2" type="module">
+const counterScope = nexus.scope(invalidation);
+const counterStore = counterScope.store(0);
+const doubledStore = counterScope.store(0);
+class DoubleCounter extends Nexus.Handler {
+  run(ctx) {
+    ctx.set(doubledStore, ctx.read(counterStore) * 2);
+  }
+}
+counterScope.register(new DoubleCounter(), {
+  on: {any: [counterStore]}, initial: true, execution: "inline"
+});
+  </script>
+  <script id="3" type="module">
+const counterButton = html`<button type="button" data-nexus-increment>+1 Nexus</button>`;
+const incrementCounter = counterScope.guard(() => {
+  nexus.dispatcher.inline(ctx => ctx.set(counterStore, ctx.read(counterStore) + 1));
+});
+counterButton.addEventListener("click", incrementCounter);
+counterScope.cleanup(() => counterButton.removeEventListener("click", incrementCounter));
+display(counterButton);
+  </script>
+  <script id="4" type="application/vnd.observable.javascript">
+doubled = nexus.observe(counterScope, doubledStore)
+  </script>
+  <script id="5" type="module">
+display(html`<p>Nexus → Observable: <output data-nexus-result>${doubled}</output></p>`);
+  </script>
+</notebook>

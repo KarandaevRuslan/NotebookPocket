@@ -1,0 +1,72 @@
+--- src/dialogs/color.js
++++ web/src/acode/vendor/dialogs/color.js
+@@ -1,6 +1,6 @@
+ import actionStack from "lib/actionStack";
+ import restoreTheme from "lib/restoreTheme";
+-import Picker from "vanilla-picker";
++import Picker from "vanilla-picker/csp";
+ 
+ let lastPicked = localStorage.__picker_last_picked || "#fff";
+ 
+@@ -17,6 +17,7 @@
+ 		const colorModes = ["hsl", "hex", "rgb"];
+ 		let mode = colorModes.indexOf(type);
+ 		let color = null;
++		let picker = null, modal = false, hiding = false;
+ 
+ 		const parent = tag("div", {
+ 			className: "message color-picker",
+@@ -90,8 +91,9 @@
+ 				reject(new Error("cancelled"));
+ 			},
+ 		});
+-		const box = tag("div", {
+-			className: "prompt box",
++		const box = tag("dialog", {
++			className: "prompt box acode-colour-dialog",
++			"aria-modal": "true", "aria-label": strings["choose color"],
+ 			children: [
+ 				tag("div", {
+ 					className: "title",
+@@ -117,7 +119,9 @@
+ 				reject(new Error("cancelled"));
+ 			},
+ 		});
+-		const picker = new Picker({
++		document.body.append(box, mask);
++		try {
++		picker = new Picker({
+ 			parent,
+ 			popup: false,
+ 			editor: true,
+@@ -129,6 +133,11 @@
+ 
+ 		picker.show();
+ 		parent.append(formatPopup);
++		cancelBtn.autofocus = true;
++		if (typeof box.showModal === "function") { box.showModal(); modal = true; box.classList.add("has-top-layer"); }
++		else box.setAttribute("open", "");
++		} catch (error) { picker?.destroy(); box.remove(); mask.remove(); reject(error); return; }
++		box.addEventListener("cancel", event => { event.preventDefault(); hide(); reject(new Error("cancelled")); });
+ 
+ 		actionStack.push({
+ 			id: "box",
+@@ -137,8 +146,6 @@
+ 				reject(new Error("cancelled"));
+ 			},
+ 		});
+-
+-		document.body.append(box, mask);
+ 
+ 		restoreTheme(true);
+ 
+@@ -153,6 +160,9 @@
+ 		}
+ 
+ 		function hide() {
++			if (hiding) return;
++			hiding = true;
++			if (modal) box.close(); else box.removeAttribute("open");
+ 			actionStack.remove("box");
+ 			const height = box.clientHeight;
+ 			box.style.height = height + "px";

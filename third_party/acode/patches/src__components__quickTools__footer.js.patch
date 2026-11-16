@@ -1,0 +1,11 @@
+--- src/components/quickTools/footer.js
++++ web/src/acode/vendor/components/quickTools/footer.js
+@@ -4,7 +4,7 @@
+ 
+ import { hideTooltip, showTooltip } from "components/tooltip";
+ import settings from "lib/settings";
+-import items, { description, ref } from "./items";
++import items, { description } from "./items";
+ 
+ /**
+  * Create a row with common buttons

@@ -1,0 +1,57 @@
+{
+  "invalid": "Expected an HTML document containing <notebook>.",
+  "empty": "Add JavaScript or Markdown cells in Code.",
+  "imports": "External JavaScript imports are not supported offline.",
+  "unsupported": "Cell {id}: unsupported mode {mode}.",
+  "cell": "Cell",
+  "newSection": "New section",
+  "newNotebook": "New notebook",
+  "editorTitle": "Code",
+  "previewTitle": "Preview",
+  "editorControls": {
+    "search": {
+      "find": "Find",
+      "replace": "Replace",
+      "prev": "Previous match",
+      "next": "Next match",
+      "options": "Search options",
+      "close": "Close",
+      "replaceOne": "Replace",
+      "replaceAll": "Replace all",
+      "matchCase": "Match case",
+      "regex": "Regular expression",
+      "whole": "Whole word",
+      "of": "of"
+    },
+    "quicktools": {
+      "expand": "Expand quick keys",
+      "collapse": "Collapse quick keys",
+      "search": "Find and replace",
+      "save": "Auto-save is enabled",
+      "command-palette": "Show completions",
+      "shift-key": "Shift",
+      "ctrl-key": "Ctrl",
+      "select all": "Select all"
+    },
+    "selection": {
+      "copy": "Copy",
+      "cut": "Cut",
+      "paste": "Paste",
+      "select-all": "Select all",
+      "find": "Find",
+      "more": "More",
+      "back": "Back"
+    },
+    "actions": {
+      "find": "Find and replace",
+      "javascript": "Insert JavaScript cell",
+      "markdown": "Insert Markdown cell",
+      "fullscreen": "Enter or exit fullscreen editor",
+      "keyboard": "Show or hide keyboard",
+      "restoreSelection": "Selection actions after rotation",
+      "foldAll": "Fold block at cursor · hold: fold all",
+      "unfoldAll": "Unfold block at cursor · hold: unfold all",
+      "selectAll": "Select all"
+    }
+  }
+}

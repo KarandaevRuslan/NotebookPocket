@@ -1,0 +1,1 @@
+export default {VIBRATION_TIME:20,VIBRATION_TIME_LONG:40};

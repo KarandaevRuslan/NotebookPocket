@@ -1,0 +1,11 @@
+--- src/utils/keyboardEvent.js
++++ web/src/acode/vendor/utils/keyboardEvent.js
+@@ -69,7 +69,7 @@
+ 			9
+ 		); // FireFox|w3c
+ 	} catch (error) {
+-		initKeyboardEventType = 0;
++		return 0;
+ 	}
+ })(document.createEvent("KeyboardEvent"));
+ 

@@ -1,0 +1,33 @@
+--- src/cm/createEditorView.ts
++++ web/src/acode/vendor/cm/createEditorView.ts
+@@ -1,4 +1,5 @@
+-import { CanvasView, type CanvasViewConfig } from "@acode.app/canvas-view";
++// DOM renderer; optional IDE canvas backend omitted.
++type CanvasViewConfig = Record<string, unknown>;
+ import type { EditorState } from "@codemirror/state";
+ import { EditorView } from "@codemirror/view";
+ 
+@@ -37,7 +38,7 @@
+ }
+ 
+ export function isCanvasView(view: unknown): view is CanvasView {
+-	return view instanceof CanvasView;
++	return false;
+ }
+ 
+ /**
+@@ -51,13 +52,6 @@
+ 	parent,
+ 	canvas = null,
+ }: CreateEditorViewOptions): EditorView {
+-	if (canvas) {
+-		// `view instanceof EditorView` holds for canvas views too.
+-		return new CanvasView({
+-			...canvas,
+-			state,
+-			parent,
+-		}) as unknown as EditorView;
+-	}
++
+ 	return new EditorView({ state, parent });
+ }

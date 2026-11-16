@@ -1,0 +1,22 @@
+<!doctype html>
+<notebook theme="air">
+  <title>Моя первая инструкция</title>
+  <script id="1" type="text/markdown">
+    # Моя первая инструкция
+    Меняй значение ниже — вычисления обновятся автоматически.
+  </script>
+  <script id="2" type="module">
+    const people = view(Inputs.range([1, 8], {
+      label: "Количество порций", value: 2, step: 1
+    }));
+  </script>
+  <script id="3" type="module">
+    display(md`На ${people} порции нужно **${people * 80} г** риса.`);
+  </script>
+  <script id="4" type="text/markdown">
+    ## Порядок действий
+    1. Промыть рис.
+    2. Добавить воду.
+    3. Варить на слабом огне.
+  </script>
+</notebook>

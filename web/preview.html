@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="data:," />
+  <!-- Preview executes arbitrary notebook JS, but has no native interface and no network permission. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: blob:; connect-src 'self'; img-src 'self' data: blob:; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'" />
+  <script src="./web-boot.js"></script>
+  <title>Preview</title>
+</head>
+<body class="preview-page">
+  <main id="notebook"></main>
+  <script src="./preview-boot.js"></script>
+  <script type="module" src="/src/preview.js"></script>
+</body>
+</html>

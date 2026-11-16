@@ -1,0 +1,76 @@
+:root {
+  color-scheme: light;
+  --bg: #f7f8fc;
+  --fg: #161d2b;
+  --muted: #626f85;
+  --line: #dce2ed;
+  --card: #ffffff;
+}
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #10131a;
+  --fg: #e7ecf4;
+  --muted: #a9b6c9;
+  --line: #384150;
+  --card: #1c222e;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 100%; min-height: 100%; font-family: system-ui, Roboto, sans-serif; }
+body { background: var(--bg); color: var(--fg); }
+/* Not 100dvh: WebView's parent is resized by Android/Compose on IME appearance. */
+html { height: 100%; }
+body.editor-page { height: 100%; overflow: hidden; }
+/* Keep the editor and QuickTools in one flex column. The tools reserve
+   their own height; no ResizeObserver needs to write layout sizes. */
+#editor-shell {position: fixed; inset: 0; display: flex; flex-direction: column; overflow: hidden;}
+#editor {flex: 1 1 0; min-height: 0; min-width: 0; width: 100%; overflow: hidden;}
+.cm-editor { height: 100%; min-height: 0; display: flex; flex-direction: column; font-size: var(--np-editor-font-size, 14px); background: var(--card); color: var(--fg); }
+.cm-scroller { flex: 1 1 auto; min-height: 0; overflow: auto; overscroll-behavior: contain; font-family: 'Roboto Mono', Consolas, monospace; }
+.cm-content { padding: 14px 0 96px; min-height: 100%; }
+.cm-gutters { border-right: 1px solid var(--line) !important; }
+:root[data-theme='light'] .cm-gutters { background: #eff2f9 !important; color: #68758d !important; }
+:root[data-theme='dark'] .cm-gutters { background: #20252d !important; }
+.cm-focused { outline: none !important; }
+.preview-page #notebook { padding: 18px clamp(16px, 3vw, 32px) 80px; max-width: 900px; margin: auto; }
+.preview-page h1 { font-size: clamp(1.5rem, 3vw, 2rem); margin: 12px 0; }
+.preview-page .cell { padding: 8px 0 14px; border-bottom: 1px solid var(--line); min-height: 12px; }
+.preview-page .cell:last-child { border-bottom: 0; }
+.preview-page .cell.cell-output-empty { display: none; }
+.preview-page .cell :is(input, select, textarea, button) { max-width: 100%; font-size: 1rem; }
+.preview-page input[type='range'] { width: 100%; }
+.preview-page label { margin: 4px 0; }
+.preview-page a { color: #7295fa; }
+.error { margin: 9px 0; padding: 12px; background: #fff0ee; border: 1px solid #f2c1b7; border-radius: 9px; color: #7f1d1d; white-space: pre-wrap; overflow-wrap: anywhere; }
+:root[data-theme='dark'] .error { background: #3c2322; border-color: #773b36; color: #fecaca; }
+.empty { color: var(--muted); line-height: 1.5; }
+.observablehq--inspect { overflow-wrap: anywhere; }
+@media(min-width: 760px) {
+  .preview-page .cell { padding-top: 10px; padding-bottom: 20px; }
+}
+
+/* Prevent the native WebView from revealing white overscroll during page composition. */
+body { overscroll-behavior: none; }
+
+/* Native Android selection handles must remain usable. */
+.cm-content { -webkit-user-select: text; user-select: text; }
+
+/* Persistent selection decoration from CodeMirror drawSelection(): selection
+   stays visible after rotation or when the Find field owns keyboard focus.
+   These are painted ranges, NOT extra Android selection handles. */
+.cm-editor .cm-selectionBackground,
+.cm-editor.cm-focused .cm-selectionBackground {background:rgba(80,136,219,.38)!important;}
+:root[data-theme='dark'] .cm-editor .cm-selectionBackground,
+:root[data-theme='dark'] .cm-editor.cm-focused .cm-selectionBackground {background:rgba(113,166,250,.43)!important;}
+
+/* Faint fallback after Android recreated a selected document. This is NOT a
+   selection handle and disappears on the next real touch in CodeMirror. */
+.cm-editor .np-restored-selection{background:rgba(80,136,219,.28);border-radius:2px}
+:root[data-theme='dark'] .cm-editor .np-restored-selection{background:rgba(113,166,250,.30)}
+
+/* CodeMirror uses dedicated scroller/content/gutter nodes. Binding the setting
+   to all three also covers WebView style recalculation after rotation. */
+.cm-editor .cm-scroller, .cm-editor .cm-content, .cm-editor .cm-gutters {
+  font-size: var(--np-editor-font-size, 14px) !important;
+}
+
+/* All Observable Inputs UI styles live in preview/inputs-theme.css. */

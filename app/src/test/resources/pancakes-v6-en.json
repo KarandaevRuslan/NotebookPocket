@@ -1,0 +1,191 @@
+{
+  "title": "Thin pancakes — my tested batch",
+  "kicker": "TESTED BATCH · INDUCTION 6/9",
+  "hero": "Thin pancakes that flip without tearing or drying out.",
+  "lede": "Based on a real batch: 3 eggs, 480 ml milk, 210 g flour, and a 22 cm flat pan base. The key is to flip as soon as the surface starts to set, then cook the second side only briefly.",
+  "configTitle": "01 / Adjust your batch",
+  "configText": "Defaults match your most recent batch. Keep them to reproduce your result.",
+  "eggs": "Eggs",
+  "diameter": "Flat pan-base diameter (cm)",
+  "stove": "Hob type",
+  "milkAvailable": "Milk available (ml; editable)",
+  "taste": "Sweetness",
+  "induction": "Induction",
+  "electric": "Standard electric",
+  "gas": "Gas",
+  "neutral": "Unsweetened / neutral",
+  "sweet": "Sweet (your batch)",
+  "hint": "Measure the flat cooking base, not the pan rim. Total liquid is 160 ml per egg; only that much of your available milk is used, and any shortfall is replaced by water. The water version has not been tested in the same way as your all-milk batch.",
+  "resultTitle": "02 / Ingredients for your batch",
+  "resultText": "Based on the tested 3-egg batch. Oil and sugar are measured in tablespoons, salt in teaspoons; fractional spoon measures are supported.",
+  "yieldLabel": "Approx. yield",
+  "yieldSuffix": "pancakes",
+  "yieldNote": "depends on ladle size and thickness",
+  "portionLabel": "Batter per pancake",
+  "portionValue": "≈ 70% of a ladle",
+  "portionNote": "pour with the pan tilted",
+  "timeLabel": "Batch time",
+  "timeNote": "includes a 20–30 min rest",
+  "ingredientsTitle": "Ingredients",
+  "itemEggs": "🥚 Eggs",
+  "itemMilk": "🥛 Milk",
+  "itemWater": "💧 Water",
+  "itemFlour": "🌾 Plain flour",
+  "itemSugar": "Sugar",
+  "itemOil": "Neutral oil in batter",
+  "itemSalt": "Salt",
+  "itemPanOil": "Oil for the pan",
+  "pieces": "",
+  "ml": "ml",
+  "g": "g",
+  "tbsp": "tbsp",
+  "tsp": "tsp",
+  "mins": "min",
+  "panOil": "one drop before each pancake",
+  "liquidTitle": "Milk / water balance",
+  "liquidTarget": "Total liquid",
+  "liquidMilk": "Milk",
+  "liquidWater": "Water",
+  "msgWater": "Some milk is replaced with water. The volume is the same, but the taste and batter behaviour can differ from your tested all-milk version.",
+  "msgHighWater": "More than half the liquid is water; the taste and structure can differ noticeably. Test the first pancake before adjusting the flour.",
+  "msgAllWater": "No milk: this is a different water-based variation, not the batch you tested with 480 ml milk.",
+  "msgExtraStart": "Unused milk:",
+  "msgExtraEnd": "ml. Do not pour the extra into the batter.",
+  "recipeNote": "Your tested baseline: for 3 eggs, use 480 ml milk, no water, 210 g flour, 2 tbsp neutral oil, and 2⅓ tbsp sugar (sweet version). Salt at ¼ tsp is a suggested starting point because you did not specify your amount. At other egg counts, sugar is rounded to practical ⅙ tbsp increments. Egg size, flour, and ladle size also matter.",
+  "balanceTitle": "⚖️ Do not add flour pre-emptively",
+  "balanceText": "70 g flour per egg is the proportion you actually used. Before adjusting flour, check that the batter has rested, that the pan has a light film of oil, and that you flip at the right moment. More flour can make the pancakes tough and dry.",
+  "releaseTitle": "↪️ Flip before deep browning",
+  "releaseText": "When the top just loses its wet shine and the pancake can hold together, loosen the edge. Do not wait for a dark crust. If one spatula struggles, slide a second spatula underneath the first to support more of the pancake.",
+  "inductionTitle": "⚡ Your induction hob: 6 out of 9",
+  "inductionText": "Start at 6/9 with your 22 cm flat-base pan, adjusting for other pans. In your test, 7/9 over-browned the pancakes, while 5/9 left them pale. Numbers vary by hob and cookware. No Boost needed.",
+  "electricTitle": "Standard electric hob — alternative",
+  "electricText": "Use medium heat and allow time for an even warm-up. Electric hobs respond slowly to power adjustments; watch the setting surface and colour, not a fixed dial number.",
+  "gasTitle": "Gas hob — alternative",
+  "gasText": "Keep the flame moderate and under the flat pan base. Flip when the surface starts to dry, then cook the second side briefly.",
+  "stepsTitle": "03 / Cook step by step",
+  "stepsText": "Eight steps using your method: one drop of oil before each pancake, 70% of a ladle, a tilted pan, and two spatulas if needed.",
+  "back": "← Back",
+  "next": "Next →",
+  "restart": "Start again",
+  "navLabel": "Recipe steps",
+  "step": "Step",
+  "of": "of",
+  "complete": "Ready to serve",
+  "helpTitle": "Quick troubleshooting",
+  "helpText": "Check flipping timing and induction power before you change the flour ratio.",
+  "chips": [
+    "3 eggs · 22 cm base",
+    "Induction at 6 out of 9",
+    "70% of a ladle · two-spatula rescue"
+  ],
+  "ingredientsHeading": "02 / Ingredients for your batch",
+  "ingredientsText": "Based on the tested 3-egg batch. Oil and sugar are measured in tablespoons, salt in teaspoons; fractional spoon measures are supported.",
+  "stepsHeading": "03 / Cook step by step",
+  "helpHeading": "Quick troubleshooting",
+  "help": [
+    {
+      "title": "The pancake tears when lifted",
+      "body": "Do not yank it by one edge. Wait until the top is lightly matte, loosen around the rim, then slide a second spatula underneath the first to increase support. If it still tears, let the batter rest another 10 minutes. Only then consider adding flour 1 tsp at a time to the batch, mixed with a little batter first."
+    },
+    {
+      "title": "It browns too fast at 6/9",
+      "body": "Try a shorter preheat or reduce to 5/9 if your pan has built up too much heat. Flip as the top starts to dry, not when the bottom is deeply brown. Your 7/9 trial already overcooked them, so do not use that as the starting point."
+    },
+    {
+      "title": "It stays pale or sticks",
+      "body": "Check that the pan is warm enough and lightly oiled before each pancake. If 5/9 leaves the pancake white, try 6/9. Sticking depends on the coating too, not only the amount of flour."
+    },
+    {
+      "title": "The pancake turns dry or brittle",
+      "body": "Remove it almost immediately after flipping: the second side browns much faster. Do not add more flour. Stack and cover the finished pancakes to keep them soft."
+    },
+    {
+      "title": "The batter will not spread",
+      "body": "After a 20–30 minute rest, check the consistency. If the batter will not spread thinly on a tilted pan, add 10–15 ml milk or water, stir and try one pancake. This changes the tested ratio."
+    },
+    {
+      "title": "A single spatula is not enough",
+      "body": "Slip one thin spatula under the rim; then slide the second underneath the first and further towards the centre. Support the pancake with both and turn gently. Use tools safe for nonstick coatings."
+    }
+  ],
+  "footnote": "This is a personalised record of your tested batch, not a universal guarantee: induction hobs and ladle sizes vary. Never leave a hot pan unattended.",
+  "waterAddition": " and {water} ml water",
+  "noWaterAddition": " (no water)",
+  "steps": [
+    {
+      "title": "Set everything out",
+      "body": "For {eggs} egg(s), measure {flour} g flour, {milk} ml milk{waterAddition}, {sugar} {tbsp} sugar, {oil} {tbsp} neutral oil and {salt} {tsp} salt. Keep a small amount of extra oil beside the pan.",
+      "note": "Have two broad, thin spatulas suitable for your cookware ready. Use level spoons. The salt amount is a suggested starting point; you did not record an exact amount."
+    },
+    {
+      "title": "Make a lump-free base",
+      "body": "Whisk {eggs} egg(s) with sugar and salt. Add about {firstLiquid} ml of the prepared liquid (milk, water or a mix). Whisk in {flour} g flour in 2–3 portions to make a smooth, fairly thick base. Slowly pour in the remaining {remainingLiquid} ml liquid.",
+      "note": "This sequence helps avoid lumps. You do not need to whip the mixture into a foam."
+    },
+    {
+      "title": "Add the oil and rest",
+      "body": "Stir in {oil} {tbsp} neutral oil. Rest the batter for 20–30 minutes, then mix gently. It should pour freely from the ladle and coat the pan in a thin even layer without being watery.",
+      "note": "Your ratio is {flour} g flour to {totalLiquid} ml liquid. Do not add flour pre-emptively — too much makes dry pancakes."
+    },
+    {
+      "title": "Preheat the pan",
+      "body": {
+        "induction": "Use an induction-compatible pan with a flat cooking base measuring {diameter} cm. Start at 6 out of 9 (no Boost) and preheat moderately. In your trial, 7/9 overcooked pancakes, while 5/9 left them white. Before the FIRST pancake, add one drop of neutral oil and spread it into a very thin film.",
+        "electric": "On a standard electric hob, warm the {diameter} cm flat-base pan over medium heat and allow the temperature to even out. Before the first pancake, spread one drop of oil thinly across the surface.",
+        "gas": "On a gas hob, warm the pan with a {diameter} cm flat base over a moderate flame. Keep flames underneath the base. Spread one drop of oil thinly before the first pancake."
+      },
+      "note": "Even at 6/9, actual heat varies. Do not overheat an empty nonstick pan or let the oil smoke."
+    },
+    {
+      "title": "Pour about 70% of a ladle",
+      "body": "Hold the pan at a slight angle. Fill roughly 70% of your ladle, pour onto the pan and immediately tilt and rotate it smoothly to spread a thin layer across the full {diameter} cm flat base. Put the pan back on the hob promptly.",
+      "note": "70% refers to your own ladle, not a fixed number of millilitres. If the layer is too thick or leaves large bare spots, adjust the next pour."
+    },
+    {
+      "title": "Flip as soon as the top just dries",
+      "body": "Watch the surface: it should just begin to turn matte and lose its wet shine, and the edge should start to lift. Do not wait for deep browning on the first side. Loosen the edge carefully and check that the pancake can hold together; if it is still visibly wet and fragile, give it a few more seconds without pulling. Then flip.",
+      "note": "If one spatula is not enough: lift the rim with the first, slide the SECOND spatula UNDER the first and further towards the centre. Support with both spatulas and turn in one gentle motion. This is your two-spatula backup method."
+    },
+    {
+      "title": "Cook the second side very briefly",
+      "body": "Stay by the pan after flipping. The second side browns much faster: let it set only briefly and remove the pancake immediately while soft. Do not fry until dark, or it can dry out and burn.",
+      "note": "Before EVERY next pancake, add another drop of oil, spread it thinly, pour ~70% of a ladle into the tilted pan and repeat. If the pan accumulates too much heat at 6/9, reduce power."
+    },
+    {
+      "title": "Stack, cover and serve",
+      "body": "Stack the finished pancakes and cover with a plate or lid to retain moisture. With these settings, expect roughly {yieldLow}–{yieldHigh} pancakes, though the actual result depends on your ladle size. Serve with your favourite toppings.",
+      "note": "Your three key references: 210 g flour for 3 eggs without unnecessary extras, 6/9 on your induction hob, and a very quick second-side cook. Never leave a hot pan unattended."
+    }
+  ],
+  "appClock": "Device date and time",
+  "heroImageAlt": "Thin golden crepes with sour cream and berries",
+  "preparationImageAlt": "Batter, ingredients and a thin crepe in a pan",
+  "preparationCaption": "Prepare the batter and watch the surface of the first pancake.",
+  "timerTitle": "Kitchen timer",
+  "timerPreset": "Cooking stage",
+  "timerDuration": "Duration, seconds",
+  "timerStart": "Start",
+  "timerPause": "Pause",
+  "timerReset": "Reset",
+  "timerReady": "Ready to start",
+  "timerRunning": "Counting down",
+  "timerPaused": "Paused",
+  "timerDone": "Time is up",
+  "timerCustom": "Custom duration",
+  "timerInvalid": "Enter 1 to 10800 seconds",
+  "timerHint": "The countdown survives switching between view, code and resources. This is a notebook timer: there are no background alarms or notifications.",
+  "timerPresets": [
+    {
+      "ms": 1500000,
+      "label": "Rest the batter · 25 min"
+    },
+    {
+      "ms": 45000,
+      "label": "First side · 45 sec"
+    },
+    {
+      "ms": 15000,
+      "label": "Second side · 15 sec"
+    }
+  ]
+}

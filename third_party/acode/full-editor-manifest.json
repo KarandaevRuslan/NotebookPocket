@@ -1,0 +1,549 @@
+{
+  "sourceCommit": "6962af1e805b8996e743df97cad4df3ecef687e5",
+  "files": [
+    {
+      "source": "src/cm/baseExtensions.ts",
+      "local": "web/src/acode/vendor/cm/baseExtensions.ts",
+      "snapshot": "third_party/acode/upstream/src/cm/baseExtensions.ts",
+      "sourceSha256": "744ba8980a9bd65a8ee3348e2813564101408b864102e08c2796e156fdd406e7",
+      "localSha256": "744ba8980a9bd65a8ee3348e2813564101408b864102e08c2796e156fdd406e7",
+      "exact": true
+    },
+    {
+      "source": "src/cm/mainEditorExtensions.ts",
+      "local": "web/src/acode/vendor/cm/mainEditorExtensions.ts",
+      "snapshot": "third_party/acode/upstream/src/cm/mainEditorExtensions.ts",
+      "sourceSha256": "b6839ad145ceeb4ac930a8e76418044a32cf6038e454e5822fb3d5ffd9957725",
+      "localSha256": "b6839ad145ceeb4ac930a8e76418044a32cf6038e454e5822fb3d5ffd9957725",
+      "exact": true
+    },
+    {
+      "source": "src/cm/indentationFolding.ts",
+      "local": "web/src/acode/vendor/cm/indentationFolding.ts",
+      "snapshot": "third_party/acode/upstream/src/cm/indentationFolding.ts",
+      "sourceSha256": "687d6a6d5bd976c827954227b1deb47eb0ea8224c655bcc36c12dadbee45c31a",
+      "localSha256": "687d6a6d5bd976c827954227b1deb47eb0ea8224c655bcc36c12dadbee45c31a",
+      "exact": true
+    },
+    {
+      "source": "src/cm/touchSelectionMenu.js",
+      "local": "web/src/acode/vendor/cm/touchSelectionMenu.js",
+      "snapshot": "third_party/acode/upstream/src/cm/touchSelectionMenu.js",
+      "sourceSha256": "3aa791d618124c6715e2896dda362a4409e93d9981cf41e2e52a4a9566081f41",
+      "localSha256": "a932856c70f719148159457cd8d34d71b37f7f2e39678e7cab9eaa1890e53ac9",
+      "exact": false
+    },
+    {
+      "source": "src/cm/selectionMenuUtils.ts",
+      "local": "web/src/acode/vendor/cm/selectionMenuUtils.ts",
+      "snapshot": "third_party/acode/upstream/src/cm/selectionMenuUtils.ts",
+      "sourceSha256": "bc689ef979b2b4cd7586b6dbf58b400c3d22d49ae400d808ce85cbdf4da7fe7a",
+      "localSha256": "bc689ef979b2b4cd7586b6dbf58b400c3d22d49ae400d808ce85cbdf4da7fe7a",
+      "exact": true
+    },
+    {
+      "source": "src/cm/editorReadOnly.ts",
+      "local": "web/src/acode/vendor/cm/editorReadOnly.ts",
+      "snapshot": "third_party/acode/upstream/src/cm/editorReadOnly.ts",
+      "sourceSha256": "0b63149c6cf862a0f064374d2f9cbb66f541f783d8aff7770f3facf16398cd19",
+      "localSha256": "0b63149c6cf862a0f064374d2f9cbb66f541f783d8aff7770f3facf16398cd19",
+      "exact": true
+    },
+    {
+      "source": "src/cm/createEditorView.ts",
+      "local": "web/src/acode/vendor/cm/createEditorView.ts",
+      "snapshot": "third_party/acode/upstream/src/cm/createEditorView.ts",
+      "sourceSha256": "90a1060aff740c3ae184cf4ec38b9d3f9687d499066693d7fe416067fd0b38da",
+      "localSha256": "5d09aa29ae8e16dc7a7340001a2a057514890ee5217c30d8c479e37815cc28cd",
+      "exact": false
+    },
+    {
+      "source": "src/cm/editorUtils.ts",
+      "local": "web/src/acode/vendor/cm/editorUtils.ts",
+      "snapshot": "third_party/acode/upstream/src/cm/editorUtils.ts",
+      "sourceSha256": "5f691ce0ed68a61ba6fbaa528333adb9201f8596a91e3b652d3d6ef74e5c9ba0",
+      "localSha256": "5f691ce0ed68a61ba6fbaa528333adb9201f8596a91e3b652d3d6ef74e5c9ba0",
+      "exact": true
+    },
+    {
+      "source": "src/cm/shiftSelection.ts",
+      "local": "web/src/acode/vendor/cm/shiftSelection.ts",
+      "snapshot": "third_party/acode/upstream/src/cm/shiftSelection.ts",
+      "sourceSha256": "dcaa74bbda6873fdb5eb7babe0127e1adbb519fadbfcbea839413e5390316ed8",
+      "localSha256": "dcaa74bbda6873fdb5eb7babe0127e1adbb519fadbfcbea839413e5390316ed8",
+      "exact": true
+    },
+    {
+      "source": "src/cm/lineNumberSelection.ts",
+      "local": "web/src/acode/vendor/cm/lineNumberSelection.ts",
+      "snapshot": "third_party/acode/upstream/src/cm/lineNumberSelection.ts",
+      "sourceSha256": "8fb1654413e58a26e034bee9e0ab861b934eaaf90304760fd886291006d5d91f",
+      "localSha256": "8fb1654413e58a26e034bee9e0ab861b934eaaf90304760fd886291006d5d91f",
+      "exact": true
+    },
+    {
+      "source": "src/cm/keyBindingUtils.js",
+      "local": "web/src/acode/vendor/cm/keyBindingUtils.js",
+      "snapshot": "third_party/acode/upstream/src/cm/keyBindingUtils.js",
+      "sourceSha256": "a6fa6d14be7868b5d20a72a994fddcf5b3b0bee4f642f0bb57fe49e487e85d3b",
+      "localSha256": "a6fa6d14be7868b5d20a72a994fddcf5b3b0bee4f642f0bb57fe49e487e85d3b",
+      "exact": true
+    },
+    {
+      "source": "src/cm/quickToolsModifierKeys.ts",
+      "local": "web/src/acode/vendor/cm/quickToolsModifierKeys.ts",
+      "snapshot": "third_party/acode/upstream/src/cm/quickToolsModifierKeys.ts",
+      "sourceSha256": "39cd241bb70fee43cf054710a23ff4e2c27dbaed15b41e1e35726f16d9c4242d",
+      "localSha256": "39cd241bb70fee43cf054710a23ff4e2c27dbaed15b41e1e35726f16d9c4242d",
+      "exact": true
+    },
+    {
+      "source": "src/cm/quickToolsModifierInput.ts",
+      "local": "web/src/acode/vendor/cm/quickToolsModifierInput.ts",
+      "snapshot": "third_party/acode/upstream/src/cm/quickToolsModifierInput.ts",
+      "sourceSha256": "63e72c40549f46eff4d18ac345262b37b16639fb7d3c25e2bbe5a11bcd66c373",
+      "localSha256": "63e72c40549f46eff4d18ac345262b37b16639fb7d3c25e2bbe5a11bcd66c373",
+      "exact": true
+    },
+    {
+      "source": "src/cm/quickToolsNavigation.ts",
+      "local": "web/src/acode/vendor/cm/quickToolsNavigation.ts",
+      "snapshot": "third_party/acode/upstream/src/cm/quickToolsNavigation.ts",
+      "sourceSha256": "16f04e733c5e590777ec03ca1d5500b988f95da019ed46f798430ee6620b3d1f",
+      "localSha256": "16f04e733c5e590777ec03ca1d5500b988f95da019ed46f798430ee6620b3d1f",
+      "exact": true
+    },
+    {
+      "source": "src/cm/foldingCommands.js",
+      "local": "web/src/acode/vendor/cm/foldingCommands.js",
+      "snapshot": "third_party/acode/upstream/src/cm/foldingCommands.js",
+      "sourceSha256": "7642db21126010a5e8353e412c9a54e6a34e2dec4c1cc9189606c86b0320250c",
+      "localSha256": "7642db21126010a5e8353e412c9a54e6a34e2dec4c1cc9189606c86b0320250c",
+      "exact": true
+    },
+    {
+      "source": "src/cm/foldAwareLineCommands.ts",
+      "local": "web/src/acode/vendor/cm/foldAwareLineCommands.ts",
+      "snapshot": "third_party/acode/upstream/src/cm/foldAwareLineCommands.ts",
+      "sourceSha256": "d69baac4c9c38973477455be30c6ffb4e88163eb62716ad61c5a936e669807e9",
+      "localSha256": "d69baac4c9c38973477455be30c6ffb4e88163eb62716ad61c5a936e669807e9",
+      "exact": true
+    },
+    {
+      "source": "src/cm/searchMatchHighlighter.ts",
+      "local": "web/src/acode/vendor/cm/searchMatchHighlighter.ts",
+      "snapshot": "third_party/acode/upstream/src/cm/searchMatchHighlighter.ts",
+      "sourceSha256": "d0cf0ee341321c1351e2b382cedfe6403fb6da1434f7efc600d7561f408376f2",
+      "localSha256": "d0cf0ee341321c1351e2b382cedfe6403fb6da1434f7efc600d7561f408376f2",
+      "exact": true
+    },
+    {
+      "source": "src/cm/scrollPastEnd.ts",
+      "local": "web/src/acode/vendor/cm/scrollPastEnd.ts",
+      "snapshot": "third_party/acode/upstream/src/cm/scrollPastEnd.ts",
+      "sourceSha256": "8eae2bccc4c38bba3a199b8306122e9475355c1ad596bd501368f773958582b0",
+      "localSha256": "8eae2bccc4c38bba3a199b8306122e9475355c1ad596bd501368f773958582b0",
+      "exact": true
+    },
+    {
+      "source": "src/cm/indentedLineWrapping.ts",
+      "local": "web/src/acode/vendor/cm/indentedLineWrapping.ts",
+      "snapshot": "third_party/acode/upstream/src/cm/indentedLineWrapping.ts",
+      "sourceSha256": "94c25be9bdc992fb1a72189400290aded75a38cf2c45158e1734d164789cad4b",
+      "localSha256": "94c25be9bdc992fb1a72189400290aded75a38cf2c45158e1734d164789cad4b",
+      "exact": true
+    },
+    {
+      "source": "src/cm/punctuationWrapping.ts",
+      "local": "web/src/acode/vendor/cm/punctuationWrapping.ts",
+      "snapshot": "third_party/acode/upstream/src/cm/punctuationWrapping.ts",
+      "sourceSha256": "39bc81aa7e2b5affc8aac43731649ff2d9f1150eeb59c940c045df73941f1408",
+      "localSha256": "39bc81aa7e2b5affc8aac43731649ff2d9f1150eeb59c940c045df73941f1408",
+      "exact": true
+    },
+    {
+      "source": "src/cm/localWordCompletions.ts",
+      "local": "web/src/acode/vendor/cm/localWordCompletions.ts",
+      "snapshot": "third_party/acode/upstream/src/cm/localWordCompletions.ts",
+      "sourceSha256": "5c53300ba5d8d8ff236bdd88f54064c028691e15d59f53126d0c76792097cfaa",
+      "localSha256": "5c53300ba5d8d8ff236bdd88f54064c028691e15d59f53126d0c76792097cfaa",
+      "exact": true
+    },
+    {
+      "source": "src/cm/tagAutoRename.ts",
+      "local": "web/src/acode/vendor/cm/tagAutoRename.ts",
+      "snapshot": "third_party/acode/upstream/src/cm/tagAutoRename.ts",
+      "sourceSha256": "1e8bb50aa81d53504b6ad17881d1224b81db55a60e68218033b77b8bec6b9359",
+      "localSha256": "1e8bb50aa81d53504b6ad17881d1224b81db55a60e68218033b77b8bec6b9359",
+      "exact": true
+    },
+    {
+      "source": "src/cm/rainbowBrackets.ts",
+      "local": "web/src/acode/vendor/cm/rainbowBrackets.ts",
+      "snapshot": "third_party/acode/upstream/src/cm/rainbowBrackets.ts",
+      "sourceSha256": "41c8344fe3aa2e81352b5be901f909c04937ade598ea88f5457b3ced6076a478",
+      "localSha256": "41c8344fe3aa2e81352b5be901f909c04937ade598ea88f5457b3ced6076a478",
+      "exact": true
+    },
+    {
+      "source": "src/cm/highlightTags.ts",
+      "local": "web/src/acode/vendor/cm/highlightTags.ts",
+      "snapshot": "third_party/acode/upstream/src/cm/highlightTags.ts",
+      "sourceSha256": "c13362872112df1b899e565542887a02f9deb7c8cd7253968ba33e5aaa89f00e",
+      "localSha256": "c13362872112df1b899e565542887a02f9deb7c8cd7253968ba33e5aaa89f00e",
+      "exact": true
+    },
+    {
+      "source": "src/cm/indentGuides.ts",
+      "local": "web/src/acode/vendor/cm/indentGuides.ts",
+      "snapshot": "third_party/acode/upstream/src/cm/indentGuides.ts",
+      "sourceSha256": "d7f4ab1bce7b10fc00b78aa709bc45524d7b377112bab84a08d07ca2068e5ecd",
+      "localSha256": "d7f4ab1bce7b10fc00b78aa709bc45524d7b377112bab84a08d07ca2068e5ecd",
+      "exact": true
+    },
+    {
+      "source": "src/cm/commandRegistry.js",
+      "local": "web/src/acode/vendor/cm/commandRegistry.js",
+      "snapshot": "third_party/acode/upstream/src/cm/commandRegistry.js",
+      "sourceSha256": "7050740a2e72e21499d711b53fce6ff12a1c39d6bf8300101f36c88f65e5746a",
+      "localSha256": "82f74ec7335900bff86f7ba98852a89f74e660c2e6fd5adda6f18f4fd9a4539f",
+      "exact": false
+    },
+    {
+      "source": "src/cm/themes/githubLight.js",
+      "local": "web/src/acode/vendor/cm/themes/githubLight.js",
+      "snapshot": "third_party/acode/upstream/src/cm/themes/githubLight.js",
+      "sourceSha256": "a9e4c6742c166dd1e5f3329de825a5e32148664e6ff90b6189b731febd4f5733",
+      "localSha256": "a9e4c6742c166dd1e5f3329de825a5e32148664e6ff90b6189b731febd4f5733",
+      "exact": true
+    },
+    {
+      "source": "src/lib/selectionMenu.js",
+      "local": "web/src/acode/vendor/lib/selectionMenu.js",
+      "snapshot": "third_party/acode/upstream/src/lib/selectionMenu.js",
+      "sourceSha256": "262eaaf47510f37e3991b38320c4a264c3b5368e1969032216192e7f469a8fdf",
+      "localSha256": "2c4facd1298000517a7c773e6c2ff5d8e0aa18371f948fc20db00fd79e38397e",
+      "exact": false
+    },
+    {
+      "source": "src/palettes/commandPalette/index.js",
+      "local": "web/src/acode/vendor/palettes/commandPalette/index.js",
+      "snapshot": "third_party/acode/upstream/src/palettes/commandPalette/index.js",
+      "sourceSha256": "1fdcd20f43ea52e970945a5767035e0f806f6af0be8ad4e1de5345720d3013d6",
+      "localSha256": "1fdcd20f43ea52e970945a5767035e0f806f6af0be8ad4e1de5345720d3013d6",
+      "exact": true
+    },
+    {
+      "source": "src/components/checkbox/index.js",
+      "local": "web/src/acode/vendor/components/checkbox/index.js",
+      "snapshot": "third_party/acode/upstream/src/components/checkbox/index.js",
+      "sourceSha256": "2cc58e928f96d5d66b57b586e66fde66932c45618ed404e3a258d29c99f550c1",
+      "localSha256": "2cc58e928f96d5d66b57b586e66fde66932c45618ed404e3a258d29c99f550c1",
+      "exact": true
+    },
+    {
+      "source": "src/components/checkbox/styles.scss",
+      "local": "web/src/acode/vendor/components/checkbox/styles.scss",
+      "snapshot": "third_party/acode/upstream/src/components/checkbox/styles.scss",
+      "sourceSha256": "402945896b0df7845ec35c1a6be87380cb96a8bb7a58e61d6374edbcf930da75",
+      "localSha256": "402945896b0df7845ec35c1a6be87380cb96a8bb7a58e61d6374edbcf930da75",
+      "exact": true
+    },
+    {
+      "source": "src/components/quickTools/index.js",
+      "local": "web/src/acode/vendor/components/quickTools/index.js",
+      "snapshot": "third_party/acode/upstream/src/components/quickTools/index.js",
+      "sourceSha256": "1db641d8854a4f55ae9fbc19b130cd709ef3d2223edeea9da1628b438809161c",
+      "localSha256": "1db641d8854a4f55ae9fbc19b130cd709ef3d2223edeea9da1628b438809161c",
+      "exact": true
+    },
+    {
+      "source": "src/components/quickTools/footer.js",
+      "local": "web/src/acode/vendor/components/quickTools/footer.js",
+      "snapshot": "third_party/acode/upstream/src/components/quickTools/footer.js",
+      "sourceSha256": "ba8aecc555633de21d74d8084deecea2004cacff70e741f0b5683ce1deb390b9",
+      "localSha256": "4f0ff018a9ea7d28904f9aec5d65337cff1b17f3652daa85ebc4876dbc768906",
+      "exact": false
+    },
+    {
+      "source": "src/components/quickTools/items.js",
+      "local": "web/src/acode/vendor/components/quickTools/items.js",
+      "snapshot": "third_party/acode/upstream/src/components/quickTools/items.js",
+      "sourceSha256": "dff91c2d86493b977a246bc82dd089b48a04deca270a74e0f7da276b4bfbc281",
+      "localSha256": "dff91c2d86493b977a246bc82dd089b48a04deca270a74e0f7da276b4bfbc281",
+      "exact": true
+    },
+    {
+      "source": "src/components/quickTools/style.scss",
+      "local": "web/src/acode/vendor/components/quickTools/style.scss",
+      "snapshot": "third_party/acode/upstream/src/components/quickTools/style.scss",
+      "sourceSha256": "fb747618d3fd307a14175e7779b3cda3cc339783ed6ca4c44971e643313abc4c",
+      "localSha256": "fb747618d3fd307a14175e7779b3cda3cc339783ed6ca4c44971e643313abc4c",
+      "exact": true
+    },
+    {
+      "source": "src/components/scrollbar/index.js",
+      "local": "web/src/acode/vendor/components/scrollbar/index.js",
+      "snapshot": "third_party/acode/upstream/src/components/scrollbar/index.js",
+      "sourceSha256": "d81b1341940460c897524532044c6680dbc3add21e7c556d7b7b6ae64d5acf7d",
+      "localSha256": "59731b5a9d2321cd02d109eda599184ff14be7c7a0fc1410266d6fbd6ffe2a4d",
+      "exact": false
+    },
+    {
+      "source": "src/components/scrollbar/style.scss",
+      "local": "web/src/acode/vendor/components/scrollbar/style.scss",
+      "snapshot": "third_party/acode/upstream/src/components/scrollbar/style.scss",
+      "sourceSha256": "678d4372b4eaa9f4facd1cff0f053b82d380ab8b5aea61d303097833c44cb19b",
+      "localSha256": "678d4372b4eaa9f4facd1cff0f053b82d380ab8b5aea61d303097833c44cb19b",
+      "exact": true
+    },
+    {
+      "source": "src/components/tooltip/index.js",
+      "local": "web/src/acode/vendor/components/tooltip/index.js",
+      "snapshot": "third_party/acode/upstream/src/components/tooltip/index.js",
+      "sourceSha256": "0ab4881258d16b63ffa1cc0f3eafbfdf81c48d15f2072168ee69742ed46cb3ed",
+      "localSha256": "0ab4881258d16b63ffa1cc0f3eafbfdf81c48d15f2072168ee69742ed46cb3ed",
+      "exact": true
+    },
+    {
+      "source": "src/components/tooltip/longPress.js",
+      "local": "web/src/acode/vendor/components/tooltip/longPress.js",
+      "snapshot": "third_party/acode/upstream/src/components/tooltip/longPress.js",
+      "sourceSha256": "a6760cb2ccf0b07b2a667149696231e794c0a35f20238c30965dfe3ce935088f",
+      "localSha256": "a6760cb2ccf0b07b2a667149696231e794c0a35f20238c30965dfe3ce935088f",
+      "exact": true
+    },
+    {
+      "source": "src/components/tooltip/style.scss",
+      "local": "web/src/acode/vendor/components/tooltip/style.scss",
+      "snapshot": "third_party/acode/upstream/src/components/tooltip/style.scss",
+      "sourceSha256": "101faf3dabacb5fbf6ec8203cc63f192549d6c5a19173d393a3b4b5cd10e9ddf",
+      "localSha256": "101faf3dabacb5fbf6ec8203cc63f192549d6c5a19173d393a3b4b5cd10e9ddf",
+      "exact": true
+    },
+    {
+      "source": "src/components/palette/index.js",
+      "local": "web/src/acode/vendor/components/palette/index.js",
+      "snapshot": "third_party/acode/upstream/src/components/palette/index.js",
+      "sourceSha256": "a43309c75c317325ef3acf150ab289c6db45ac8f1a015490c311bd75231b40e2",
+      "localSha256": "a43309c75c317325ef3acf150ab289c6db45ac8f1a015490c311bd75231b40e2",
+      "exact": true
+    },
+    {
+      "source": "src/components/palette/style.scss",
+      "local": "web/src/acode/vendor/components/palette/style.scss",
+      "snapshot": "third_party/acode/upstream/src/components/palette/style.scss",
+      "sourceSha256": "56e81d3dd1ce6d525565dc9bc7378542fdfba02893168d7024f6a37e4eca1183",
+      "localSha256": "56e81d3dd1ce6d525565dc9bc7378542fdfba02893168d7024f6a37e4eca1183",
+      "exact": true
+    },
+    {
+      "source": "src/components/inputhints/index.js",
+      "local": "web/src/acode/vendor/components/inputhints/index.js",
+      "snapshot": "third_party/acode/upstream/src/components/inputhints/index.js",
+      "sourceSha256": "f3fca53d129c00aa36f18c15b32162eecbb554eeeeae2c5a360eccd2023b2a98",
+      "localSha256": "f3fca53d129c00aa36f18c15b32162eecbb554eeeeae2c5a360eccd2023b2a98",
+      "exact": true
+    },
+    {
+      "source": "src/components/inputhints/style.scss",
+      "local": "web/src/acode/vendor/components/inputhints/style.scss",
+      "snapshot": "third_party/acode/upstream/src/components/inputhints/style.scss",
+      "sourceSha256": "573a9fe3852f1e7ef980d8eff96ce601672089ff262e2163fd922ebefc47f31c",
+      "localSha256": "573a9fe3852f1e7ef980d8eff96ce601672089ff262e2163fd922ebefc47f31c",
+      "exact": true
+    },
+    {
+      "source": "src/handlers/quickTools.js",
+      "local": "web/src/acode/vendor/handlers/quickTools.js",
+      "snapshot": "third_party/acode/upstream/src/handlers/quickTools.js",
+      "sourceSha256": "56e894030b02c1b21af9cc30bb1a69800fb02bed3b8f722b8b9179326d9a95e4",
+      "localSha256": "56e894030b02c1b21af9cc30bb1a69800fb02bed3b8f722b8b9179326d9a95e4",
+      "exact": true
+    },
+    {
+      "source": "src/handlers/quickToolsInit.js",
+      "local": "web/src/acode/vendor/handlers/quickToolsInit.js",
+      "snapshot": "third_party/acode/upstream/src/handlers/quickToolsInit.js",
+      "sourceSha256": "155cd163384acceb790bdac570bbffede369f3395a0cf204cfefd71c180735af",
+      "localSha256": "155cd163384acceb790bdac570bbffede369f3395a0cf204cfefd71c180735af",
+      "exact": true
+    },
+    {
+      "source": "src/handlers/quickToolsState.js",
+      "local": "web/src/acode/vendor/handlers/quickToolsState.js",
+      "snapshot": "third_party/acode/upstream/src/handlers/quickToolsState.js",
+      "sourceSha256": "8f0ed7dbe113a95024f7809f027dadbb7f59c08c4262936650d2242fda63caa0",
+      "localSha256": "8f0ed7dbe113a95024f7809f027dadbb7f59c08c4262936650d2242fda63caa0",
+      "exact": true
+    },
+    {
+      "source": "src/handlers/readOnlyQuickToolsCapture.ts",
+      "local": "web/src/acode/vendor/handlers/readOnlyQuickToolsCapture.ts",
+      "snapshot": "third_party/acode/upstream/src/handlers/readOnlyQuickToolsCapture.ts",
+      "sourceSha256": "24f7b2eb94ef6874e15d972a0bb7bf0357c1257b04a6470a4f2062e2ef4ab279",
+      "localSha256": "24f7b2eb94ef6874e15d972a0bb7bf0357c1257b04a6470a4f2062e2ef4ab279",
+      "exact": true
+    },
+    {
+      "source": "src/handlers/editorWorkaround.js",
+      "local": "web/src/acode/vendor/handlers/editorWorkaround.js",
+      "snapshot": "third_party/acode/upstream/src/handlers/editorWorkaround.js",
+      "sourceSha256": "f4faf0a395e1883524c0063331aa547b57f1b9896018f15a336c6696a56f9528",
+      "localSha256": "f4faf0a395e1883524c0063331aa547b57f1b9896018f15a336c6696a56f9528",
+      "exact": true
+    },
+    {
+      "source": "src/handlers/keyboard.js",
+      "local": "web/src/acode/vendor/handlers/keyboard.js",
+      "snapshot": "third_party/acode/upstream/src/handlers/keyboard.js",
+      "sourceSha256": "e51074ca245926008a131f2f0150b9b566456894c0bafc9dcc48e00dd94463db",
+      "localSha256": "0b1799b46b69724064be1251cf6127da54dd028a1f1df6684d7b3177826acca6",
+      "exact": false
+    },
+    {
+      "source": "src/handlers/windowResize.js",
+      "local": "web/src/acode/vendor/handlers/windowResize.js",
+      "snapshot": "third_party/acode/upstream/src/handlers/windowResize.js",
+      "sourceSha256": "66c8f6ba0c7bfd8de0e6b42dfe5b3032f7d64c113e015c313594f0f36cdc8c81",
+      "localSha256": "66c8f6ba0c7bfd8de0e6b42dfe5b3032f7d64c113e015c313594f0f36cdc8c81",
+      "exact": true
+    },
+    {
+      "source": "src/lib/editorInteractionGuard.ts",
+      "local": "web/src/acode/vendor/lib/editorInteractionGuard.ts",
+      "snapshot": "third_party/acode/upstream/src/lib/editorInteractionGuard.ts",
+      "sourceSha256": "e6afa7ed5c53cc59fa3ae6efcf5c528649f8f209ebdee21bb0cdfedf9245d714",
+      "localSha256": "e6afa7ed5c53cc59fa3ae6efcf5c528649f8f209ebdee21bb0cdfedf9245d714",
+      "exact": true
+    },
+    {
+      "source": "src/lib/quickToolsAdapter.js",
+      "local": "web/src/acode/vendor/lib/quickToolsAdapter.js",
+      "snapshot": "third_party/acode/upstream/src/lib/quickToolsAdapter.js",
+      "sourceSha256": "6f7d1dfd5c03e8f4945dd4a91ac9f5865fa3631014b8d727564df8de9d85d4ab",
+      "localSha256": "6f7d1dfd5c03e8f4945dd4a91ac9f5865fa3631014b8d727564df8de9d85d4ab",
+      "exact": true
+    },
+    {
+      "source": "src/lib/quickToolsOverlays.js",
+      "local": "web/src/acode/vendor/lib/quickToolsOverlays.js",
+      "snapshot": "third_party/acode/upstream/src/lib/quickToolsOverlays.js",
+      "sourceSha256": "c5bbcc1991e122d9fa43f0d89ed6eec8343a8089320ea654c8b5381f9edb366a",
+      "localSha256": "c5bbcc1991e122d9fa43f0d89ed6eec8343a8089320ea654c8b5381f9edb366a",
+      "exact": true
+    },
+    {
+      "source": "src/lib/searchHistory.js",
+      "local": "web/src/acode/vendor/lib/searchHistory.js",
+      "snapshot": "third_party/acode/upstream/src/lib/searchHistory.js",
+      "sourceSha256": "a5180ccd21abd43091f0ce24652fd5f2dae6cac35a429303cda840650e4094c2",
+      "localSha256": "f980d3a55ab86c95a614916b5e8b2609f021927fab2de7f716061ac7dc9b93aa",
+      "exact": false
+    },
+    {
+      "source": "src/lib/actionStack.js",
+      "local": "web/src/acode/vendor/lib/actionStack.js",
+      "snapshot": "third_party/acode/upstream/src/lib/actionStack.js",
+      "sourceSha256": "f8d354da7d9fdab0df24a7baf78753cf37be355d7c08017a69579e6e23acc46f",
+      "localSha256": "f8d354da7d9fdab0df24a7baf78753cf37be355d7c08017a69579e6e23acc46f",
+      "exact": true
+    },
+    {
+      "source": "src/lib/keyBindings.js",
+      "local": "web/src/acode/vendor/lib/keyBindings.js",
+      "snapshot": "third_party/acode/upstream/src/lib/keyBindings.js",
+      "sourceSha256": "0962d0e6b304faac5e7e00ba0d3bbb50e2bbc921112acaadf9e1703f65f560b6",
+      "localSha256": "0962d0e6b304faac5e7e00ba0d3bbb50e2bbc921112acaadf9e1703f65f560b6",
+      "exact": true
+    },
+    {
+      "source": "src/utils/keyboardEvent.js",
+      "local": "web/src/acode/vendor/utils/keyboardEvent.js",
+      "snapshot": "third_party/acode/upstream/src/utils/keyboardEvent.js",
+      "sourceSha256": "ccd0065c8c33406c9819940f95b762930e9ca6eed22891599b02188ed3d168a3",
+      "localSha256": "3d4cc8171a51dd111b826789b9efc6d7b4f511a2551b42b99a2cd68f2dd7e98b",
+      "exact": false
+    },
+    {
+      "source": "src/utils/color/regex.js",
+      "local": "web/src/acode/vendor/utils/color/regex.js",
+      "snapshot": "third_party/acode/upstream/src/utils/color/regex.js",
+      "sourceSha256": "01e5072305ea2eda3f01194562b3e5b9d160b15553972ce7d2fc6d8e8d3b4cc6",
+      "localSha256": "01e5072305ea2eda3f01194562b3e5b9d160b15553972ce7d2fc6d8e8d3b4cc6",
+      "exact": true
+    },
+    {
+      "source": "src/dialogs/color.js",
+      "local": "web/src/acode/vendor/dialogs/color.js",
+      "snapshot": "third_party/acode/upstream/src/dialogs/color.js",
+      "sourceSha256": "8370a91ff29cff52647c7a7d98df50528b5d976de05efea03fb9fd97ca797373",
+      "localSha256": "8d263bf61da49ef13cb75276e2af039df4df649ef4f548460df396cc37945baa",
+      "exact": false
+    },
+    {
+      "source": "src/dialogs/style.scss",
+      "local": "web/src/acode/vendor/dialogs/style.scss",
+      "snapshot": "third_party/acode/upstream/src/dialogs/style.scss",
+      "sourceSha256": "0fe0b8ec09ceb724e1a563f69958e3933c35e2af29831f63439362c18dc545cb",
+      "localSha256": "0fe0b8ec09ceb724e1a563f69958e3933c35e2af29831f63439362c18dc545cb",
+      "exact": true
+    },
+    {
+      "source": "src/styles/mixins.scss",
+      "local": "web/src/acode/vendor/styles/mixins.scss",
+      "snapshot": "third_party/acode/upstream/src/styles/mixins.scss",
+      "sourceSha256": "ff396accc1378e9b761ee5dc6a0cd34047cc650b4f548dbe2ebeeb207d11cdb6",
+      "localSha256": "ff396accc1378e9b761ee5dc6a0cd34047cc650b4f548dbe2ebeeb207d11cdb6",
+      "exact": true
+    },
+    {
+      "source": "src/styles/codemirror.scss",
+      "local": "web/src/acode/vendor/styles/codemirror.scss",
+      "snapshot": "third_party/acode/upstream/src/styles/codemirror.scss",
+      "sourceSha256": "39de92acf1d43ef114d05d9a5e56c782b26197bd9b7c31e670cb7e159944b688",
+      "localSha256": "39de92acf1d43ef114d05d9a5e56c782b26197bd9b7c31e670cb7e159944b688",
+      "exact": true
+    },
+    {
+      "source": "src/res/icons/style.css",
+      "local": "web/src/acode/vendor/res/icons/style.css",
+      "snapshot": "third_party/acode/upstream/src/res/icons/style.css",
+      "sourceSha256": "df2489d607546785aca26fdae0ce45d66d6047ec37c4f3e0aed093f0bdd196ca",
+      "localSha256": "df2489d607546785aca26fdae0ce45d66d6047ec37c4f3e0aed093f0bdd196ca",
+      "exact": true
+    },
+    {
+      "source": "src/res/icons/icons.ttf",
+      "local": "web/src/acode/vendor/res/icons/icons.ttf",
+      "snapshot": "third_party/acode/upstream/src/res/icons/icons.ttf",
+      "sourceSha256": "b31ee592da1d3b88b580dea6bb3dd2c9f7ff5b679460f3595885c8799242200c",
+      "localSha256": "b31ee592da1d3b88b580dea6bb3dd2c9f7ff5b679460f3595885c8799242200c",
+      "exact": true
+    },
+    {
+      "source": "src/res/fonts/RobotoMono.ttf",
+      "local": "web/src/acode/vendor/res/fonts/RobotoMono.ttf",
+      "snapshot": "third_party/acode/upstream/src/res/fonts/RobotoMono.ttf",
+      "sourceSha256": "c59ecb6c18e38d4194249b6e1c555eb55c8e809258cf6d9b624d19d9268253bf",
+      "localSha256": "c59ecb6c18e38d4194249b6e1c555eb55c8e809258cf6d9b624d19d9268253bf",
+      "exact": true
+    },
+    {
+      "source": "src/lang/en-us.json",
+      "local": "web/src/acode/vendor/lang/en-us.json",
+      "snapshot": "third_party/acode/upstream/src/lang/en-us.json",
+      "sourceSha256": "8ba810c36c1733fe9de533ff2ce5db2a7fa2ba9f3f491b9bb43bae2877b513eb",
+      "localSha256": "8ba810c36c1733fe9de533ff2ce5db2a7fa2ba9f3f491b9bb43bae2877b513eb",
+      "exact": true
+    },
+    {
+      "source": "src/lang/ru-ru.json",
+      "local": "web/src/acode/vendor/lang/ru-ru.json",
+      "snapshot": "third_party/acode/upstream/src/lang/ru-ru.json",
+      "sourceSha256": "a7893d88598e8cd84b3f766860af4393f67fe7b702140c45ec2b9d7bc0edb723",
+      "localSha256": "a7893d88598e8cd84b3f766860af4393f67fe7b702140c45ec2b9d7bc0edb723",
+      "exact": true
+    }
+  ]
+}

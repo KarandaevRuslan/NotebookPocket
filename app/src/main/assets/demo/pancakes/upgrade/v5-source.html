@@ -1,0 +1,217 @@
+<!doctype html>
+<notebook theme="light-dark(parchment, near-midnight)" data-state-version="pancakes-v5">
+  <title>Pancakes</title>
+  <script id="1" type="module">
+const sheet = document.createElement("style");
+sheet.textContent = await FileAttachment("styles/pancakes.css").text();
+display(sheet);
+  </script>
+  <script id="4" type="module">
+const lang = Pocket.language;
+const L = await (lang === "ru" ? FileAttachment("i18n/ru.json") : FileAttachment("i18n/en.json")).json();
+const tr = (text, vars) => text.replace(/\{([A-Za-z][A-Za-z0-9]*)\}/g, (_, key) => String(vars[key] ?? ""));
+  </script>
+  <script id="16" type="module">
+const photos = {hero:await FileAttachment("images/pancakes.png").url(),preparation:await FileAttachment("images/preparation.png").url()};
+  </script>
+  <script id="2" type="module">
+display(html`<section class="blini-hero"><img class="blini-hero-photo" src=${photos.hero} alt=${L.heroImageAlt}><div class="blini-hero-body"><p class="blini-kicker">${L.kicker}</p><h1>${L.hero}</h1><p class="blini-lede">${L.lede}</p><div class="blini-chiprow">${L.chips.map(chip=>html`<span class="blini-chip">${chip}</span>`)}</div></div></section>`);
+  </script>
+  <script id="17" type="module">
+display(html`<aside class="blini-clock"><span>${L.appClock}</span><time datetime=${pocketNow.toISOString()}>${new Intl.DateTimeFormat(Pocket.locale,{dateStyle:"medium",timeStyle:"medium",timeZone:Pocket.timeZone,hourCycle:Pocket.hourCycle}).format(pocketNow)}</time></aside>`);
+  </script>
+  <script id="3" type="module">
+display(html`<div class="blini-heading"><h2>${L.configTitle}</h2><p>${L.configText}</p></div>`);
+  </script>
+  <script id="5" type="module">
+const settings = view(Inputs.form({
+          eggs: Inputs.range([1, 8], {label: L.eggs, step: 1, value: 3}),
+          diameter: Inputs.range([18, 32], {label: L.diameter, step: 1, value: 22}),
+          stove: Inputs.select(["induction", "electric", "gas"], {
+            label: L.stove, value: "induction", format: (v) => L[v]
+          }),
+          milkAvailable: Inputs.number([0, 1600], {label: L.milkAvailable, step: 10, value: 480}),
+          taste: Inputs.radio(["neutral", "sweet"], {
+            label: L.taste, value: "sweet", format: (v) => L[v]
+          })
+        }, {
+          template: ({eggs, diameter, stove, milkAvailable, taste}) => html`
+            <section class="blini-control-wrap">
+              <div class="blini-grid">
+                <div class="blini-field">${eggs}</div>
+                <div class="blini-field">${diameter}</div>
+                <div class="blini-field">${stove}</div>
+                <div class="blini-field">${milkAvailable}</div>
+                <div class="blini-field">${taste}</div>
+              </div>
+              <p class="blini-controls-hint">${L.hint}</p>
+            </section>`
+        }));
+  </script>
+  <script id="6" type="module">
+const gcd = (a, b) => b ? gcd(b, a % b) : a;
+        const spoonFraction = (value, denominator) => {
+          const units = Math.max(0, Math.round(value * denominator));
+          const whole = Math.floor(units / denominator);
+          const remainder = units % denominator;
+          if (remainder === 0) return String(whole);
+          const k = gcd(remainder, denominator);
+          const num = remainder / k, den = denominator / k;
+          const glyph = {"1/2":"½", "1/3":"⅓", "2/3":"⅔", "1/4":"¼", "3/4":"¾", "1/6":"⅙", "5/6":"⅚", "1/8":"⅛", "3/8":"⅜", "5/8":"⅝", "7/8":"⅞"};
+          const part = glyph[`${num}/${den}`] || `${num}/${den}`;
+          return whole > 0 ? `${whole}${part}` : part;
+        };
+        const fmt = (n) => new Intl.NumberFormat(Pocket.locale, {maximumFractionDigits: 1}).format(n);
+        const r = (() => {
+          const eggs = Math.min(8, Math.max(1, Math.round(Number(settings.eggs) || 3)));
+          const diameter = Math.min(32, Math.max(18, Number(settings.diameter) || 22));
+          const stove = settings.stove || "induction";
+          const taste = settings.taste || "sweet";
+          const totalLiquid = eggs * 160;
+          const availableMilk = Math.max(0, Math.min(1600, Number(settings.milkAvailable) || 0));
+          const milk = Math.min(totalLiquid, availableMilk);
+          const water = totalLiquid - milk;
+          const leftoverMilk = availableMilk - milk;
+          const flour = eggs * 70;
+          const oilTbsp = eggs * 2 / 3;
+          const sugarTbsp = eggs * (taste === "sweet" ? 7 / 9 : 1 / 6);
+          // 1/4 tsp for 3 eggs is a suggested amount; the user did not state their salt dose.
+          const saltTsp = eggs / 12;
+          // Oil, sugar & salt displayed in spoons; no fictional exact ladle size.
+          const oilDisplay = spoonFraction(oilTbsp, 3);
+          const sugarDisplay = spoonFraction(sugarTbsp, 6);
+          const saltDisplay = spoonFraction(saltTsp, 12);
+          // Count is indicative: assume 70% of an 85 ml ladle, scaled by pan area.
+          const estimatedBatterMl = totalLiquid + eggs * 45 + flour * .58 + oilTbsp * 15;
+          const estimatedPortionMl = 60 * (diameter / 22) ** 2;
+          const estimate = estimatedBatterMl / estimatedPortionMl;
+          const yieldLow = Math.max(1, Math.floor(estimate * .83));
+          const yieldHigh = Math.max(yieldLow + 1, Math.ceil(estimate * 1.2));
+          const totalMinutes = Math.round((35 + estimate * 1.2) / 5) * 5;
+          const firstLiquid = Math.round(totalLiquid / 3 / 5) * 5;
+          return {eggs, diameter, stove, taste, totalLiquid, availableMilk, milk, water,
+            leftoverMilk, flour, oilTbsp, sugarTbsp, saltTsp, oilDisplay, sugarDisplay,
+            saltDisplay, yieldLow, yieldHigh, totalMinutes, firstLiquid,
+            milkPct: milk / totalLiquid * 100, waterPct: water / totalLiquid * 100};
+        })();
+  </script>
+  <script id="7" type="module">
+display(html`<div class="blini-heading"><h2>${L.ingredientsHeading}</h2><p>${L.ingredientsText}</p></div>`);
+  </script>
+  <script id="8" type="module">
+const stat = (label, value, note) => html`<div class="blini-stat">
+          <div class="blini-stat-label">${label}</div><div class="blini-stat-value">${value}</div>
+          <div class="blini-stat-note">${note}</div></div>`;
+        const item = (name, amount) => html`<div class="blini-item"><span>${name}</span><strong>${amount}</strong></div>`;
+        const waterMessage = r.water === 0 ? null : r.milk === 0 ? L.msgAllWater : r.water > r.totalLiquid / 2 ? L.msgHighWater : L.msgWater;
+        display(html`<section class="blini-panel">
+          <div class="blini-stats">
+            ${stat(L.yieldLabel, `${r.yieldLow}–${r.yieldHigh} ${L.yieldSuffix}`, L.yieldNote)}
+            ${stat(L.portionLabel, L.portionValue, L.portionNote)}
+            ${stat(L.timeLabel, `≈ ${r.totalMinutes} ${L.mins}`, L.timeNote)}
+          </div>
+          <div class="blini-guard">
+            <div class="blini-guard-card"><div class="blini-guard-title">${L.balanceTitle}</div><p class="blini-guard-text">${L.balanceText}</p></div>
+            <div class="blini-guard-card"><div class="blini-guard-title">${L.releaseTitle}</div><p class="blini-guard-text">${L.releaseText}</p></div>
+          </div>
+          <div class="blini-heat"><strong>${r.stove === "induction" ? L.inductionTitle : r.stove === "electric" ? L.electricTitle : L.gasTitle}</strong>
+            <p>${r.stove === "induction" ? L.inductionText : r.stove === "electric" ? L.electricText : L.gasText}</p>
+          </div>
+          <h3 class="blini-section-caption">${L.ingredientsTitle}</h3>
+          <div class="blini-ingredients">
+            ${item(L.itemEggs, `${r.eggs}${L.pieces ? ` ${L.pieces}` : ""}`)}
+            ${item(L.itemMilk, `${fmt(r.milk)} ${L.ml}`)}
+            ${item(L.itemWater, `${fmt(r.water)} ${L.ml}`)}
+            ${item(L.itemFlour, `${fmt(r.flour)} ${L.g}`)}
+            ${item(L.itemSugar, `${r.sugarDisplay} ${L.tbsp}`)}
+            ${item(L.itemOil, `${r.oilDisplay} ${L.tbsp}`)}
+            ${item(L.itemSalt, `${r.saltDisplay} ${L.tsp}`)}
+            ${item(L.itemPanOil, L.panOil)}
+          </div>
+          <div class="blini-mix">
+            <div class="blini-mix-top"><span>${L.liquidTitle}</span><span>${L.liquidTarget}: ${r.totalLiquid} ${L.ml}</span></div>
+            <div class="blini-bar" role="img" aria-label=${`${L.liquidMilk}: ${r.milk} ${L.ml}; ${L.liquidWater}: ${r.water} ${L.ml}`}>
+              <span class="blini-bar-milk" style=${`width:${r.milkPct}%`}></span>
+              <span class="blini-bar-water" style=${`width:${r.waterPct}%`}></span>
+            </div>
+            <div class="blini-legend"><span><i class="blini-legend-milk"></i>${L.liquidMilk}: ${fmt(r.milk)} ${L.ml}</span>
+              <span><i class="blini-legend-water"></i>${L.liquidWater}: ${fmt(r.water)} ${L.ml}</span></div>
+          </div>
+          ${waterMessage ? html`<div class=${r.water > r.totalLiquid / 2 ? "blini-message warn" : "blini-message"}>${waterMessage}</div>` : ""}
+          ${r.leftoverMilk > 0 ? html`<div class="blini-message">${L.msgExtraStart} <strong>${fmt(r.leftoverMilk)} ${L.msgExtraEnd}</strong></div>` : ""}
+          <p class="blini-fine">${L.recipeNote}</p>
+        </section>`);
+  </script>
+  <script id="9" type="module">
+display(html`<div class="blini-heading"><h2>${L.stepsHeading}</h2><p>${L.stepsText}</p></div><figure class="blini-preparation"><img src=${photos.preparation} alt=${L.preparationImageAlt} loading="lazy"><figcaption>${L.preparationCaption}</figcaption></figure>`);
+  </script>
+  <script id="15" type="module">
+const cookingTimer = Pocket.timer("pancakes", 25 * 60 * 1000);
+const timerForm = html`<form class="blini-timer" data-np-ephemeral>
+<h3>${L.timerTitle}</h3><div class="blini-timer-fields">
+<label>${L.timerPreset}<select data-preset>${L.timerPresets.map(p=>html`<option value=${p.ms}>${p.label}</option>`)}<option value="">${L.timerCustom}</option></select></label>
+<label>${L.timerDuration}<input data-duration type="number" min="1" max="10800" step="1"></label>
+</div><output role="timer" aria-live="off"></output><p data-status aria-live="polite"></p>
+<div class="blini-timer-actions"><button type="button" data-start>${L.timerStart}</button><button type="button" data-pause>${L.timerPause}</button><button type="button" data-reset>${L.timerReset}</button></div><small>${L.timerHint}</small></form>`;
+const preset = timerForm.querySelector("[data-preset]");
+const durationInput = timerForm.querySelector("[data-duration]");
+const output = timerForm.querySelector("output");
+const status = timerForm.querySelector("[data-status]");
+const startButton = timerForm.querySelector("[data-start]");
+const pauseButton = timerForm.querySelector("[data-pause]");
+const resetButton = timerForm.querySelector("[data-reset]");
+const timerDuration = cookingTimer.snapshot().durationMs;
+durationInput.value = String(timerDuration / 1000);
+preset.value = L.timerPresets.some(p=>p.ms===timerDuration) ? String(timerDuration) : "";
+const refreshTimer = () => {
+  const state = cookingTimer.snapshot();
+  const seconds = Math.ceil(state.remainingMs / 1000);
+  output.textContent = [Math.floor(seconds/60), seconds%60].map(n=>String(n).padStart(2,"0")).join(":");
+  const label = state.finished ? L.timerDone : state.running ? L.timerRunning : state.elapsedMs > 0 ? L.timerPaused : L.timerReady;
+  if(status.textContent!==label) status.textContent=label;
+  timerForm.classList.toggle("finished",state.finished);
+  startButton.disabled=state.running||state.finished;pauseButton.disabled=!state.running;
+  preset.disabled=state.running;durationInput.disabled=state.running;
+};
+const resetTimer = () => {
+  const seconds=Number(durationInput.value);
+  durationInput.setCustomValidity(Number.isFinite(seconds)&&seconds>=1&&seconds<=10800?"":L.timerInvalid);
+  if(!durationInput.reportValidity())return;
+  cookingTimer.reset(Math.round(seconds*1000));refreshTimer();
+};
+timerForm.onsubmit=event=>event.preventDefault();
+startButton.onclick=()=>{if(durationInput.reportValidity()){cookingTimer.start();refreshTimer();}};
+pauseButton.onclick=()=>{cookingTimer.pause();refreshTimer();};resetButton.onclick=resetTimer;
+preset.onchange=()=>{if(preset.value){durationInput.value=String(Number(preset.value)/1000);resetTimer();}};
+durationInput.onchange=()=>{preset.value="";resetTimer();};
+refreshTimer();
+const timerInterval=setInterval(refreshTimer,250);
+invalidation.then(()=>{clearInterval(timerInterval);timerForm.onsubmit=null;startButton.onclick=null;pauseButton.onclick=null;resetButton.onclick=null;preset.onchange=null;durationInput.onchange=null;});
+display(timerForm);
+  </script>
+  <script id="10" type="module">
+const stepControl = Inputs.button([[L.back,value=>Math.max(0,value-1)],[L.next,value=>Math.min(L.steps.length-1,value+1)],[L.restart,()=>0]],{value:0,label:L.navLabel});
+stepControl.dataset.npPersistStep="";stepControl.dataset.npMaxStep=String(L.steps.length-1);
+const step = view(stepControl);
+  </script>
+  <script id="11" type="module">
+const vars = {eggs:r.eggs,flour:r.flour,milk:fmt(r.milk),water:fmt(r.water),sugar:r.sugarDisplay,tbsp:L.tbsp,oil:r.oilDisplay,tsp:L.tsp,salt:r.saltDisplay,firstLiquid:r.firstLiquid,remainingLiquid:r.totalLiquid-r.firstLiquid,totalLiquid:r.totalLiquid,diameter:r.diameter,yieldLow:r.yieldLow,yieldHigh:r.yieldHigh};
+vars.waterAddition=tr(r.water ? L.waterAddition : L.noWaterAddition,vars);
+const steps=L.steps.map(s=>({title:tr(s.title,vars),body:tr(typeof s.body === "string" ? s.body : s.body[r.stove],vars),note:tr(s.note,vars)}));
+  </script>
+  <script id="12" type="module">
+const active = steps[step] || steps[0];
+        display(html`<section class="blini-step">
+          <div class="blini-step-top">${L.step} ${step + 1} ${L.of} ${steps.length}${step === 7 ? ` · ${L.complete}` : ""}</div>
+          <div class="blini-progress" role="progressbar" aria-valuemin="0" aria-valuemax="8"
+            aria-valuenow=${step + 1} aria-label=${L.navLabel}><span style=${`width:${(step + 1)/steps.length*100}%`}></span></div>
+          <h3>${active.title}</h3><p>${active.body}</p><aside class="blini-step-aside">${active.note}</aside>
+        </section>`);
+  </script>
+  <script id="13" type="module">
+display(html`<div class="blini-heading"><h2>${L.helpHeading}</h2><p>${L.helpText}</p></div><section class="blini-help">${L.help.map(item=>html`<article><h3>${item.title}</h3><p>${item.body}</p></article>`)}</section>`);
+  </script>
+  <script id="14" type="module">
+display(html`<div class="blini-footnote">${L.footnote}</div>`);
+  </script>
+</notebook>

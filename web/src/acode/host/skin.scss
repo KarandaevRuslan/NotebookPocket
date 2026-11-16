@@ -1,0 +1,76 @@
+@use '../vendor/styles/editor-ui.scss';
+@use '../vendor/styles/codemirror.scss';
+@use '../vendor/dialogs/style.scss';
+@import '../vendor/res/icons/style.css';
+@font-face {font-family:RobotoMono;src:url('../vendor/res/fonts/RobotoMono.ttf') format('truetype');font-display:swap;}
+:root {
+ color-scheme:light; --primary-color:#f5f5f5;--primary-text-color:#252525;
+ --secondary-color:#fff;--secondary-text-color:#252525;--active-color:#3399ff;
+ --button-background-color:#3399ff;--button-text-color:#fff;--button-active-color:#2c8ef0;
+ --border-color:#d0d7de;--popup-border-color:#d0d7de;--popup-border-radius:4px;
+ --box-shadow-color:#0003;--active-icon-color:#0002;
+ --popup-background-color:#fff;--popup-text-color:#252525;
+}
+:root[data-theme=dark]{
+ color-scheme:dark;--primary-color:#333;--primary-text-color:#eee;
+ --secondary-color:#282c34;--secondary-text-color:#abb2bf;
+ --border-color:#464b55;--popup-border-color:#464b55;--active-icon-color:#fff2;
+ --popup-background-color:#282c34;--popup-text-color:#abb2bf;
+}
+// Acode's scrollbar width excludes its padding. A universal border-box reset
+// collapses its inner track to zero; preserve the upstream content-box model.
+#editor-shell,#editor,#quick-tools{box-sizing:border-box;}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;overscroll-behavior:none;}
+body{font:14px system-ui,sans-serif;background:var(--secondary-color);color:var(--secondary-text-color);}
+#editor-shell{position:fixed;inset:0;display:flex;flex-direction:column;overflow:hidden;background:var(--secondary-color);}
+#editor{flex:1 1 0;min-height:0;min-width:0;width:100%;overflow:hidden;}
+#quick-tools{flex:0 0 auto;min-width:0;width:100%;background:var(--primary-color);color:var(--primary-text-color);}
+#quick-tools .button-container{flex:0 0 40px;height:40px;scrollbar-width:none;}
+#quick-tools .button-container::-webkit-scrollbar{display:none;}
+.cm-editor{min-height:0;}
+.cm-scroller{font-family:RobotoMono,monospace;font-size:var(--np-editor-font-size,14px);overscroll-behavior:contain;}
+.cm-content{padding-top:4px;}
+#editor .cm-scroller{content-visibility:visible;will-change:auto;}
+// CodeMirror virtualizes its document itself. Browser display-locking the
+// scroller can additionally omit offscreen endpoints of native selections.
+.cm-gutter.cm-foldGutter .cm-gutterElement{min-width:28px;padding:0 3px;cursor:pointer;}
+.cm-foldGutter .icon{font-size:22px;line-height:1;min-height:1em;}
+#editor .cm-foldPlaceholder{display:inline-block;min-width:2.5em;padding:0 6px;margin:0 3px;border:1px solid var(--border-color);border-radius:4px;background:var(--primary-color);color:var(--secondary-text-color);font-size:.85em;cursor:pointer;}
+// Keep Acode's match model/selection untouched; emphasize only its existing
+// selected-match class. Other matches remain visible on either theme.
+#editor .cm-searchMatch{background-color:#ffcf5038;outline:1px solid #c38b0066;}
+#editor .cm-searchMatch.cm-searchMatch-selected{background-color:#ffbf4780;outline:2px solid #b35b00;outline-offset:1px;}
+:root[data-theme=dark] #editor .cm-searchMatch{background-color:#e2b04e26;outline-color:#e2b04e70;}
+:root[data-theme=dark] #editor .cm-searchMatch.cm-searchMatch-selected{background-color:#e2b04e70;outline-color:#ffd580;}
+// Use measured host limits: device logs show 0px vh/dvh caps in this embedded
+// WebView. The list must also shrink when CodeMirror assigns a smaller height
+// to the tooltip near the cursor; overflow belongs to the list itself.
+body.editor-page .cm-tooltip{max-height:min(22rem,calc(var(--editor-ui-height,600px) * .7));}
+body.editor-page .cm-tooltip.cm-tooltip-autocomplete{display:flex;flex-direction:column;z-index:700;min-height:0;max-height:min(18rem,calc(var(--editor-ui-height,600px) * .6));padding:0;overflow:hidden;}
+body.editor-page .cm-tooltip.cm-tooltip-autocomplete>ul{display:block;flex:1 1 auto;min-height:0;max-height:inherit;box-sizing:border-box;overflow:auto;overscroll-behavior:contain;}
+.mask{position:fixed;inset:0;display:block;}
+.prompt .picker_wrapper{color:var(--popup-text-color);}
+.prompt .picker_wrapper .picker_editor input{min-height:36px;mix-blend-mode:normal;background:var(--popup-background-color)!important;color:var(--popup-text-color);border:1px solid var(--popup-border-color);}
+// Use the browser's modal top layer while retaining Acode's picker and theme.
+// No entrance animation is required for the colour controls to become visible.
+.prompt.acode-colour-dialog{margin:0;padding:0;right:auto;bottom:auto;animation:none;z-index:1200;opacity:1;max-height:calc(var(--editor-ui-height,600px) - 24px);width:min(320px,calc(var(--editor-ui-width,360px) - 24px));}
+.prompt.acode-colour-dialog>.message{flex:1 1 auto;min-height:0;overflow:auto;}
+.prompt.acode-colour-dialog>.title,.prompt.acode-colour-dialog>.button-container{flex-shrink:0;}
+.prompt.acode-colour-dialog::backdrop{background:#0006;}
+.prompt.acode-colour-dialog.has-top-layer+.mask{display:none;}
+.prompt.acode-colour-dialog:not([open]){display:none;}
+.editor-ui-error{position:fixed;inset:auto 8px 8px;z-index:1500;padding:12px;background:var(--popup-background-color);color:var(--popup-text-color);border:1px solid var(--popup-border-color);}
+.editor-ui-error button{float:right;color:inherit;background:none;border:0;font-size:20px;}
+#quicktools-toggler{position:absolute;right:16px;bottom:0;width:40px;height:40px;z-index:12;background:var(--primary-color);color:var(--primary-text-color);box-shadow:0 0 4px var(--box-shadow-color);}
+#quicktools-toggler.hide{display:none;}
+#editor-shell[footer-height="1"] #quicktools-toggler{bottom:40px;}
+#editor-shell[footer-height="2"] #quicktools-toggler{bottom:80px;}
+.acode-search-settings{border:1px solid var(--popup-border-color);border-radius:var(--popup-border-radius);background:var(--secondary-color);color:var(--secondary-text-color);min-width:min(320px,90vw);}
+.acode-search-settings::backdrop{background:#0006;}
+.acode-search-settings header{display:flex;align-items:center;justify-content:space-between;min-height:40px;}
+.acode-search-settings>.input-checkbox{display:flex;padding:12px 0;}
+.acode-search-settings header button{border:0;background:none;color:inherit;font-size:22px;}
+
+// Resource files use normal language modes, not notebook cell insertion commands.
+:root[data-document-kind="resource"] [data-id="notebookInsertJS"],
+:root[data-document-kind="resource"] [data-id="notebookInsertMD"] {display:none!important}

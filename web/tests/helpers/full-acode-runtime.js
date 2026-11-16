@@ -1,0 +1,16 @@
+import '../../src/editor.js';
+export {EditorView} from '@codemirror/view';
+export {EditorSelection,EditorState} from '@codemirror/state';
+export {undo,redo} from '@codemirror/commands';
+export {foldEffect,foldedRanges,forceParsing} from '@codemirror/language';
+export {startCompletion,completionStatus,currentCompletions,acceptCompletion} from '@codemirror/autocomplete';
+export {buildSearchMatchDecorations} from '../../src/acode/vendor/cm/searchMatchHighlighter.ts';
+export {completionSpace} from '../../src/acode/host/completionLayout.js';
+export {updateOverlayViewport} from '../../src/acode/host/overlayViewport.js';
+export {editorDiagnosticLog,sanitizeDiagnostic,diagnosticNumbers,diagnosticBooleans,diagnosticLabels} from '../../src/logging/EditorDiagnostics.js';
+export {runAutomaticCursorReveal,flushPipeline,recordPipeline} from '../../src/logging/EditorPipelineDiagnostics.js';
+export {getSearchQuery} from '@codemirror/search';
+export {default as quickTools} from '../../src/acode/vendor/components/quickTools/index.js';
+export {default as actions,key} from '../../src/acode/vendor/handlers/quickTools.js';
+export {default as settings} from '../../src/acode/host/settings.js';
+export {executeCommand,getRegisteredCommands} from '../../src/acode/vendor/cm/commandRegistry.js';

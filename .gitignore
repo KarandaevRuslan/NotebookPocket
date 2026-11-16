@@ -1,0 +1,77 @@
+# IDE and machine configuration
+.idea/
+.vscode/
+*.iml
+local.properties
+.DS_Store
+Thumbs.db
+.env
+.env.*
+!.env.example
+
+# Dependency, build, test and analysis output
+.gradle/
+.kotlin/
+**/build/
+web/node_modules/
+web/dist/
+web/.test-cache/
+**/coverage/
+__pycache__/
+*.py[cod]
+*.log
+*.hprof
+*.heapdump
+/verification-*/
+/reports/
+/artifacts/
+/release/
+/patch-*/
+/.patch-backups/
+/PATCH-*
+/VALIDATION.md
+/audit*.md
+
+# Rebuild these from web/src; do not commit minified bundles.
+/app/src/main/assets/web/
+
+# Installers, archives, signing material and captures
+*.apk
+*.aab
+*.apks
+*.zip
+*.tar
+*.tar.gz
+*.7z
+*.jks
+*.keystore
+*.p12
+*.pem
+*.key
+*.mp4
+*.webm
+
+# New artwork/screenshots require an explicit, reviewed exception.
+*.[sS][vV][gG]
+*.[pP][nN][gG]
+*.[jJ][pP][gG]
+*.[jJ][pP][eE][gG]
+*.[gG][iI][fF]
+*.[wW][eE][bB][pP]
+*.svg
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.ico
+*.bmp
+*.avif
+# Reviewed app launcher icons and public branding, plus runtime fixtures.
+!/docs/brand/notebookpocket-icon.png
+!/docs/brand/social-preview.png
+!/app/src/main/res/mipmap-*/ic_launcher.png
+!/app/src/main/res/mipmap-*/ic_launcher_round.png
+# Existing runtime fixtures are required by the built-in notebook and tests.
+!/app/src/main/assets/demo/pancakes/images/pancakes.png
+!/app/src/main/assets/demo/pancakes/images/preparation.png

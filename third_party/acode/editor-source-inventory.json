@@ -1,0 +1,1125 @@
+{
+  "sourceCommit": "6962af1e805b8996e743df97cad4df3ecef687e5",
+  "files": [
+    {
+      "source": "hooks/modify-java-files.js",
+      "status": "projected",
+      "reason": "Nine original SystemWebView method bodies",
+      "local": "app/src/main/java/dev/pocket/notebook/web/EditorActionModeWebView.java",
+      "sourceSha256": "5f1493c56ac6e9adc0701f83c8759f03322c6e767d000878940cf967b9eae397"
+    },
+    {
+      "source": "src/cm/baseExtensions.ts",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/cm/baseExtensions.ts",
+      "sourceSha256": "744ba8980a9bd65a8ee3348e2813564101408b864102e08c2796e156fdd406e7"
+    },
+    {
+      "source": "src/cm/canvasOptions.ts",
+      "status": "excluded",
+      "reason": "Необязательный canvas renderer",
+      "local": null,
+      "sourceSha256": "d439adb0414e21b96fe462ee1559b7d7dc224252ee9263dc790cc68ff64e9542"
+    },
+    {
+      "source": "src/cm/colorChip.ts",
+      "status": "excluded",
+      "reason": "Необязательная визуальная опция не включена в настройки приложения",
+      "local": null,
+      "sourceSha256": "30507a7e7c654159f674a2eb47c1131b03024db219a76b5a3b597377620d4d3e"
+    },
+    {
+      "source": "src/cm/colorView.ts",
+      "status": "excluded",
+      "reason": "Необязательная визуальная опция не включена в настройки приложения",
+      "local": null,
+      "sourceSha256": "7e2147faffc2073172e30d14cfc5abc213f73fb03d20ca9b53fdef295dc0d371"
+    },
+    {
+      "source": "src/cm/commandRegistry.js",
+      "status": "patched",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/cm/commandRegistry.js",
+      "sourceSha256": "7050740a2e72e21499d711b53fce6ff12a1c39d6bf8300101f36c88f65e5746a"
+    },
+    {
+      "source": "src/cm/createEditorView.ts",
+      "status": "patched",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/cm/createEditorView.ts",
+      "sourceSha256": "90a1060aff740c3ae184cf4ec38b9d3f9687d499066693d7fe416067fd0b38da"
+    },
+    {
+      "source": "src/cm/editorReadOnly.ts",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/cm/editorReadOnly.ts",
+      "sourceSha256": "0b63149c6cf862a0f064374d2f9cbb66f541f783d8aff7770f3facf16398cd19"
+    },
+    {
+      "source": "src/cm/editorUtils.ts",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/cm/editorUtils.ts",
+      "sourceSha256": "5f691ce0ed68a61ba6fbaa528333adb9201f8596a91e3b652d3d6ef74e5c9ba0"
+    },
+    {
+      "source": "src/cm/foldAwareLineCommands.ts",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/cm/foldAwareLineCommands.ts",
+      "sourceSha256": "d69baac4c9c38973477455be30c6ffb4e88163eb62716ad61c5a936e669807e9"
+    },
+    {
+      "source": "src/cm/foldingCommands.js",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/cm/foldingCommands.js",
+      "sourceSha256": "7642db21126010a5e8353e412c9a54e6a34e2dec4c1cc9189606c86b0320250c"
+    },
+    {
+      "source": "src/cm/highlightTags.ts",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/cm/highlightTags.ts",
+      "sourceSha256": "c13362872112df1b899e565542887a02f9deb7c8cd7253968ba33e5aaa89f00e"
+    },
+    {
+      "source": "src/cm/indentGuides.ts",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/cm/indentGuides.ts",
+      "sourceSha256": "d7f4ab1bce7b10fc00b78aa709bc45524d7b377112bab84a08d07ca2068e5ecd"
+    },
+    {
+      "source": "src/cm/indentationFolding.ts",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/cm/indentationFolding.ts",
+      "sourceSha256": "687d6a6d5bd976c827954227b1deb47eb0ea8224c655bcc36c12dadbee45c31a"
+    },
+    {
+      "source": "src/cm/indentedLineWrapping.ts",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/cm/indentedLineWrapping.ts",
+      "sourceSha256": "94c25be9bdc992fb1a72189400290aded75a38cf2c45158e1734d164789cad4b"
+    },
+    {
+      "source": "src/cm/keyBindingUtils.js",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/cm/keyBindingUtils.js",
+      "sourceSha256": "a6fa6d14be7868b5d20a72a994fddcf5b3b0bee4f642f0bb57fe49e487e85d3b"
+    },
+    {
+      "source": "src/cm/lineBreakMarker.ts",
+      "status": "excluded",
+      "reason": "Необязательная визуальная опция не включена в настройки приложения",
+      "local": null,
+      "sourceSha256": "ea16de81ddc2ed8d4696d199f12d4a58e230e0c26d54cc86d4ccd7ad6954dd99"
+    },
+    {
+      "source": "src/cm/lineNumberSelection.ts",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/cm/lineNumberSelection.ts",
+      "sourceSha256": "8fb1654413e58a26e034bee9e0ab861b934eaaf90304760fd886291006d5d91f"
+    },
+    {
+      "source": "src/cm/localWordCompletions.ts",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/cm/localWordCompletions.ts",
+      "sourceSha256": "5c53300ba5d8d8ff236bdd88f54064c028691e15d59f53126d0c76792097cfaa"
+    },
+    {
+      "source": "src/cm/lsp/api.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "dc42e7fbbe5880681d7af727aaae9118e7c8bf6073299350c4d2b5c74ddfd73b"
+    },
+    {
+      "source": "src/cm/lsp/clientManager.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "22fa56122a99a4677468cee071a9a54e10ce440dd3d2b9328feb21d1a0b31c63"
+    },
+    {
+      "source": "src/cm/lsp/codeActions.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "50ab6ac3fe18984b84027bb6c744bfce11581af57c20e3a7c54ef9f0676d11fe"
+    },
+    {
+      "source": "src/cm/lsp/connectionState.js",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "6ac982aad735f78d21bbc28f6730679666a5ff64bc06180db74d62788f08be19"
+    },
+    {
+      "source": "src/cm/lsp/definition.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "6668d0cb3b1949f98a51d5ec5ca3571941b27315748bfad8e67b2949ff4e03ad"
+    },
+    {
+      "source": "src/cm/lsp/diagnostics.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "abe6860105d93f03f8aced6ee4701a902e76978ff52265d2eb255c8c0a554aed"
+    },
+    {
+      "source": "src/cm/lsp/documentColors.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "d982602cb6aba4888f8267fb0f4133799853047fa689bdd036631ffe8885b710"
+    },
+    {
+      "source": "src/cm/lsp/documentSymbols.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "873dd311585646490ff08ff9f0143521247718c3f71cdf2d79253286ea341a36"
+    },
+    {
+      "source": "src/cm/lsp/formatter.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "ae39b2fc2de5117206287610338ca81a82f45954331bd924f26904f48d34bf7a"
+    },
+    {
+      "source": "src/cm/lsp/formattingSupport.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "429efa6a1863da1e1f40bf92f8c2d649b3380d32b4dc72a4af61b296199b47c6"
+    },
+    {
+      "source": "src/cm/lsp/index.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "8b965a6f94bb849a85baa1dd548bc0d6a4b838d70e18b94ecbdc5ced62a98bc6"
+    },
+    {
+      "source": "src/cm/lsp/inlayHints.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "3e4a8e9c415070a7e51c88e89c0065b4e65be347c61af506fe535d7a0339f60a"
+    },
+    {
+      "source": "src/cm/lsp/installRuntime.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "804a477807abcc9f68d67fb4ff391c0696de6f3ab133663f5cb8fbf99c1159b4"
+    },
+    {
+      "source": "src/cm/lsp/installerUtils.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "898e034d65de2c41ce86c310af9c69a8c9799ca8cc8d596e1cbe7f8aef330cb0"
+    },
+    {
+      "source": "src/cm/lsp/locationUtils.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "64e66071b87500b8865ff2ec01061a0c79878133f6cdc88d843dcd95c87b53e7"
+    },
+    {
+      "source": "src/cm/lsp/logs.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "030248de9eb4146e3ab319831931c83e9f238ec4772a1f65115c279105976167"
+    },
+    {
+      "source": "src/cm/lsp/positionUtils.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "ed925a25febb375be731054c95a3030d40e38fc7d3eb3f03c0608d671dbb74f8"
+    },
+    {
+      "source": "src/cm/lsp/providerUtils.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "dd9f23332f585f509fd182ac29947e4c0dfce547c36e94fa1396e713dfbb89ed"
+    },
+    {
+      "source": "src/cm/lsp/references.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "62b16988301f8298316f28335d6ff8ab80bfa09852589be54a73c35af72e7d45"
+    },
+    {
+      "source": "src/cm/lsp/rename.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "3a2bc630e0cb6286cdc80abbef8a338f0699141acc1890ff02dda2f8602245dc"
+    },
+    {
+      "source": "src/cm/lsp/runtimeActions.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "726b0af6160bfd8fe61bc7b4ecf5eb9b9c85e2c02d87ef0d875a1457b5d399d2"
+    },
+    {
+      "source": "src/cm/lsp/runtimeProviders.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "3c8c09d525e1d8575efa04f277add7173192307b4bf2c467f323af1fb389b403"
+    },
+    {
+      "source": "src/cm/lsp/runtimeSettings.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "ab026f1ac0eff7c3f97fdae4b5323ef4c1932cb10bad5f045b4c8f9eb2b57133"
+    },
+    {
+      "source": "src/cm/lsp/runtimes/axsBridge.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "0f760f26f9820deb295cf312557002c2bf234834ec54d3679e3f54d18d631bf4"
+    },
+    {
+      "source": "src/cm/lsp/runtimes/builtinAlpine.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "d960ae5cef4bb7b073398f8d3200ac8c00012c39f6c594a8be5d575841266e14"
+    },
+    {
+      "source": "src/cm/lsp/runtimes/externalWebSocket.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "03a83ec43702e823213520443ef0f79857a92738c3bee69e4e7074aa2591f08d"
+    },
+    {
+      "source": "src/cm/lsp/runtimes/registerBuiltins.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "aaa931906a31957f0754790983300f4cf8b98cab3b22aec3238712574f0eca27"
+    },
+    {
+      "source": "src/cm/lsp/runtimes/webWorker.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "0c07300ebec95682b83d1b33da7e2cc928be699e7a7dc4bbda9f72291fd451af"
+    },
+    {
+      "source": "src/cm/lsp/serverCatalog.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "98dda793b6d21a5d7bf8c899a5b7f4c2172145e6d25ab89a0b93c6a11bd9b8a5"
+    },
+    {
+      "source": "src/cm/lsp/serverLauncher.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "15d610dde52ff0e6740dcdda074307038751b11fd2cea2bd1bbb68f7dd304d60"
+    },
+    {
+      "source": "src/cm/lsp/serverRegistry.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "81d71a260e5cb0eec557bce7a76ba163f2a3b42057efa41a45076df1c52eb408"
+    },
+    {
+      "source": "src/cm/lsp/servers/index.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "ebc31629d08f3784809388c6f001a5bd35bac9ac70beae19f30b7a6ba7f9a738"
+    },
+    {
+      "source": "src/cm/lsp/servers/javascript.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "8ca86a0fc9388a1c71d3c8f1e645fbd9532a30110718181c77e8ee6188a81b49"
+    },
+    {
+      "source": "src/cm/lsp/servers/luau.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "d193f9776352e8414e317be9a87abb92158316e36f5bad96c820b7fb08e2e791"
+    },
+    {
+      "source": "src/cm/lsp/servers/python.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "8d2be1116dd2195a3852d809e8afb0e80c6b49431e4dce9cd062520e93fac099"
+    },
+    {
+      "source": "src/cm/lsp/servers/shared.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "f7e25b2da76d87dc6ae9941a589d427fe60c751194ac8e47aa53848b579658f9"
+    },
+    {
+      "source": "src/cm/lsp/servers/systems.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "31e4a4517129440230439dad62bdb6bcda42fd1394ed2975cedad2531f2589dc"
+    },
+    {
+      "source": "src/cm/lsp/servers/tailwind.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "57adcefd275b5f1ab064b59510d36575286dddc7ec7bb3472a8acd28375ab6cd"
+    },
+    {
+      "source": "src/cm/lsp/servers/web.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "39b56897228eff5760961d36c6663c1848329221799ff19da6be0b91ebdd4d2e"
+    },
+    {
+      "source": "src/cm/lsp/tooltipExtensions.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "052d9427ce0538c88cde1447d3aefe281c04d3db2921bd6e67ac371e3a3f8232"
+    },
+    {
+      "source": "src/cm/lsp/transport.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "7ecb1584afc682acfcf4aec00b5cc9b92a90ecbaa5628156ff78e03959c6fe06"
+    },
+    {
+      "source": "src/cm/lsp/types.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "1b43ca567b536cb740af1d2f783b881da2747df4f4da5aed68670bde038518b7"
+    },
+    {
+      "source": "src/cm/lsp/workerTransport.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "a6276e4e4703004e62a8b239a13ceb2759ae5c69af723a82301f745005b11d2f"
+    },
+    {
+      "source": "src/cm/lsp/workers/css.worker.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "8676eeda27d3ddeb36918f2cbc3c3909d170e050161a687321454260c0714225"
+    },
+    {
+      "source": "src/cm/lsp/workers/html.worker.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "7b43e3583cb36e680aab5b77ce74a7b9301836443f843cc3d66d8e0b39c76f4c"
+    },
+    {
+      "source": "src/cm/lsp/workers/htmlEmbeddedSupport.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "f62cfd204a580a85805dc189798987ded32da866ecb50ae3ff506a14ad0d5cb4"
+    },
+    {
+      "source": "src/cm/lsp/workers/json.worker.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "3ebefe6a1eda73a74e6719cc05c57539d13ca0d5c4d770368cb2580fc29fe795"
+    },
+    {
+      "source": "src/cm/lsp/workers/jsonSchemas.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "ad6644dcaa8eb0c1af6f772b939fefa3f4f20845464993e43649e521fcf59cd8"
+    },
+    {
+      "source": "src/cm/lsp/workers/nestedLspClient.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "a6cdc9aa4d80493a86635fcc30e6cf9f4e046b0a07f7e1173619369b438784bf"
+    },
+    {
+      "source": "src/cm/lsp/workers/protocol.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "c28c6e84200f3fc52781be8db249081a087bbcc3eb323c5d948ff67b098da4c6"
+    },
+    {
+      "source": "src/cm/lsp/workers/typescript.worker.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "13ddbd65241132fbd8f20b1ea7c95f30d3e6ef31684ae2682228200e45cafebd"
+    },
+    {
+      "source": "src/cm/lsp/workers/typescriptLibs.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "1d39d7f33e9c315e4e849ff18816cd25267a826a1659ca62fa186a1437c50861"
+    },
+    {
+      "source": "src/cm/lsp/workspace.ts",
+      "status": "excluded",
+      "reason": "LSP/IDE workspace вне задачи",
+      "local": null,
+      "sourceSha256": "23f5a40aa6f5ab989a1c47750afb59758478e3e58e906bb24bb600f7b4bc9232"
+    },
+    {
+      "source": "src/cm/mainEditorExtensions.ts",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/cm/mainEditorExtensions.ts",
+      "sourceSha256": "b6839ad145ceeb4ac930a8e76418044a32cf6038e454e5822fb3d5ffd9957725"
+    },
+    {
+      "source": "src/cm/modelist.ts",
+      "status": "excluded",
+      "reason": "Дополнительный язык/каталог; ноутбук использует HTML + embedded JavaScript",
+      "local": null,
+      "sourceSha256": "8f6f822a16a865458bce20387060939da2ab68fe9529a33fed9db205fba370d5"
+    },
+    {
+      "source": "src/cm/modes/astro/index.ts",
+      "status": "excluded",
+      "reason": "Дополнительный язык/каталог; ноутбук использует HTML + embedded JavaScript",
+      "local": null,
+      "sourceSha256": "36a991c9e7b6744235dfcd456fac5adef2ad6ddbb14870920cc9c53b93f4bb3c"
+    },
+    {
+      "source": "src/cm/modes/astro/parser/astro.grammar",
+      "status": "excluded",
+      "reason": "Дополнительный язык/каталог; ноутбук использует HTML + embedded JavaScript",
+      "local": null,
+      "sourceSha256": "86880c25c429b3dfbda759918e3781c9933d17280d64c5a7846cc8af474b939e"
+    },
+    {
+      "source": "src/cm/modes/astro/parser/parser.terms.ts",
+      "status": "excluded",
+      "reason": "Дополнительный язык/каталог; ноутбук использует HTML + embedded JavaScript",
+      "local": null,
+      "sourceSha256": "963aecd5a49af071203a77a35234e86cd57c5c5089aba496829bb40ff98a6807"
+    },
+    {
+      "source": "src/cm/modes/astro/parser/parser.ts",
+      "status": "excluded",
+      "reason": "Дополнительный язык/каталог; ноутбук использует HTML + embedded JavaScript",
+      "local": null,
+      "sourceSha256": "f11dea79541a2bbf339d9a080a748b32ce60663daef4ab56e42efce9fc9217c0"
+    },
+    {
+      "source": "src/cm/modes/astro/parser/tokens.ts",
+      "status": "excluded",
+      "reason": "Дополнительный язык/каталог; ноутбук использует HTML + embedded JavaScript",
+      "local": null,
+      "sourceSha256": "94752cbed062eb324652cc6083e5dbaeea52b1a45ae9d372f5d419d153510042"
+    },
+    {
+      "source": "src/cm/modes/javascript/index.ts",
+      "status": "excluded",
+      "reason": "Дополнительный язык/каталог; ноутбук использует HTML + embedded JavaScript",
+      "local": null,
+      "sourceSha256": "ef9ef620a00aef0ae1a22f10da72c6dc42cd35ce681d6a98034a53c097a62347"
+    },
+    {
+      "source": "src/cm/modes/jsdoc/index.ts",
+      "status": "excluded",
+      "reason": "Дополнительный язык/каталог; ноутбук использует HTML + embedded JavaScript",
+      "local": null,
+      "sourceSha256": "0b509d3a962f5d938e02118155b40d6c8c6402747b96ca386357cfd0cc0c13b6"
+    },
+    {
+      "source": "src/cm/modes/luau/index.ts",
+      "status": "excluded",
+      "reason": "Дополнительный язык/каталог; ноутбук использует HTML + embedded JavaScript",
+      "local": null,
+      "sourceSha256": "50acee0d1a9034f9519f48b80ed032bb8d235d7dc4204f7bc87bca351c634b63"
+    },
+    {
+      "source": "src/cm/punctuationWrapping.ts",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/cm/punctuationWrapping.ts",
+      "sourceSha256": "39bc81aa7e2b5affc8aac43731649ff2d9f1150eeb59c940c045df73941f1408"
+    },
+    {
+      "source": "src/cm/quickToolsModifierInput.ts",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/cm/quickToolsModifierInput.ts",
+      "sourceSha256": "63e72c40549f46eff4d18ac345262b37b16639fb7d3c25e2bbe5a11bcd66c373"
+    },
+    {
+      "source": "src/cm/quickToolsModifierKeys.ts",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/cm/quickToolsModifierKeys.ts",
+      "sourceSha256": "39cd241bb70fee43cf054710a23ff4e2c27dbaed15b41e1e35726f16d9c4242d"
+    },
+    {
+      "source": "src/cm/quickToolsNavigation.ts",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/cm/quickToolsNavigation.ts",
+      "sourceSha256": "16f04e733c5e590777ec03ca1d5500b988f95da019ed46f798430ee6620b3d1f"
+    },
+    {
+      "source": "src/cm/rainbowBrackets.ts",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/cm/rainbowBrackets.ts",
+      "sourceSha256": "41c8344fe3aa2e81352b5be901f909c04937ade598ea88f5457b3ced6076a478"
+    },
+    {
+      "source": "src/cm/scrollPastEnd.ts",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/cm/scrollPastEnd.ts",
+      "sourceSha256": "8eae2bccc4c38bba3a199b8306122e9475355c1ad596bd501368f773958582b0"
+    },
+    {
+      "source": "src/cm/searchMatchHighlighter.ts",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/cm/searchMatchHighlighter.ts",
+      "sourceSha256": "d0cf0ee341321c1351e2b382cedfe6403fb6da1434f7efc600d7561f408376f2"
+    },
+    {
+      "source": "src/cm/selectionMenuUtils.ts",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/cm/selectionMenuUtils.ts",
+      "sourceSha256": "bc689ef979b2b4cd7586b6dbf58b400c3d22d49ae400d808ce85cbdf4da7fe7a"
+    },
+    {
+      "source": "src/cm/shiftSelection.ts",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/cm/shiftSelection.ts",
+      "sourceSha256": "dcaa74bbda6873fdb5eb7babe0127e1adbb519fadbfcbea839413e5390316ed8"
+    },
+    {
+      "source": "src/cm/supportedModes.ts",
+      "status": "excluded",
+      "reason": "Дополнительный язык/каталог; ноутбук использует HTML + embedded JavaScript",
+      "local": null,
+      "sourceSha256": "976533c410f080000d3335d2032b7d94c3dbe2b91cf9beb1aca36e47ac3e32a7"
+    },
+    {
+      "source": "src/cm/tagAutoRename.ts",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/cm/tagAutoRename.ts",
+      "sourceSha256": "1e8bb50aa81d53504b6ad17881d1224b81db55a60e68218033b77b8bec6b9359"
+    },
+    {
+      "source": "src/cm/themes/aura.js",
+      "status": "excluded",
+      "reason": "Дополнительная тема; используются githubLight и oneDark",
+      "local": null,
+      "sourceSha256": "cdecfe28f6f46873f2d30b5642be2b56944098e416365ed79cfdaad426c168ec"
+    },
+    {
+      "source": "src/cm/themes/ayuDark.js",
+      "status": "excluded",
+      "reason": "Дополнительная тема; используются githubLight и oneDark",
+      "local": null,
+      "sourceSha256": "2dd5204acdf467d9b274aac0391905a91bdef4668e54f753b9945dd047058320"
+    },
+    {
+      "source": "src/cm/themes/catppuccin.js",
+      "status": "excluded",
+      "reason": "Дополнительная тема; используются githubLight и oneDark",
+      "local": null,
+      "sourceSha256": "8d4cc9b8f7c9d7de24c70855c14c0f24baf82cc09c2036ad82444879e3097787"
+    },
+    {
+      "source": "src/cm/themes/cobalt.js",
+      "status": "excluded",
+      "reason": "Дополнительная тема; используются githubLight и oneDark",
+      "local": null,
+      "sourceSha256": "bffaa4baf6586edb6a2c246136f24207d5bfe4ef21a8ff3ae0b68a89caddcc53"
+    },
+    {
+      "source": "src/cm/themes/dracula.js",
+      "status": "excluded",
+      "reason": "Дополнительная тема; используются githubLight и oneDark",
+      "local": null,
+      "sourceSha256": "4df3324c9207b1b1a8dc923150fe4b365644a66d9f03a7f4e648bc1a4118d9d4"
+    },
+    {
+      "source": "src/cm/themes/githubDark.js",
+      "status": "excluded",
+      "reason": "Дополнительная тема; используются githubLight и oneDark",
+      "local": null,
+      "sourceSha256": "d68b3b8feed22ec7cdb2026c037857a6d242cb03577f4e9d3211bef06c99bf30"
+    },
+    {
+      "source": "src/cm/themes/githubLight.js",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/cm/themes/githubLight.js",
+      "sourceSha256": "a9e4c6742c166dd1e5f3329de825a5e32148664e6ff90b6189b731febd4f5733"
+    },
+    {
+      "source": "src/cm/themes/gruvboxDark.js",
+      "status": "excluded",
+      "reason": "Дополнительная тема; используются githubLight и oneDark",
+      "local": null,
+      "sourceSha256": "89a665312a38815a95dbeda6583cdf99282fd5fedd5d9b9346a3c0f36be44ca4"
+    },
+    {
+      "source": "src/cm/themes/index.js",
+      "status": "excluded",
+      "reason": "Дополнительная тема; используются githubLight и oneDark",
+      "local": null,
+      "sourceSha256": "f2f6613eb46c12dc7c67450c4d0c3e8a5b1a4b7a664cd0ca2fcfbf1edb73a707"
+    },
+    {
+      "source": "src/cm/themes/materialPalenight.js",
+      "status": "excluded",
+      "reason": "Дополнительная тема; используются githubLight и oneDark",
+      "local": null,
+      "sourceSha256": "4d055437e81c0495f58265a35e7d055e71fe89ff9c70118f9d01ebb2387990e2"
+    },
+    {
+      "source": "src/cm/themes/monokai.js",
+      "status": "excluded",
+      "reason": "Дополнительная тема; используются githubLight и oneDark",
+      "local": null,
+      "sourceSha256": "4ad10aec13a32b413b3ebc34dc1b95b0dbc09fbfcc7711985e27c97ce56d02a3"
+    },
+    {
+      "source": "src/cm/themes/noctisLilac.js",
+      "status": "excluded",
+      "reason": "Дополнительная тема; используются githubLight и oneDark",
+      "local": null,
+      "sourceSha256": "f081278aae6df799f3da07a65f02f97959253b0dc33a94e516a2ec1b1c26c7cd"
+    },
+    {
+      "source": "src/cm/themes/nord.js",
+      "status": "excluded",
+      "reason": "Дополнительная тема; используются githubLight и oneDark",
+      "local": null,
+      "sourceSha256": "c048835b92231a9becb6e2bdad201b8c65712b24825eeccd566c43eac31ed1a3"
+    },
+    {
+      "source": "src/cm/themes/solarizedDark.js",
+      "status": "excluded",
+      "reason": "Дополнительная тема; используются githubLight и oneDark",
+      "local": null,
+      "sourceSha256": "8ab436fde31fb76b56df177516125ec158b164c3699ddc81215988d7ad34bc6e"
+    },
+    {
+      "source": "src/cm/themes/solarizedLight.js",
+      "status": "excluded",
+      "reason": "Дополнительная тема; используются githubLight и oneDark",
+      "local": null,
+      "sourceSha256": "c7ae03d4ac257bddbdfda1d91a493dd99dd5c0ffdccdfbd00f950f1e1ad0df12"
+    },
+    {
+      "source": "src/cm/themes/tokyoNight.js",
+      "status": "excluded",
+      "reason": "Дополнительная тема; используются githubLight и oneDark",
+      "local": null,
+      "sourceSha256": "dcf3795ad10fb3155c82a2e805eb1211da91aba96c3bffcb2b98c76e0475ac43"
+    },
+    {
+      "source": "src/cm/themes/tokyoNightDay.js",
+      "status": "excluded",
+      "reason": "Дополнительная тема; используются githubLight и oneDark",
+      "local": null,
+      "sourceSha256": "88009d2b9e1c8c3c4e0ed73bd464de57d7ee832f32248d4ad916de249415e2fa"
+    },
+    {
+      "source": "src/cm/themes/tomorrowNight.js",
+      "status": "excluded",
+      "reason": "Дополнительная тема; используются githubLight и oneDark",
+      "local": null,
+      "sourceSha256": "d22066399ea22d2944f67685377027a41b5fc21539f22fc88ef0ccf6f5a7fc75"
+    },
+    {
+      "source": "src/cm/themes/tomorrowNightBright.js",
+      "status": "excluded",
+      "reason": "Дополнительная тема; используются githubLight и oneDark",
+      "local": null,
+      "sourceSha256": "2e6658bde1fdd0c549a97f9f46cc12cddfa0f579b272db53a2b6fb48b9ace5ec"
+    },
+    {
+      "source": "src/cm/themes/vscodeDark.js",
+      "status": "excluded",
+      "reason": "Дополнительная тема; используются githubLight и oneDark",
+      "local": null,
+      "sourceSha256": "b14d60d393eef75c19e1d717089f95813d8c8c31d079a0df8b2df1c621f96f87"
+    },
+    {
+      "source": "src/cm/touchSelectionMenu.js",
+      "status": "patched",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/cm/touchSelectionMenu.js",
+      "sourceSha256": "3aa791d618124c6715e2896dda362a4409e93d9981cf41e2e52a4a9566081f41"
+    },
+    {
+      "source": "src/components/checkbox/index.js",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/components/checkbox/index.js",
+      "sourceSha256": "2cc58e928f96d5d66b57b586e66fde66932c45618ed404e3a258d29c99f550c1"
+    },
+    {
+      "source": "src/components/checkbox/styles.scss",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/components/checkbox/styles.scss",
+      "sourceSha256": "402945896b0df7845ec35c1a6be87380cb96a8bb7a58e61d6374edbcf930da75"
+    },
+    {
+      "source": "src/components/inputhints/index.js",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/components/inputhints/index.js",
+      "sourceSha256": "f3fca53d129c00aa36f18c15b32162eecbb554eeeeae2c5a360eccd2023b2a98"
+    },
+    {
+      "source": "src/components/inputhints/style.scss",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/components/inputhints/style.scss",
+      "sourceSha256": "573a9fe3852f1e7ef980d8eff96ce601672089ff262e2163fd922ebefc47f31c"
+    },
+    {
+      "source": "src/components/palette/index.js",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/components/palette/index.js",
+      "sourceSha256": "a43309c75c317325ef3acf150ab289c6db45ac8f1a015490c311bd75231b40e2"
+    },
+    {
+      "source": "src/components/palette/style.scss",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/components/palette/style.scss",
+      "sourceSha256": "56e81d3dd1ce6d525565dc9bc7378542fdfba02893168d7024f6a37e4eca1183"
+    },
+    {
+      "source": "src/components/quickTools/footer.js",
+      "status": "patched",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/components/quickTools/footer.js",
+      "sourceSha256": "ba8aecc555633de21d74d8084deecea2004cacff70e741f0b5683ce1deb390b9"
+    },
+    {
+      "source": "src/components/quickTools/index.js",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/components/quickTools/index.js",
+      "sourceSha256": "1db641d8854a4f55ae9fbc19b130cd709ef3d2223edeea9da1628b438809161c"
+    },
+    {
+      "source": "src/components/quickTools/items.js",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/components/quickTools/items.js",
+      "sourceSha256": "dff91c2d86493b977a246bc82dd089b48a04deca270a74e0f7da276b4bfbc281"
+    },
+    {
+      "source": "src/components/quickTools/style.scss",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/components/quickTools/style.scss",
+      "sourceSha256": "fb747618d3fd307a14175e7779b3cda3cc339783ed6ca4c44971e643313abc4c"
+    },
+    {
+      "source": "src/components/scrollbar/index.js",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/components/scrollbar/index.js",
+      "sourceSha256": "d81b1341940460c897524532044c6680dbc3add21e7c556d7b7b6ae64d5acf7d"
+    },
+    {
+      "source": "src/components/scrollbar/style.scss",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/components/scrollbar/style.scss",
+      "sourceSha256": "678d4372b4eaa9f4facd1cff0f053b82d380ab8b5aea61d303097833c44cb19b"
+    },
+    {
+      "source": "src/components/tooltip/index.js",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/components/tooltip/index.js",
+      "sourceSha256": "0ab4881258d16b63ffa1cc0f3eafbfdf81c48d15f2072168ee69742ed46cb3ed"
+    },
+    {
+      "source": "src/components/tooltip/longPress.js",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/components/tooltip/longPress.js",
+      "sourceSha256": "a6760cb2ccf0b07b2a667149696231e794c0a35f20238c30965dfe3ce935088f"
+    },
+    {
+      "source": "src/components/tooltip/style.scss",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/components/tooltip/style.scss",
+      "sourceSha256": "101faf3dabacb5fbf6ec8203cc63f192549d6c5a19173d393a3b4b5cd10e9ddf"
+    },
+    {
+      "source": "src/dialogs/color.js",
+      "status": "patched",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/dialogs/color.js",
+      "sourceSha256": "8370a91ff29cff52647c7a7d98df50528b5d976de05efea03fb9fd97ca797373"
+    },
+    {
+      "source": "src/dialogs/style.scss",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/dialogs/style.scss",
+      "sourceSha256": "0fe0b8ec09ceb724e1a563f69958e3933c35e2af29831f63439362c18dc545cb"
+    },
+    {
+      "source": "src/handlers/editorWorkaround.js",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/handlers/editorWorkaround.js",
+      "sourceSha256": "f4faf0a395e1883524c0063331aa547b57f1b9896018f15a336c6696a56f9528"
+    },
+    {
+      "source": "src/handlers/keyboard.js",
+      "status": "patched",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/handlers/keyboard.js",
+      "sourceSha256": "e51074ca245926008a131f2f0150b9b566456894c0bafc9dcc48e00dd94463db"
+    },
+    {
+      "source": "src/handlers/quickTools.js",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/handlers/quickTools.js",
+      "sourceSha256": "56e894030b02c1b21af9cc30bb1a69800fb02bed3b8f722b8b9179326d9a95e4"
+    },
+    {
+      "source": "src/handlers/quickToolsInit.js",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/handlers/quickToolsInit.js",
+      "sourceSha256": "155cd163384acceb790bdac570bbffede369f3395a0cf204cfefd71c180735af"
+    },
+    {
+      "source": "src/handlers/quickToolsState.js",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/handlers/quickToolsState.js",
+      "sourceSha256": "8f0ed7dbe113a95024f7809f027dadbb7f59c08c4262936650d2242fda63caa0"
+    },
+    {
+      "source": "src/handlers/readOnlyQuickToolsCapture.ts",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/handlers/readOnlyQuickToolsCapture.ts",
+      "sourceSha256": "24f7b2eb94ef6874e15d972a0bb7bf0357c1257b04a6470a4f2062e2ef4ab279"
+    },
+    {
+      "source": "src/handlers/windowResize.js",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/handlers/windowResize.js",
+      "sourceSha256": "66c8f6ba0c7bfd8de0e6b42dfe5b3032f7d64c113e015c313594f0f36cdc8c81"
+    },
+    {
+      "source": "src/lang/en-us.json",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/lang/en-us.json",
+      "sourceSha256": "8ba810c36c1733fe9de533ff2ce5db2a7fa2ba9f3f491b9bb43bae2877b513eb"
+    },
+    {
+      "source": "src/lang/ru-ru.json",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/lang/ru-ru.json",
+      "sourceSha256": "a7893d88598e8cd84b3f766860af4393f67fe7b702140c45ec2b9d7bc0edb723"
+    },
+    {
+      "source": "src/lib/actionStack.js",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/lib/actionStack.js",
+      "sourceSha256": "f8d354da7d9fdab0df24a7baf78753cf37be355d7c08017a69579e6e23acc46f"
+    },
+    {
+      "source": "src/lib/commands.js",
+      "status": "host",
+      "reason": "Host router: save/find/goto/fullscreen/color; IDE actions excluded",
+      "local": "web/src/editor.js",
+      "sourceSha256": "3072d837b7ac5a5f2eb186020928c5a4d20d4aebdfefa41571673b8386870bdb"
+    },
+    {
+      "source": "src/lib/editorFile.js",
+      "status": "projected",
+      "reason": "Original syncQuickToolsVisibility; workspace owns the document",
+      "local": "web/src/acode/host/editorFile.js",
+      "sourceSha256": "b391bfffe9abcc96bb66eb17d12d32ff5fc918ec086f88ca469cbf92147d6cdc"
+    },
+    {
+      "source": "src/lib/editorInteractionGuard.ts",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/lib/editorInteractionGuard.ts",
+      "sourceSha256": "e6afa7ed5c53cc59fa3ae6efcf5c528649f8f209ebdee21bb0cdfedf9245d714"
+    },
+    {
+      "source": "src/lib/editorManager.js",
+      "status": "projected",
+      "reason": "Single-pane projection: 22 original functions, selection declarations, setupEditor and compatibility methods",
+      "local": "web/src/acode/vendor/lib/singlePaneRuntime.js",
+      "sourceSha256": "376b08bbf5185e66c6b3dd647bf97cedaeed30aa9773bc956fa521ff3502e01c"
+    },
+    {
+      "source": "src/lib/keyBindings.js",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/lib/keyBindings.js",
+      "sourceSha256": "0962d0e6b304faac5e7e00ba0d3bbb50e2bbc921112acaadf9e1703f65f560b6"
+    },
+    {
+      "source": "src/lib/quickToolsAdapter.js",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/lib/quickToolsAdapter.js",
+      "sourceSha256": "6f7d1dfd5c03e8f4945dd4a91ac9f5865fa3631014b8d727564df8de9d85d4ab"
+    },
+    {
+      "source": "src/lib/quickToolsOverlays.js",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/lib/quickToolsOverlays.js",
+      "sourceSha256": "c5bbcc1991e122d9fa43f0d89ed6eec8343a8089320ea654c8b5381f9edb366a"
+    },
+    {
+      "source": "src/lib/searchHistory.js",
+      "status": "patched",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/lib/searchHistory.js",
+      "sourceSha256": "a5180ccd21abd43091f0ce24652fd5f2dae6cac35a429303cda840650e4094c2"
+    },
+    {
+      "source": "src/lib/selectionMenu.js",
+      "status": "patched",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/lib/selectionMenu.js",
+      "sourceSha256": "262eaaf47510f37e3991b38320c4a264c3b5368e1969032216192e7f469a8fdf"
+    },
+    {
+      "source": "src/main.scss",
+      "status": "projected",
+      "reason": "Original icon/footer/search/selection-menu rules extracted",
+      "local": "web/src/acode/vendor/styles/editor-ui.scss",
+      "sourceSha256": "0cc9379327d601debeaf9ffb7c50043d026552eeac0edff42f850e01d4e8d9ad"
+    },
+    {
+      "source": "src/palettes/commandPalette/index.js",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/palettes/commandPalette/index.js",
+      "sourceSha256": "1fdcd20f43ea52e970945a5767035e0f806f6af0be8ad4e1de5345720d3013d6"
+    },
+    {
+      "source": "src/res/fonts/RobotoMono.ttf",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/res/fonts/RobotoMono.ttf",
+      "sourceSha256": "c59ecb6c18e38d4194249b6e1c555eb55c8e809258cf6d9b624d19d9268253bf"
+    },
+    {
+      "source": "src/res/icons/icons.ttf",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/res/icons/icons.ttf",
+      "sourceSha256": "b31ee592da1d3b88b580dea6bb3dd2c9f7ff5b679460f3595885c8799242200c"
+    },
+    {
+      "source": "src/res/icons/style.css",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/res/icons/style.css",
+      "sourceSha256": "df2489d607546785aca26fdae0ce45d66d6047ec37c4f3e0aed093f0bdd196ca"
+    },
+    {
+      "source": "src/settings/searchSettings.js",
+      "status": "projected",
+      "reason": "Original search definition; reduced host settings page",
+      "local": "web/src/acode/host/searchSettings.js",
+      "sourceSha256": "6a90a9131129b253b5c912a3ce0590bf43ff982d089f40aa1c7dd30bd4141105"
+    },
+    {
+      "source": "src/styles/codemirror.scss",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/styles/codemirror.scss",
+      "sourceSha256": "39de92acf1d43ef114d05d9a5e56c782b26197bd9b7c31e670cb7e159944b688"
+    },
+    {
+      "source": "src/styles/mixins.scss",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/styles/mixins.scss",
+      "sourceSha256": "ff396accc1378e9b761ee5dc6a0cd34047cc650b4f548dbe2ebeeb207d11cdb6"
+    },
+    {
+      "source": "src/utils/color/regex.js",
+      "status": "exact",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/utils/color/regex.js",
+      "sourceSha256": "01e5072305ea2eda3f01194562b3e5b9d160b15553972ce7d2fc6d8e8d3b4cc6"
+    },
+    {
+      "source": "src/utils/keyboardEvent.js",
+      "status": "patched",
+      "reason": "Imported in editor runtime; explicit patches recorded separately",
+      "local": "web/src/acode/vendor/utils/keyboardEvent.js",
+      "sourceSha256": "ccd0065c8c33406c9819940f95b762930e9ca6eed22891599b02188ed3d168a3"
+    }
+  ]
+}
