@@ -1,50 +1,39 @@
-# Проверка интеграции Nexus 0.1.20
+# Nexus 0.1.20 integration — historical validation record
 
-Дата: 16 ноября 2026. Проверки выполнялись на Linux, Node.js 24.22.1.
-Минимальная версия Node.js проекта/CI поднята до 22.16.0 по требованию пакета Nexus.
+**Date:** 16 November 2026. **Environment used for this report:** Linux, Node.js 24.22.1. The project's minimum Node.js version was raised to **22.16.0** for the bundled Nexus package.
 
-| Проверка | Результат |
+> **Historical snapshot.** The numbers below document the integration snapshot in which they were recorded. The repository and CI tests have changed since then. Do **not** present these counts as the current main-branch or release status; consult the latest GitHub Actions run for that.
+
+| Check | Recorded outcome |
 | --- | --- |
-| `npm ci --ignore-scripts --no-audit --no-fund` | Успешно; Nexus установлен из локального архива, остальные версии зависимостей сохранены |
-| `npm run build` | Успешно: editor + preview, аудит локальных ресурсов, копирование бандлов в Android assets |
-| `npm run test:built-preview` | Успешно: реальный минифицированный preview исполнил пример, обновил значение через Nexus и сбросил состояние |
-| `node --test tests/nexus-runtime.test.mjs` | 7 из 7 проходят |
-| `npm test` | 101 проверка: 98 проходят, 3 исходных сбоя (ниже) |
-| `npm run test:upstream` | 45 из 45 проходят |
-| `python3 scripts/check_repository.py` | Успешно |
-| `python3 -m unittest discover -s tests -p '*Test.py'` | 22 из 22 проходят |
-| `node tests/ResourceLocalizationTest.mjs` | Успешно |
-| `node tests/WorkspaceUXTest.mjs` | Успешно |
-| APK / Android unit, lint и device tests | Не запускались: Android SDK 35 / JDK 17 не настроены в окружении проверки |
+| `npm ci --ignore-scripts --no-audit --no-fund` | Passed: Nexus installed from its local tarball; other dependency versions were retained. |
+| `npm run build` | Passed: editor and preview bundles, local-asset audit and copy to Android assets. |
+| `npm run test:built-preview` | Passed: the actual minified preview executed the example, updated a Nexus value and reset its state. |
+| `node --test tests/nexus-runtime.test.mjs` | 7/7 passed. |
+| `npm test` | 101 tests: 98 passed, 3 pre-existing failures (listed below). |
+| `npm run test:upstream` | 45/45 passed. |
+| `python3 scripts/check_repository.py` | Passed. |
+| `python3 -m unittest discover -s tests -p '*Test.py'` | 22/22 passed. |
+| `node tests/ResourceLocalizationTest.mjs` | Passed. |
+| `node tests/WorkspaceUXTest.mjs` | Passed. |
+| APK build / Android unit, lint and device tests | Not run in this validation environment; Android SDK 35 / JDK 17 were not configured. |
 
-Новые проверки исполняют настоящий пакет Nexus и Observable runtime в браузерном
-окружении JSDOM: начальное значение и изменения Store, откат транзакции,
-отмену ожидающих команд, освобождение подписок в обоих порядках, изоляцию
-предпросмотров, обработку ошибок очистки, пересчёт ячеек при изменении ввода,
-сброс/смену документа, защищённый предпросмотр и подсказки редактора.
+The new checks exercised the real Nexus package and Observable runtime under JSDOM, including Store initial/committed values, transaction rollback, queued-command cancellation, either subscription cleanup order, preview isolation, cleanup error handling, input-triggered recomputation, document reset and teardown, protected-preview behavior and editor completions.
 
-## Исходные сбои общего набора
+## Failures observed before the Nexus integration
 
-Те же три теста отдельно запущены на распакованном **исходном**
-`NotebookPocket(6).zip`, без интеграции Nexus, с теми же установленными
-зависимостями. Все три воспроизводятся там:
+The following three tests were also run against the extracted **pre-integration** `NotebookPocket(6).zip` source with the same dependencies. All three failures were reproduced there, so this report did not classify them as newly introduced by Nexus:
 
-| Файл / тест | Наблюдение |
+| File / test | Observation at that time |
 | --- | --- |
-| `web/tests/acode-host-runtime.test.mjs`: `original scrollbar drag changes scroll without changing a long selection` | JSDOM не находит ожидаемую полосу прокрутки (`assert.ok(bar)`) |
-| `web/tests/pancake-demo.test.mjs`: `official Observable step buttons use modern grouped styles and remain interactive` | Ожидается `display: flex`, тест получает `block` |
-| `web/tests/protected-state.test.mjs`: `native Preview passes the protection flag into the isolated renderer` | Устаревший regex ожидает `$payload.source`; исходный Kotlin уже передаёт `p.source` после `var p = $payload` |
+| `web/tests/acode-host-runtime.test.mjs` — `original scrollbar drag changes scroll without changing a long selection` | JSDOM did not find the scrollbar; `assert.ok(bar)` failed. |
+| `web/tests/pancake-demo.test.mjs` — `official Observable step buttons use modern grouped styles and remain interactive` | The assertion expected `display: flex`, but received `block`. |
+| `web/tests/protected-state.test.mjs` — `native Preview passes the protection flag into the isolated renderer` | An old regex expected `$payload.source`; the Kotlin source already passed `p.source` after assigning `var p = $payload`. |
 
-Эти исходные проверки/модули не менялись в рамках интеграции. Полностью зелёный
-общий набор и готовый APK данным отчётом не заявляются.
+These tests and modules were not modified as part of the initial Nexus integration. This record did **not** claim that the entire JavaScript suite was green or that an APK had been validated. Subsequent CI fixes must be evaluated against their own runs.
 
-## Источник зависимости и состав архива
+## Package provenance
 
-Nexus собран из приложенного исходного архива версии 0.1.20; ограничение полной
-сборки его тестов и происхождение пакета описаны в `third_party/nexus/README.md`.
-Подключается только браузерное ядро `nexus/core`; сеть, CSP и Android bridge
-не расширялись. В проверенном preview отсутствуют Frida-адаптеры.
+Nexus 0.1.20 was compiled from a provided source archive and installed via `web/vendor/nexus-0.1.20.tgz`. The full-build limitation of that archive and the local package's provenance are described in [`third_party/nexus/README.md`](../third_party/nexus/README.md). Only `nexus/core` was imported into the browser preview. No Frida adapter, network permissions, CSP weakening or native preview bridge was added.
 
-Архив проекта содержит исходники и локальный пакет Nexus. `node_modules`,
-сгенерированные бандлы, локальные настройки, отчётные логи и APK не включены.
-Для сборки выполните команды из `docs/BUILDING.md` и `docs/NEXUS.md`.
+The source distribution contained the project files and vendored Nexus tarball, but not `node_modules`, generated bundles, local settings, report logs or APK artifacts. For present-day build instructions, consult [BUILDING.md](BUILDING.md) and the [Nexus integration guide](NEXUS.md).

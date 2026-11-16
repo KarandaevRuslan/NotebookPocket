@@ -1,0 +1,37 @@
+digraph NotebookPocket {
+  graph [rankdir=TB, bgcolor="white", pad="0.30", nodesep="0.52", ranksep="0.8", outputorder=edgesfirst, fontname="DejaVu Sans", splines=polyline, label="NotebookPocket — component and trust boundaries", labelloc="t", fontsize=20, fontcolor="#172554"];
+  node [shape=box, style="rounded,filled", color="#CBD5E1", fillcolor="#F8FAFC", fontcolor="#0F172A", fontname="DejaVu Sans", fontsize=11, margin="0.16,0.11"];
+  edge [color="#64748B", fontname="DejaVu Sans", fontsize=9, fontcolor="#475569", arrowsize=0.7];
+  subgraph cluster_android {
+    label="ANDROID APP :app (Kotlin + Compose)";
+    labelloc="t"; style="rounded,filled"; bgcolor="#EFF6FF"; color="#BFDBFE"; fontcolor="#1D4ED8";
+    ui [label="Compose screens\nLibrary / Workspace / Resources / Settings", fillcolor="#DBEAFE"];
+    state [label="App state + ViewModels\nDocumentWriteCoordinator"];
+    ports [label="Domain ports\nNotebookGateway + narrow interfaces"];
+    services [label="RepositoryServices\nDocument / Catalog / Resource / Security / Transfer", fillcolor="#E0E7FF"];
+    ui -> state -> ports -> services;
+  }
+  subgraph cluster_web {
+    label="WEB FRONTEND (Vite → local APK assets)"; style="rounded,filled"; bgcolor="#F0FDFA"; color="#99F6E4"; fontcolor="#0F766E";
+    editor [label="TRUSTED editor WebView\nAcode + CodeMirror 6", fillcolor="#CCFBF1"];
+    preview [label="ISOLATED preview WebView\nObservable Notebook Kit 2.x", fillcolor="#CCFBF1"];
+    nexus [label="Nexus 0.1.20 Core\nPreview dispatcher + scopes"];
+    host [label="Pocket API + FileAttachment\nClock / Theme / Locale / Timers"];
+    preview -> nexus [label="cell reactive state"];
+    preview -> host [label="notebook built-ins"];
+  }
+  subgraph cluster_store {
+    label="DEVICE-PRIVATE STORAGE"; style="rounded,filled"; bgcolor="#F8FAFC"; color="#CBD5E1"; fontcolor="#334155";
+    room [label="Room v2\nVFS metadata + references", fillcolor="#F1F5F9"];
+    files [label="Revisioned packages\nHTML + personal / shared resources", fillcolor="#F1F5F9"];
+    drafts [label="Atomic Keystore-encrypted drafts\nnoBackupFilesDir", fillcolor="#F1F5F9"];
+  }
+  ui -> editor [label="source editing"];
+  ui -> preview [label="display notebook"];
+  editor -> state [label="NativeEditor bridge\n(editor only)", color="#0D9488"];
+  services -> room;
+  services -> files;
+  services -> drafts;
+  services -> host [label="allowlisted attachment bytes", color="#0D9488"];
+  ui -> host [label="theme / language / native clock samples", style=dotted, color="#64748B"];
+}

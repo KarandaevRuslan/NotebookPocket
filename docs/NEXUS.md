@@ -1,95 +1,114 @@
-# Nexus в NotebookPocket
+# Nexus integration in NotebookPocket
 
-[Nexus](https://github.com/KarandaevRuslan/Nexus) **0.1.20 Core** встроен в приложение и доступен офлайн в каждом блокноте.
-Observable Notebook Kit **2.9.1** продолжает компилировать и исполнять ячейки.
-Nexus управляет транзакциями, Store, Event и Handler внутри этих ячеек; его можно
-использовать самостоятельно для логики и DOM либо передавать значения в граф Observable.
+[Nexus](https://github.com/KarandaevRuslan/Nexus) **Core 0.1.20** is bundled into NotebookPocket and available offline inside every notebook. [Observable Notebook Kit](https://github.com/observablehq/notebook-kit) **2.9.1** still parses, compiles and executes cells. Nexus adds transactional Stores, Events, Handlers and managed scopes; it does **not** replace Observable's dependency graph.
 
-Импортировать библиотеку или скачивать её из сети в блокноте не нужно:
+This page is a practical introduction. For the complete list of NotebookPocket-provided globals, timer methods, device preferences and attachment behavior, see the **[host API reference](API.md)**.
 
-| Имя | Назначение |
+## 1. Where Nexus comes from
+
+The repository declares the dependency as a **local npm tarball**, not an inline source copy and not a package fetched from the npm registry:
+
+```json
+"nexus": "file:vendor/nexus-0.1.20.tgz"
+```
+
+`npm ci` installs it into `web/node_modules/nexus`; `web/src/preview/nexusRuntime.js` imports `nexus/core` and Vite includes the browser-compatible code in the APK. No installation or network connection is required on Android. For provenance, version verification and license, see [`third_party/nexus/README.md`](../third_party/nexus/README.md).
+
+## 2. The notebook-visible API
+
+Two objects are registered as Notebook Kit built-ins:
+
+| Built-in | Purpose |
 | --- | --- |
-| `Nexus` | Публичные экспорты `nexus/core`, включая `Dispatcher`, `Handler`, `Scope`, `Store`, `Event` и классы ошибок |
-| `nexus.version` | `"0.1.20"` |
-| `nexus.dispatcher` | Общий Dispatcher текущего предпросмотра |
-| `nexus.scope(invalidation)` | Scope с автоматическим освобождением при пересчёте ячейки и закрытии предпросмотра |
-| `nexus.scope()` | Scope до закрытия/перезапуска предпросмотра или явного `dispose()` |
-| `nexus.observe(scope, store)` | Асинхронный генератор начального и последующих значений Store для Observable |
+| `Nexus` | Frozen object containing upstream exports from `nexus/core`: `Dispatcher`, `Handler`, `Scope`, `Store`, `Event`, error types and related Core facilities. |
+| `nexus.version` | The bundled version, `"0.1.20"`. |
+| `nexus.dispatcher` | One dispatcher for the **current preview render**. |
+| `nexus.scope(invalidation)` | Create a scope automatically released when the Observable cell is invalidated. |
+| `nexus.scope()` | Create a scope managed until explicit disposal or preview teardown. |
+| `nexus.observe(scope, store)` | Observable generator emitting the Store's initial and committed values. |
 
-## Транзакции Nexus в JavaScript 2.0
+`nexus.scope()` and `nexus.observe()` are **NotebookPocket integration helpers**. Methods such as `scope.store`, `scope.guard`, `scope.cleanup`, `scope.register` and `dispatcher.inline` belong to Nexus itself. They are documented by the [Nexus framework](https://github.com/KarandaevRuslan/Nexus).
 
-Создайте состояние в отдельной ячейке `type="module"`:
+## 3. Write transactions in JavaScript 2.0 cells
+
+Define scope and state in a module cell:
 
 ```js
 const scope = nexus.scope(invalidation);
 const counter = scope.store(0);
 ```
 
-В другой ячейке создайте кнопку:
+In a subsequent module cell, create a button and bind a guarded event handler:
 
 ```js
-const button = html`<button>+1</button>`;
+const button = html`<button type="button">+1</button>`;
 const increment = scope.guard(() => {
-  nexus.dispatcher.inline(ctx => ctx.set(counter, ctx.read(counter) + 1));
+  nexus.dispatcher.inline(ctx => {
+    ctx.set(counter, ctx.read(counter) + 1);
+  });
 });
-button.addEventListener("click", increment);
-scope.cleanup(() => button.removeEventListener("click", increment));
+button.addEventListener('click', increment);
+scope.cleanup(() => button.removeEventListener('click', increment));
 display(button);
 ```
 
-Для собственных реакций наследуйте `Nexus.Handler`, регистрируйте обработчик
-через `scope.register(...)` и выполняйте DOM/внешние эффекты через `ctx.effect`.
-Таймеры и слушатели отменяйте через `scope.cleanup`; `scope.guard` блокирует
-поздние вызовы после освобождения. Для отменяемых команд используйте
-`scope.submit(...)` / `scope.submitAndWait(...)`.
+The dispatcher changes a Store **inside a transaction**. `scope.guard` prevents late callbacks from executing after cleanup; `scope.cleanup` removes the DOM listener. The scope is tied to `invalidation` so reactive cell replacement does not leave orphaned handlers.
 
-## Передача Store в Observable
+## 4. Derive state with `Nexus.Handler`
 
-Добавьте OJS-ячейку в тот же блокнот:
+```js
+const servings = scope.store(0);
+class ComputeServings extends Nexus.Handler {
+  run(ctx) {
+    ctx.set(servings, Math.floor(ctx.read(counter) / 2));
+  }
+}
+scope.register(new ComputeServings(), {
+  on: { any: [counter] },
+  initial: true,
+  execution: 'inline'
+});
+```
+
+Nexus updates `servings` after the relevant committed changes. Side effects should be scheduled through Nexus's effect facilities when appropriate. Resource/DOM cleanup belongs in the owning scope. Core also provides `scope.submit(...)` and `scope.submitAndWait(...)` for commands, with scope-aware cancellation.
+
+## 5. Bridge Nexus Stores into Observable
+
+A Store is a stable object. Reading it once via `dispatcher.inline` does **not** turn its value into an Observable dependency. Instead, use `nexus.observe(...)` inside an **Observable JavaScript (OJS)** cell:
 
 ```html
-<script id="3" type="application/vnd.observable.javascript">
-count = nexus.observe(scope, counter)
+<script id="4" type="application/vnd.observable.javascript">
+readyServings = nexus.observe(scope, servings)
 </script>
 ```
 
-После этого `count` — реактивное значение для любых зависимых JS/TS/OJS-ячеек:
+A dependent `type="module"` cell can then use the named reactive value:
 
 ```js
-display(html`<p>Счётчик: ${count}</p>`);
+display(html`<p>Ready servings: ${readyServings}</p>`);
 ```
 
-Передавайте в `observe` Scope, владеющий Store. Подписка освобождается как
-при остановке генератора Observable, так и при освобождении Scope.
-Быстрые последовательные изменения могут объединяться в последнее значение,
-как у `Generators.observe`. Если важен каждый переход, используйте Handler Nexus.
+In a regular JavaScript 2.0 cell, `const value = nexus.observe(scope, counter)` simply assigns the **generator object**; it does not automatically unwrap its emitted values. Keep the OJS bridge for a named reactive output.
 
-В JS 2.0 запись `const count = nexus.observe(scope, counter)` сохраняет объект
-генератора в переменную и не разворачивает его значения автоматически.
-Используйте приведённую OJS-ячейку для именованного реактивного значения.
-У Store стабильная идентичность: чтение через `dispatcher.inline(ctx =>
-ctx.read(counter))` даёт разовый снимок, а не подписку Observable.
+The bridge verifies that the scope is active and belongs to the current Nexus host and that the Store belongs to the same dispatcher. A generator subscription is released when Observable stops it or its owning scope is disposed. Very rapid state transitions may be coalesced; use a Nexus Handler if every intermediate change matters.
 
-Полный импортируемый пример с кнопкой, Handler и зависимой JS-ячейкой:
-[`examples/nexus-counter.html`](../examples/nexus-counter.html).
-Импортируйте этот HTML через обычный импорт документов приложения.
+## 6. Lifetime, isolation and persistence
 
-## Жизненный цикл и границы
+Each preview render owns its dispatcher and managed scopes. Cell invalidation, document switch, Preview Reset or teardown dispose scopes and subscriptions. For directly constructed `new Nexus.Dispatcher()` or other upstream instances, authors must manage their own cleanup.
 
-Каждый рендер создаёт отдельные Dispatcher и набор Scope. Смена документа,
-повторный рендер, сброс состояния и закрытие предпросмотра освобождают управляемые
-Scope и Observable runtime. Состояние Nexus хранится в памяти: сброс/повторный
-рендер возвращает исходные значения, оно не сохраняется в DOM storage.
+**Nexus Store state is memory-only** in this integration. Neither `localStorage` nor Room nor notebook drafts automatically serialize it. If a notebook needs persisted user inputs, distinguish that from the current form-state persistence and `Pocket.timer` behavior described in [API.md](API.md#2-pocket-app-settings-clock-and-timers).
 
-`new Nexus.Dispatcher()` и остальные исходные классы также доступны. Их
-обработчиками, Scope и внешними ресурсами управляйте самостоятельно через
-`invalidation` и `dispose()`. Мост `nexus.observe` предназначен для Scope,
-созданных через `nexus.scope`, и Store общего `nexus.dispatcher`.
+Only browser-compatible `nexus/core` enters the preview; Frida adapters are not available. Nexus does **not** grant native Android access or add a JavaScript bridge, Internet permission or relaxed CSP.
 
-Frida API не включён в браузерный предпросмотр. JavaScript исполняется в том же
-изолированном WebView без нативного bridge; разрешения сети и CSP не меняются.
+## 7. Tutorials and working examples
 
-## Проверка разработчиком
+- **Bundled Pancakes recipe:** `app/src/main/assets/demo/pancakes/notebook.html`. Its “Cooking with Nexus” section increments/decrements the finished-pancakes counter, uses a Handler to derive servings, and renders progress through two OJS subscriptions. Changing recipe ingredients does not reset the current count.
+- **Importable counter:** [`examples/nexus-counter.html`](../examples/nexus-counter.html). It demonstrates one Store, a derived Store, an OJS bridge and a dependent module cell.
+- **Upstream framework:** [KarandaevRuslan/Nexus](https://github.com/KarandaevRuslan/Nexus).
+
+The Pancakes sample uses `nexus.scope(invalidation)` and releases event handlers through `scope.guard`/`scope.cleanup`. Its Nexus counter is deliberately reset when preview execution is restarted. The existing `Pocket.timer` in that recipe remains a separate API. Existing customized sample notebooks are not overwritten by the bundled demo-upgrade mechanism.
+
+## 8. Developer checks
 
 ```sh
 cd web
@@ -100,24 +119,4 @@ npm run build
 npm run test:built-preview
 ```
 
-`web/vendor/nexus-0.1.20.tgz` поставляется в проекте, поэтому установка Nexus
-не требует доступа к GitHub Releases. Происхождение пакета и сборка из исходников
-описаны в [`third_party/nexus/README.md`](../third_party/nexus/README.md).
-
-Результаты выполненных проверок и исходные сбои общего набора:
-[`NEXUS-VALIDATION.md`](NEXUS-VALIDATION.md).
-
-## Интерактивная демонстрация в рецепте «Блины»
-
-Встроенная инструкция «Блины» показывает Nexus непосредственно во время приготовления:
-кнопка «+ 1 готов» записывает число через `nexus.dispatcher.inline`, а `Handler`
-автоматически считает порции по два блина. Две OJS-ячейки с `nexus.observe`
-передают значения в Observable, который обновляет счётчики и индикатор прогресса.
-Можно изменить число яиц, не потеряв текущий счётчик; кнопки отмены и сброса
-также выполняют транзакции. В карточке есть раскрываемая памятка с фрагментами API.
-
-`Scope` создан через `nexus.scope(invalidation)`, обработчики кнопок защищены
-`scope.guard`, а подписки/слушатели освобождаются вместе с предпросмотром.
-Счётчик не сохраняется между перезапусками; обычный таймер `Pocket.timer` не заменён.
-При обновлении приложения неповреждённый старый демонстрационный рецепт можно
-обновить автоматически. Изменённые пользователем версии не переписываются.
+The local Nexus tarball is committed, so `npm ci` does not need to download Nexus from GitHub Releases. An archived **historical** validation report lives in [NEXUS-VALIDATION.md](NEXUS-VALIDATION.md); its dated results should not be treated as the status of the current branch.

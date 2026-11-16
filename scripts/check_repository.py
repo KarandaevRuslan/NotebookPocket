@@ -11,6 +11,7 @@ APPROVED_IMAGES = {
     'app/src/main/assets/demo/pancakes/images/preparation.png',
     'docs/brand/notebookpocket-icon.png',
     'docs/brand/social-preview.png',
+    'docs/architecture/system-overview.svg',  # Reviewed diagram generated from adjacent .dot source.
     *{f'app/src/main/res/mipmap-{density}/ic_launcher{suffix}.png'
       for density in ('mdpi', 'hdpi', 'xhdpi', 'xxhdpi', 'xxxhdpi')
       for suffix in ('', '_round')},

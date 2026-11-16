@@ -70,6 +70,7 @@ __pycache__/
 # Reviewed app launcher icons and public branding, plus runtime fixtures.
 !/docs/brand/notebookpocket-icon.png
 !/docs/brand/social-preview.png
+!/docs/architecture/system-overview.svg
 !/app/src/main/res/mipmap-*/ic_launcher.png
 !/app/src/main/res/mipmap-*/ic_launcher_round.png
 # Existing runtime fixtures are required by the built-in notebook and tests.

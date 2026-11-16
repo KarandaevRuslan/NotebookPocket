@@ -24,6 +24,7 @@
   <a href="#features">Features</a> ·
   <a href="#getting-started">Build</a> ·
   <a href="ARCHITECTURE.md">Architecture</a> ·
+  <a href="docs/API.md">Notebook APIs</a> ·
   <a href="docs/RELEASE.md">Releases</a> ·
   <a href="#credits-and-attribution">Credits</a>
 </p>
@@ -48,7 +49,7 @@ No account, hosted backend or Android `INTERNET` permission is required. Built-i
 | File attachments and Observable Inputs | Optional password protection | Light/dark appearance |
 | Bundled [Nexus Core 0.1.20](https://github.com/KarandaevRuslan/Nexus) reactive stores | Encrypted device-local recovery drafts | Clear save states and retry |
 
-**Try the “Pancakes / Блины” sample.** It is an executable recipe, and the bundled Nexus-enhanced edition demonstrates stores, transactions, handlers and Observable interoperation. See the [Nexus framework](https://github.com/KarandaevRuslan/Nexus), [NotebookPocket integration](docs/NEXUS.md) and [`examples/nexus-counter.html`](examples/nexus-counter.html).
+**Try the built-in “Pancakes” sample.** It is an executable recipe, and the bundled Nexus-enhanced edition demonstrates stores, transactions, handlers and Observable interoperation. Explore the [Nexus framework](https://github.com/KarandaevRuslan/Nexus), the [Nexus integration guide](docs/NEXUS.md), the [notebook/host API reference](docs/API.md), and the [importable counter](examples/nexus-counter.html).
 
 <!-- Real screenshots will be added after device verification; avoid placeholder/broken images. -->
 
@@ -112,7 +113,7 @@ docs/                    Architecture, security, build and release documentation
 .github/workflows/       CI, tag-triggered debug APK builds and guarded signed release drafts
 ```
 
-See [ARCHITECTURE.md](ARCHITECTURE.md) for data flows, trust boundaries and saving semantics.
+See [ARCHITECTURE.md](ARCHITECTURE.md) for architecture diagrams, every logical module, persistence and security boundaries. The [API reference](docs/API.md) explains the **`Pocket`** clock, theme, language, locale, timers, `FileAttachment` resources, and **`Nexus` / `nexus`** bridges.
 
 ## Release & contributing
 
