@@ -7,7 +7,10 @@ import {build} from 'esbuild';
 import {deserialize,transpile} from '@observablehq/notebook-kit';
 const folder=new URL('../../app/src/main/assets/demo/pancakes/',import.meta.url);
 const source=await readFile(new URL('notebook.html',folder),'utf8');
-const previewCss=await readFile(new URL('../src/styles.css',import.meta.url),'utf8');
+const previewCss=await Promise.all([
+ readFile(new URL('../src/styles.css',import.meta.url),'utf8'),
+ readFile(new URL('../src/preview/inputs-theme.css',import.meta.url),'utf8'),
+]).then(([base,inputs])=>`${base}\n${inputs}`);
 const previewPage=await readFile(new URL('../preview.html',import.meta.url),'utf8');
 const base='https://appassets.androidplatform.net/notebook-resources/test/';
 const names=['styles/pancakes.css','i18n/en.json','i18n/ru.json','images/pancakes.png','images/preparation.png'];
